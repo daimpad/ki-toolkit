@@ -15,17 +15,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue:       #009bd9;
-      --blue-dark:  #004c8b;
       --yellow:     #fec144;
       --green:      #4bf990;
       --black:      #020000;
       --dark:       #262626;
       --gray-light: #f0f0f0;
-      --gray-warm:  #f5f0e0;
+      --gray-warm:  #020000;
       --cream:      #fef9ee;
       --white:      #ffffff;
-      --max-w:      1079px;
+      --max-w:      800px;
       --radius-btn: 13px;
       --shadow:     6px 6px 0 0 #262626;
       --shadow-lg:  10px 10px 0 0 #262626;
@@ -35,8 +33,8 @@
 
     body {
       font-family: 'Albert Sans', Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.4;
+      font-size: 17px;
+      line-height: 1.65;
       color: var(--dark);
       background: var(--white);
     }
@@ -57,7 +55,7 @@
     p { margin-bottom: 1em; }
     p:last-child { margin-bottom: 0; }
     a { color: var(--black); text-decoration: none; }
-    a:hover { color: var(--blue); }
+    a:hover { color: var(--black); text-decoration: underline; }
     img { max-width: 100%; height: auto; display: block; }
 
     /* === LAYOUT === */
@@ -67,7 +65,7 @@
       padding: 0 24px;
     }
 
-    section { padding: 53px 0; }
+    section { padding: 80px 0; }
 
     .text-center { text-align: center; }
     .mt-8  { margin-top: 8px;  }
@@ -119,7 +117,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: var(--white);
+      background: transparent;
       padding: 5px 0 3px;
     }
 
@@ -220,7 +218,7 @@
       content: '▶';
       position: absolute;
       left: 0;
-      color: var(--blue);
+      color: var(--black);
       font-size: 11px;
       top: 8px;
     }
@@ -292,7 +290,6 @@
 
     .phase-cards-label {
       font-size: 13px;
-      text-transform: uppercase;
       letter-spacing: .5px;
       font-weight: 700;
       color: var(--dark);
@@ -305,7 +302,7 @@
       content: '▶';
       position: absolute;
       left: 0;
-      color: var(--blue);
+      color: var(--black);
       font-size: 10px;
       top: 7px;
     }
@@ -360,14 +357,13 @@
 
     .footer-nav a {
       display: block;
-      font-size: 17px;
+      font-size: 13px;
       color: var(--black);
-      text-transform: uppercase;
       font-weight: 500;
       letter-spacing: .5px;
       margin-bottom: 10px;
     }
-    .footer-nav a:hover { color: var(--blue); }
+    .footer-nav a:hover { color: var(--black); text-decoration: underline; }
 
     .footer-badge img { height: 48px; width: auto; margin-bottom: 8px; }
     .footer-badge a { font-size: 14px; }
@@ -414,6 +410,25 @@
       .phase-header { flex-wrap: wrap; gap: 12px; }
       .phase-content { padding: 20px; }
     }
+
+    /* List marker color */
+    li::marker { color: var(--black); }
+
+    /* Dark-section text overrides (--gray-warm is now black) */
+    .phase-task { color: var(--white); }
+    .phase-task h1, .phase-task h2, .phase-task h3, .phase-task h4, .phase-task h5, .phase-task p, .phase-task li { color: var(--white); }
+    .pitch-template { color: var(--white); }
+    .pitch-template h1, .pitch-template h2, .pitch-template h3, .pitch-template h4, .pitch-template h5, .pitch-template p, .pitch-template li { color: var(--white); }
+  
+    /* Inline-style dark sections (sections using var(--gray-warm) = black) */
+    section[style*="gray-warm"] { color: var(--white); }
+    section[style*="gray-warm"] h1,
+    section[style*="gray-warm"] h2,
+    section[style*="gray-warm"] h3,
+    section[style*="gray-warm"] h4,
+    section[style*="gray-warm"] h5,
+    section[style*="gray-warm"] p,
+    section[style*="gray-warm"] li { color: var(--white); }
   </style>
 </head>
 <body>
