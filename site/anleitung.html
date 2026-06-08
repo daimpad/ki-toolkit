@@ -16,15 +16,11 @@
 
     :root {
       --yellow:     #fec144;
-      --green:      #4bf990;
       --black:      #020000;
       --dark:       #262626;
-      --gray-light: #fef9ee;
-      --gray-warm:  #020000;
       --cream:      #fef9ee;
       --white:      #ffffff;
       --max-w:      800px;
-      --radius-btn: 13px;
       --shadow:     6px 6px 0 0 #262626;
       --shadow-lg:  10px 10px 0 0 #262626;
     }
@@ -46,7 +42,7 @@
       color: var(--black);
     }
 
-    h1 { font-size: 52px; font-weight: 700; }
+    h1 { font-size: 64px; font-weight: 700; }
     h2 { font-size: 36px; font-weight: 700; }
     h3 { font-size: 24px; font-weight: 600; }
     h4 { font-size: 20px; font-weight: 600; }
@@ -65,7 +61,7 @@
       padding: 0 24px;
     }
 
-    section { padding: 80px 0; }
+    section { padding: 64px 0; }
 
     .text-center { text-align: center; }
     .mt-8  { margin-top: 8px;  }
@@ -97,6 +93,7 @@
       background-color: var(--black);
       border-color: var(--black);
       color: var(--white) !important;
+      text-decoration: none;
     }
 
     .btn-outline {
@@ -191,7 +188,7 @@
 
     /* === PAGE-SPECIFIC === */
 
-    .page-hero { padding: 60px 0 48px; background: var(--cream); text-align: center; }
+    .page-hero { padding: 64px 0 48px; background: var(--cream); text-align: center; }
     .page-hero h1 { margin-bottom: 0; }
 
     /* ALTERNATING SECTIONS */
@@ -207,30 +204,7 @@
       line-height: 1.5;
     }
 
-    /* Setup box */
-    .setup-box {
-      border: 3px solid var(--black);
-      border-radius: 14px;
-      padding: 28px 32px;
-      background: var(--white);
-      box-shadow: var(--shadow);
-      margin-top: 32px;
-      max-width: 560px;
-    }
-    .setup-box h4 { margin-bottom: 12px; }
-    .setup-box ul { list-style: none; padding: 0; }
-    .setup-box ul li { padding: 5px 0 5px 24px; position: relative; }
-    .setup-box ul li::before {
-      content: '▶';
-      position: absolute;
-      left: 0;
-      color: var(--black);
-      font-size: 11px;
-      top: 8px;
-    }
-
     /* 7 Phasen section */
-    .section-phases { }
 
     .phase-block {
       border: 3px solid var(--black);
@@ -313,22 +287,13 @@
       top: 7px;
     }
 
-    .phase-task {
-      background: var(--gray-warm);
-      border-radius: 8px;
-      padding: 14px 16px;
-      font-size: 15px;
-      margin-top: 12px;
-    }
-    .phase-task strong { display: block; margin-bottom: 4px; }
-
     .phase-img {
       border-left: 3px solid var(--black);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: var(--gray-light);
+      background: var(--cream);
     }
     .phase-img img {
       width: 100%;
@@ -396,7 +361,6 @@
 
     /* Pitch template box */
     .pitch-template {
-      background: var(--gray-warm);
       border: 2px solid var(--black);
       border-radius: 10px;
       padding: 20px 24px;
@@ -478,8 +442,7 @@
     /* List marker color */
     li::marker { color: var(--black); }
 
-    .pitch-template { color: var(--dark); background: var(--cream); border-color: var(--black); }
-    .pitch-template em { color: var(--black); }
+    .pitch-template { color: var(--dark); background: var(--cream); }
   </style>
 </head>
 <body>
@@ -739,7 +702,7 @@
                 &#8222;Für <em>[Persona]</em> im Szenario <em>[Szenario]</em>, die <em>[Problem]</em> hat, schafft unsere Idee <em>[Mission]</em>, indem sie <em>[Datenquelle]</em> über <em>[Physischen Input]</em> erfasst. Die KI kann <em>[KI-Lernziel]</em> und gibt das Ergebnis als <em>[Digitaler/Physischer Output]</em> aus. Unser größtes ethisches Risiko <em>[Reflexion]</em> lösen wir durch <em>[Lösung]</em>.&#8220;
               </div>
             </div>
-            <div class="phase-img" style="background: var(--cream);">
+            <div class="phase-img">
               <div style="padding: 28px; text-align: center;">
                 <p style="font-family: 'Aleo', serif; font-size: 22px; font-weight: 700; color: var(--black); margin: 0; line-height: 1.4;">Elevator<br>Pitch</p>
               </div>
