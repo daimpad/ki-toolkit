@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ – KI-Toolkit</title>
+  <meta name="description" content="Häufig gestellte Fragen zum KI-Toolkit – Alles was Sie wissen müssen über die Methode, Lizenzen und den Einsatz in Workshops.">
+  <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* === RESET & BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #009bd9;
+      --blue-dark:  #004c8b;
+      --yellow:     #fec144;
+      --green:      #4bf990;
+      --black:      #020000;
+      --dark:       #262626;
+      --gray-light: #f0f0f0;
+      --gray-warm:  #f5f0e0;
+      --cream:      #fef9ee;
+      --white:      #ffffff;
+      --max-w:      1079px;
+      --radius-btn: 13px;
+      --shadow:     6px 6px 0 0 #262626;
+      --shadow-lg:  10px 10px 0 0 #262626;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Albert Sans', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.4;
+      color: var(--dark);
+      background: var(--white);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Aleo', Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--black);
+    }
+
+    h1 { font-size: 52px; font-weight: 700; }
+    h2 { font-size: 36px; font-weight: 700; }
+    h3 { font-size: 24px; font-weight: 600; }
+    h4 { font-size: 20px; font-weight: 600; }
+    h5 { font-size: 17px; font-weight: 600; }
+
+    p { margin-bottom: 1em; }
+    p:last-child { margin-bottom: 0; }
+    a { color: var(--black); text-decoration: none; }
+    a:hover { color: var(--blue); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 53px 0; }
+
+    .text-center { text-align: center; }
+    .mt-8  { margin-top: 8px;  }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mb-8  { margin-bottom: 8px;  }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+
+    /* === BUTTONS === */
+    .btn {
+      display: inline-block;
+      padding: 13px 28px;
+      background-color: var(--yellow);
+      color: var(--black) !important;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid var(--yellow);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color .2s, color .2s, border-color .2s;
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .btn:hover {
+      background-color: var(--black);
+      border-color: var(--black);
+      color: var(--white) !important;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--black) !important;
+      border: 2px solid var(--black);
+    }
+    .btn-outline:hover {
+      background-color: var(--black);
+      color: var(--white) !important;
+    }
+
+    .btn-center { display: block; width: fit-content; margin: 0 auto; }
+    .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* === NAVIGATION === */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      padding: 5px 0 3px;
+    }
+
+    .nav-wrap {
+      max-width: 693px;
+      margin: 14px auto;
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 20px;
+      padding: 0 24px 0 28px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo { flex-shrink: 0; }
+    .nav-logo img { height: 38px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 0;
+    }
+    .nav-links a {
+      display: block;
+      padding: 16px 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--black) !important;
+      letter-spacing: .3px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--yellow) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 10px;
+      background: none;
+      border: none;
+      margin-left: auto;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--black);
+      border-radius: 3px;
+      transition: .3s;
+    }
+
+    /* === PAGE HERO === */
+    .page-hero {
+      padding: 60px 0 48px;
+      text-align: center;
+    }
+    .page-hero h1 { margin-bottom: 16px; }
+    .page-hero h2 {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* === FAQ === */
+    .faq-box {
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+    }
+
+    .faq-item { border-bottom: 2px solid var(--black); }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-toggle {
+      width: 100%;
+      text-align: left;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Aleo', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-toggle:hover { background: var(--gray-light); }
+
+    .faq-arrow {
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: transform .3s;
+    }
+    .faq-toggle[aria-expanded="true"] .faq-arrow { transform: rotate(180deg); }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      padding: 0 24px;
+    }
+    .faq-content.open {
+      max-height: 600px;
+      padding-bottom: 20px;
+    }
+
+    /* === AUSPROBIEREN === */
+    .ausprobieren-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .ausprobieren-img img {
+      width: 100%;
+      border-radius: 14px;
+      border: 3px solid var(--black);
+      box-shadow: var(--shadow);
+    }
+
+    /* === FOOTER === */
+    .site-footer { background: var(--gray-light); padding: 48px 0 0; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+    .footer-brand img { height: 36px; width: auto; }
+
+    .footer-nav a {
+      display: block;
+      font-size: 17px;
+      color: var(--black);
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: .5px;
+      margin-bottom: 10px;
+    }
+    .footer-nav a:hover { color: var(--blue); }
+
+    .footer-badge img { height: 48px; width: auto; margin-bottom: 8px; }
+    .footer-badge a { font-size: 14px; }
+
+    .footer-bottom { background: var(--black); padding: 20px 0; }
+
+    .footer-cc {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-cc img { height: 31px; width: auto; flex-shrink: 0; }
+    .footer-cc p {
+      color: var(--white);
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .footer-cc a { color: #aaa; }
+    .footer-cc a:hover { color: var(--white); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 980px) {
+      h1 { font-size: 36px; }
+      h2 { font-size: 26px; }
+      h3 { font-size: 20px; }
+      .page-hero h2 { font-size: 22px; }
+
+      .nav-links { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: var(--white); border: 3px solid var(--black); border-radius: 0 0 16px 16px; flex-direction: column; padding: 8px 16px 16px; z-index: 100; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 8px; font-size: 16px; }
+      .nav-wrap { position: relative; margin: 10px auto; padding: 0 16px; }
+      .nav-toggle { display: flex; }
+
+      .ausprobieren-grid { grid-template-columns: 1fr; gap: 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 32px 0; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-wrap" aria-label="Hauptnavigation">
+        <a href="index.html" class="nav-logo" aria-label="KI-Toolkit Startseite">
+          <img src="pics/KI-Toolkit-Logo-1.png" alt="KI-Toolkit" height="38">
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="methode.html">Methode</a></li>
+          <li><a href="anleitung.html">Anleitung</a></li>
+          <li><a href="workshop.html">Workshop</a></li>
+          <li><a href="ueber.html">Über</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <h1>FAQ</h1>
+        <h2>Häufig gestellte Fragen</h2>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section>
+      <div class="container">
+        <div class="faq-box">
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Brauche ich technisches Wissen, um das KI-Toolkit zu nutzen?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Nein. Das Toolkit ist explizit für interdisziplinäre Teams konzipiert. Es fokussiert auf Strategie, Konzeption und Ethik, nicht auf die Programmierung. Es hilft Fachexpert:innen und Techniker:innen, eine gemeinsame Sprache zu finden. Es ist speziell auch für Laien konzipiert. Alle Fachbegriffe werden einfach erklärt. Der Fokus liegt auf der Idee, nicht auf der technischen Umsetzung.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Für welche Arten von KI-Projekten ist das Toolkit geeignet?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Es eignet sich ideal für Projekte in der Frühphase (Idee, Konzeption, Validierung). Besonders stark ist es bei KI-Anwendungen mit direktem Bürger- oder Nutzerkontakt (z.B. Chatbots, Assistenzsysteme, Analyse-Tools), bei denen ethische Fragen zentral sind.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Was ist das konkrete Ergebnis eines Workshops?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Das Ergebnis ist ein klar definiertes und ethisch reflektiertes KI-Konzept, visualisiert als Storyboard. Sie erhalten eine detaillierte Beschreibung einer Anwendungsidee (Pitch), die als direkte Grundlage für technische Briefings oder Projektanträge dienen kann.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Kann ich den Workshop selbst moderieren?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Ja, das Material steht zum Download bereit. Es empfiehlt sich jedoch, den ersten Workshop von einer erfahrenen Person moderieren zu lassen. Die Moderation lenkt die Diskussion, stellt die passenden Fragen und stellt sicher, dass die Gruppe in der vorgegebenen Zeit zu einem Ergebnis kommt.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Unter welcher Lizenz wird das Toolkit bereitgestellt?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Das Toolkit ist unter Creative Commons BY 4.0 lizenziert. Das bedeutet: Du darfst es frei nutzen, anpassen, weitergeben – solange du die Urheberschaft angibst. Kommerzielle Nutzung ist erlaubt. Keine Genehmigung nötig.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Kann ich die Vorlagen editieren und an meine Organisation anpassen?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Ja, absolut. Dafür dient die Lizenz.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              In welchen Szenarien passt das Toolkit NICHT?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Das Toolkit ist nicht für bereits in Produktion befindliche Systeme gedacht (dort hilft Monitoring besser) und nicht als Compliance-Falle – wir geben Leitfragen, keine Rechtsberatung. Bei hochriskanten Anwendungen (z.B. automatisierte Strafverfügung) benötigen Sie zusätzlich Jurist:innen und ein externes Audit.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Ist das Toolkit nur für Software-Ideen?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Nein. Die Methode eignet sich für alle Arten von KI-gestützten Lösungen. Das kann eine App sein, aber auch ein physisches Produkt (z.&nbsp;B. ein smarter Lautsprecher), ein Assistenzroboter oder ein verbesserter interner Prozess in Ihrer Organisation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Für wie viele Personen eignet sich ein Workshop?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Das Toolkit funktioniert am besten in kleinen, diversen Teams von 3 bis 5 Personen. Bei größeren Veranstaltungen können mehrere Teams parallel am selben oder an unterschiedlichen Szenarien arbeiten.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Gibt es Updates? Wie erfahre ich davon?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Ja, das KI-Toolkit wird ca. 1–2 Mal pro Jahr aktualisiert (neue Praxisbeispiele, aktuelle Rechtsprechung, Feedback-Integration).</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Darf ich das Toolkit weitergeben? Darf ich es in meinen Kurs integrieren?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Ja und ja. Das ist genau der Sinn der CC-BY-Lizenz. Unterricht, Intranet, externe Weitergabe – all das geht. Einzige Bitte: Nennen Sie die Quelle und schreiben Sie uns – dann verlinken wir Ihren Einsatz auf unserer Seite als Praxisbeispiel.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Ist das Toolkit auch in anderen Sprachen verfügbar?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Derzeit nur Deutsch. Wir arbeiten an einer englischen Version (geplant Q2 2026). Wenn Sie bei der Übersetzung oder Adaption helfen möchten, melden Sie sich – wir suchen Unterstützer*innen.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- KI-TOOLKIT AUSPROBIEREN -->
+    <section>
+      <div class="container">
+        <h2 class="mb-32">KI-Toolkit ausprobieren</h2>
+        <div class="ausprobieren-grid">
+          <div class="ausprobieren-img">
+            <img src="svg/Tisch.svg" alt="KI-Toolkit Tisch mit Karten">
+          </div>
+          <div>
+            <p>Entdecken Sie, wie Sie mit dem KI-Toolkit partizipativ und kreativ neue Ideen entwickeln können.</p>
+            <p>Sie können das Toolkit als Online-Version direkt im Browser nutzen oder alle Materialien für Ihren eigenen Workshop herunterladen.</p>
+            <div class="btn-row mt-24">
+              <a href="download.html" class="btn">herunterladen</a>
+              <a href="ki-toolkit-online.html" class="btn btn-outline">online testen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p>Ein Produkt von</p>
+          <a href="https://nozilla.de/" target="_blank" rel="noopener">
+            <img src="svg/nozilla-logo.svg" alt="nozilla">
+          </a>
+        </div>
+        <nav class="footer-nav" aria-label="Footer Navigation 1">
+          <a href="kontakt.html">Kontakt</a>
+          <a href="ki-toolkit-online.html">Online-Tool</a>
+          <a href="../kartengenerator/">Kartengenerator</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Footer Navigation 2">
+          <a href="faq.html">FAQ</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+        <div class="footer-badge">
+          <a href="#">
+            <img src="svg/ethical-design-badge-tiny.svg" alt="We practice Ethical Design" width="62" height="48">
+          </a>
+          <a href="#">We practice Ethical Design.</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-cc">
+          <img src="pics/cc-by.png" alt="Creative Commons BY 4.0" width="88" height="31">
+          <p>Die Inhalte dieser Website stehen unter einer <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener noreferrer">Creative Commons Namensnennung 4.0 International Lizenz (CC BY 4.0)</a>. Namensnennung: <a href="https://paderta.com/" target="_blank" rel="noopener">Damian Paderta</a> | ki-toolkit.de</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- Mobile Nav ---
+    (function () {
+      const toggle   = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (!toggle || !navLinks) return;
+
+      toggle.addEventListener('click', function () {
+        const open = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    })();
+
+    // --- FAQ Accordion ---
+    (function () {
+      document.querySelectorAll('.faq-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const isOpen  = this.getAttribute('aria-expanded') === 'true';
+          const content = this.nextElementSibling;
+
+          document.querySelectorAll('.faq-toggle').forEach(function (b) {
+            b.setAttribute('aria-expanded', 'false');
+            b.nextElementSibling.classList.remove('open');
+          });
+
+          if (!isOpen) {
+            this.setAttribute('aria-expanded', 'true');
+            content.classList.add('open');
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
