@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.karte {
+    /* Standard Poker-Kartengröße */
+    width: 63mm;
+    height: 88mm;
+    
+    border: 1px dashed #AAA; /* Leichte Schnittlinie */
+    overflow: hidden; /* Verhindert, dass Inhalt überläuft */
+    border-radius: 3mm; /* Abgerundete Ecken */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #FFFFFF;
+    
+    /* WICHTIG: Verhindert, dass eine Karte auf zwei Seiten zerrissen wird */
+    break-inside: avoid;
+    
+    /* Platz zwischen den Karten im Raster */
+    margin: 2mm; 
+}
+
+.karten-header {
+    /* Der farbige Header, Hintergrundfarbe wird per JS gesetzt */
+    padding: 6mm 5mm 5mm 5mm;
+    min-height: 25mm; /* Stellt sicher, dass der Header Platz hat */
+}
+
+.karten-header h1 {
+    /* Titel in großer Schrift */
+    font-size: 14pt;
+    font-weight: bold;
+    color: white; /* Weißer Text auf farbigem Grund */
+    margin: 0;
+    line-height: 1.2;
+}
+
+.karten-inhalt {
+    /* Der "schwarz auf weiß" Teil */
+    padding: 5mm;
+}
+
+.kategorie-text {
+    /* Kategorie in kleiner, dicker, farbiger Schrift */
+    font-size: 8pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    /* Farbe wird per JS gesetzt */
+}
+
+.beschreibung {
+    /* Beschreibung in schwarz auf weiß */
+    font-size: 10pt;
+    color: #333333;
+    margin-top: 2mm;
+    line-height: 1.3;
+}
+
+@media print {
+    /* Alle Browser-Infos (Header, Footer, URLs) ausblenden */
+    @page {
+        size: A4 portrait;
+        margin: 10mm; /* Rand für den Drucker */
+    }
+
+    /* Verstecke alles außer dem Druck-Layout */
+    body > *:not(#print-layout) {
+        display: none;
+    }
+    
+    body {
+        background-color: #FFFFFF; /* Stellt sicher, dass der Hintergrund weiß ist */
+    }
+
+    #print-layout {
+        display: grid;
+        /* 3 Spalten, die sich den Platz teilen */
+        grid-template-columns: repeat(3, 1fr); 
+        /* Automatisches Zeilen-Layout */
+        grid-auto-rows: auto;
+        justify-items: center; /* Zentriert Karten im Raster */
+    }
+
+    .karte {
+        /* Im Druckmodus keine Schatten, aber die Schnittlinie behalten */
+        box-shadow: none;
+        margin: 2mm; /* Abstand für einfaches Schneiden */
+    }
+    
+    /* WICHTIG: Zwingt den Browser, die Hintergrundfarben zu drucken */
+    .karten-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

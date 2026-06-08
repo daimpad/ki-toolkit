@@ -1,0 +1,18 @@
+[
+  {
+    "set": "Szenario",
+    "titel": "Gesundheit & Pflege",
+    "beschreibung": "Ein Umfeld, in dem es um Diagnose, Behandlung, Prävention und die Unterstützung von Patient:innen und Pflegepersonal geht."
+  },
+  {
+    "set": "Szenario",
+    "titel": "Stadt & Verwaltung (Smart City)",
+    "beschreibung": "Der urbane Raum und seine Verwaltung. Themen sind Bürger-Services, Infrastruktur, öffentliche Sicherheit..."
+  },
+  {
+    "set": "Persona",
+    "titel": "Die Pflegekraft",
+    "beschreibung": "Steht unter hohem Zeitdruck. Sucht nach Entlastung bei administrativen Aufgaben, um mehr Zeit für Patient:innen zu haben."
+  },
+  
+]
