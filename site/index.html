@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-Toolkit – Künstliche Intelligenz besser verstehen</title>
+  <meta name="description" content="Das KI-Toolkit ist eine praxisnahe Methode, um neue Ideen für Künstliche Intelligenz zu entwickeln. Besser verstehen. Gemeinsam entwickeln. Sinnvoller einsetzen.">
+  <link rel="icon" href="../svg/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* === RESET & BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #009bd9;
+      --blue-dark:  #004c8b;
+      --yellow:     #fec144;
+      --green:      #4bf990;
+      --black:      #020000;
+      --dark:       #262626;
+      --gray-light: #f0f0f0;
+      --gray-warm:  #f5f0e0;
+      --cream:      #fef9ee;
+      --white:      #ffffff;
+      --max-w:      1079px;
+      --radius-btn: 13px;
+      --shadow:     6px 6px 0 0 #262626;
+      --shadow-lg:  10px 10px 0 0 #262626;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Albert Sans', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.4;
+      color: var(--dark);
+      background: var(--white);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Aleo', Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--black);
+    }
+
+    h1 { font-size: 32px; }
+    h2 { font-size: 27px; }
+    h3 { font-size: 23px; }
+    h4 { font-size: 19px; }
+    h5 { font-size: 16px; }
+
+    p { margin-bottom: 1em; }
+    p:last-child { margin-bottom: 0; }
+    a { color: var(--black); text-decoration: none; }
+    a:hover { color: var(--blue); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 53px 0; }
+
+    .text-center { text-align: center; }
+    .mt-8  { margin-top: 8px;  }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mb-8  { margin-bottom: 8px;  }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+
+    /* === BUTTONS === */
+    .btn {
+      display: inline-block;
+      padding: 12px 26px;
+      background-color: var(--blue-dark);
+      color: var(--white) !important;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      border: 2px solid transparent;
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      transition: opacity .2s, border-radius .3s;
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .btn:hover { opacity: .88; border-radius: var(--radius-btn); }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--blue-dark) !important;
+      border: 2px solid var(--blue-dark);
+    }
+    .btn-outline:hover { background-color: var(--blue-dark); color: var(--white) !important; }
+
+    .btn-center { display: block; width: fit-content; margin: 0 auto; }
+
+    /* === NAVIGATION === */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      padding: 5px 0 3px;
+    }
+
+    .nav-wrap {
+      max-width: 693px;
+      margin: 20px auto;
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 20px;
+      padding: 0 30px 0 34px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo { flex-shrink: 0; }
+    .nav-logo img { height: 38px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 0;
+    }
+    .nav-links a {
+      display: block;
+      padding: 16px 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--black) !important;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--yellow) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 10px;
+      background: none;
+      border: none;
+      margin-left: auto;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--black);
+      border-radius: 3px;
+      transition: .3s;
+    }
+
+    /* === HERO / CARD FAN === */
+    .hero {
+      padding: 20px 0 10px;
+      overflow: hidden;
+    }
+
+    .card-fan-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .cards {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 180px;
+      height: 260px;
+      box-shadow: 5px 5px 0 0 var(--dark);
+      transition: transform 900ms cubic-bezier(.2,.8,.2,1);
+      border-radius: 20px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-title { padding: 16px 0 0; text-align: center; }
+    .hero-title h1 { font-size: 74px; }
+
+    /* === INTRO === */
+    .section-intro {
+      text-align: center;
+      padding: 40px 0 53px;
+    }
+    .section-intro h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section-intro h3 {
+      font-size: 23px;
+      font-weight: 400;
+      margin-bottom: 32px;
+    }
+
+    /* === TWO COLUMN === */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    /* === KERNPRINZIPIEN === */
+    .section-kernprinzipien { background: var(--gray-warm); }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .prinzip-icon {
+      font-size: 24px;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .prinzip-title { font-size: 20px; margin-bottom: 10px; }
+
+    /* === KARTEN === */
+    .four-col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .karte-img img {
+      width: 100%;
+      border-radius: 14px;
+      border: 3px solid var(--black);
+      box-shadow: var(--shadow);
+    }
+
+    .karten-photo img {
+      width: 100%;
+      border-radius: 14px;
+    }
+
+    /* === KARTEN-BOARD === */
+    .board-img-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .board-img-wrap img {
+      width: 100%;
+      border-radius: 14px;
+      border: 3px solid var(--black);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* === SO FUNKTIONIERT'S === */
+    .section-phases { background: var(--cream); }
+
+    .phase-row {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px 20px;
+      background: var(--white);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .phase-row:last-of-type { margin-bottom: 0; }
+
+    .phase-num {
+      font-family: 'Aleo', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: 4px;
+      text-align: center;
+    }
+
+    .phase-content h4 { margin-bottom: 6px; font-size: 17px; }
+
+    /* === ONLINE NUTZEN === */
+    .section-online { background: var(--dark); }
+    .section-online h2,
+    .section-online h3 { color: var(--white); }
+
+    /* === ZIELGRUPPEN === */
+    .zielgruppen-box {
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      padding: 32px 36px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .zielgruppe-item { margin-bottom: 24px; }
+    .zielgruppe-item:last-child { margin-bottom: 0; }
+    .zielgruppe-item h3 { font-size: 20px; margin-bottom: 8px; }
+
+    /* === ANWENDUNGSBEISPIELE === */
+    .examples-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .example-card {
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .example-card h3 { font-size: 18px; margin-bottom: 12px; }
+
+    /* === MITWIRKEN === */
+    .section-mitwirken { background: var(--gray-light); }
+
+    .mitwirken-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+    .mitwirken-item h4 { margin-bottom: 10px; }
+
+    .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* === FAQ === */
+    .faq-box {
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+    }
+
+    .faq-item { border-bottom: 2px solid var(--black); }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-toggle {
+      width: 100%;
+      text-align: left;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Aleo', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-toggle:hover { background: var(--gray-light); }
+
+    .faq-arrow {
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: transform .3s;
+    }
+    .faq-toggle[aria-expanded="true"] .faq-arrow { transform: rotate(180deg); }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      padding: 0 24px;
+    }
+    .faq-content.open {
+      max-height: 400px;
+      padding-bottom: 20px;
+    }
+
+    /* === WORKSHOP BUCHEN === */
+    .section-workshop { background: var(--yellow); }
+    .section-workshop h2,
+    .section-workshop h3 { color: var(--black); }
+
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .workshop-service { margin-bottom: 20px; }
+    .workshop-service:last-child { margin-bottom: 0; }
+    .workshop-service h3 { font-size: 20px; margin-bottom: 8px; }
+
+    /* === AUSPROBIEREN === */
+    .ausprobieren-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .ausprobieren-img img {
+      width: 100%;
+      border-radius: 14px;
+      border: 3px solid var(--black);
+      box-shadow: var(--shadow);
+    }
+
+    /* === FOOTER === */
+    .site-footer { background: var(--gray-light); padding: 48px 0 0; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+    .footer-brand img { height: 36px; width: auto; }
+
+    .footer-nav a {
+      display: block;
+      font-size: 17px;
+      color: var(--black);
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: .5px;
+      margin-bottom: 10px;
+    }
+    .footer-nav a:hover { color: var(--blue); }
+
+    .footer-badge img { height: 48px; width: auto; margin-bottom: 8px; }
+    .footer-badge a { font-size: 14px; }
+
+    .footer-bottom {
+      background: var(--black);
+      padding: 20px 0;
+    }
+
+    .footer-cc {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-cc img { height: 31px; width: auto; flex-shrink: 0; }
+    .footer-cc p {
+      color: var(--white);
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .footer-cc a { color: #aaa; }
+    .footer-cc a:hover { color: var(--white); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 980px) {
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 18px; }
+      .section-intro h2 { font-size: 32px; }
+      .hero-title h1 { font-size: 42px; }
+
+      .nav-links { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: var(--white); border: 3px solid var(--black); border-radius: 0 0 16px 16px; flex-direction: column; padding: 8px 16px 16px; z-index: 100; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 8px; font-size: 16px; }
+      .nav-wrap { position: relative; margin: 10px auto; padding: 0 16px; }
+      .nav-toggle { display: flex; }
+
+      .two-col,
+      .workshop-grid,
+      .ausprobieren-grid { grid-template-columns: 1fr; gap: 24px; }
+      .three-col { grid-template-columns: 1fr; }
+      .examples-grid { grid-template-columns: 1fr; }
+      .mitwirken-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 32px 0; }
+      .four-col { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-title h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-wrap" aria-label="Hauptnavigation">
+        <a href="index.html" class="nav-logo" aria-label="KI-Toolkit Startseite">
+          <img src="../pics/KI-Toolkit-Logo-1.png" alt="KI-Toolkit" height="38">
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="methode.html">Methode</a></li>
+          <li><a href="anleitung.html">Anleitung</a></li>
+          <li><a href="workshop.html">Workshop</a></li>
+          <li><a href="ueber.html">Über</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO: Animated Card Fan -->
+    <section class="hero">
+      <div class="card-fan-wrap">
+        <div class="cards" id="cards" aria-hidden="true"></div>
+      </div>
+      <div class="hero-title container">
+        <h1>KI-Toolkit</h1>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="section-intro">
+      <div class="container">
+        <h2>Künstliche Intelligenz</h2>
+        <h3>Besser verstehen. Gemeinsam entwickeln. Sinnvoller einsetzen.</h3>
+        <a href="download.html" class="btn">zum Download</a>
+      </div>
+    </section>
+
+    <!-- WAS IST DAS KI-TOOLKIT? -->
+    <section>
+      <div class="container">
+        <h2 class="mb-32">Was ist das KI-Toolkit?</h2>
+        <div class="two-col">
+          <div>
+            <img src="../pics/KI-Toolkit_Gruppe.png" alt="Eine Gruppe bunter Karten des KI-Toolkits">
+          </div>
+          <div>
+            <h3 class="mb-16">Das KI-Toolkit ist eine praxisnahe Methode, um neue Ideen für Künstliche Intelligenz zu entwickeln. Es ermöglicht Menschen ohne technische Expertise, sich aktiv am Gestaltungsprozess zu beteiligen und ihre Perspektiven einzubringen.</h3>
+            <p>In einem Workshop kombinieren Teilnehmende verschiedene Karten, um Schritt für Schritt konkrete Anwendungsideen zu entwickeln. Die Methode macht komplexe KI-Begriffe greifbar und diskutierbar.</p>
+            <a href="methode.html" class="btn mt-24">zur Methode</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KERNPRINZIPIEN -->
+    <section class="section-kernprinzipien">
+      <div class="container">
+        <h2 class="mb-16">Kernprinzipien</h2>
+        <h3 class="mb-32">Drei Kernprinzipien, die den Prozess leiten und menschenzentrierte Ideen sicherstellen.</h3>
+        <div class="three-col">
+          <div>
+            <div class="prinzip-icon">▶</div>
+            <h3 class="prinzip-title">Partizipativ</h3>
+            <p>Das KI-Toolkit bringt diverse Perspektiven zusammen. Es ermöglicht eine Ko-Kreation auf Augenhöhe zwischen Fachleuten und Laien und stellt sicher, dass Lösungen die realen Bedürfnisse treffen.</p>
+          </div>
+          <div>
+            <div class="prinzip-icon">▶</div>
+            <h3 class="prinzip-title">Kreativ</h3>
+            <p>Durch das Kombinieren von Karten entstehen unerwartete und innovative Ideen. Der spielerische Ansatz („Denken mit den Händen") baut Denkhürden ab und fördert die Kreativität.</p>
+          </div>
+          <div>
+            <div class="prinzip-icon">▶</div>
+            <h3 class="prinzip-title">Reflektiert</h3>
+            <p>Die Methode beinhaltet eine kritische Reflexion, die zur Diskussion über Werte und Ethik anregt. So wird sichergestellt, dass nicht nur das „Was", sondern auch das „Wie" und „Warum" einer Idee bedacht wird.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIE KARTEN -->
+    <section>
+      <div class="container">
+        <h2 class="mb-16">Die Karten</h2>
+        <h3 class="mb-32 text-center">Der Kern des Toolkits besteht aus über 150 Karten, aufgeteilt in acht Kategorien.</h3>
+        <div class="four-col mb-16">
+          <div class="karte-img"><img src="../svg/Zeichenflaeche-10.svg" alt="Karten-Kategorie 1"></div>
+          <div class="karte-img"><img src="../svg/Zeichenflaeche-11.svg" alt="Karten-Kategorie 2"></div>
+          <div class="karte-img"><img src="../svg/Zeichenflaeche-12.svg" alt="Karten-Kategorie 3"></div>
+          <div class="karte-img"><img src="../svg/Zeichenflaeche-13.svg" alt="Karten-Kategorie 4"></div>
+        </div>
+        <div class="four-col mb-32">
+          <div class="karte-img"><img src="../svg/Zeichenflaeche-14.svg" alt="Karten-Kategorie 5"></div>
+          <div class="karte-img"><img src="../svg/Zeichenflaeche-18.svg" alt="Karten-Kategorie 6"></div>
+          <div class="karte-img"><img src="../svg/Zeichenflaeche-17.svg" alt="Karten-Kategorie 7"></div>
+          <div class="karte-img"><img src="../svg/Zeichenflaeche-15.svg" alt="Karten-Kategorie 8"></div>
+        </div>
+        <div class="karten-photo mb-32">
+          <img src="../pics/karten.jpg" alt="Physische KI-Toolkit Karten auf einem Tisch">
+        </div>
+        <div class="text-center">
+          <a href="anleitung.html" class="btn">zu den Karten</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAS KARTEN-BOARD -->
+    <section>
+      <div class="container">
+        <h2 class="mb-16 text-center">Das Karten-Board</h2>
+        <h3 class="mb-32 text-center">Das Karten-Board dient als gemeinsame Spielfläche. Hier werden die gewählten Karten angeordnet, um die Nutzerreise zu visualisieren und das Konzept als Geschichte greifbar zu machen.</h3>
+        <div class="board-img-wrap">
+          <img src="../pics/kartenboard.png" alt="Das Karten-Board des KI-Toolkits">
+        </div>
+        <div class="text-center mt-24">
+          <a href="anleitung.html" class="btn">zum Karten-Board</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SO FUNKTIONIERT'S -->
+    <section class="section-phases">
+      <div class="container">
+        <h2 class="mb-16">So funktioniert's</h2>
+        <h3 class="mb-32">Der Ablauf eines Workshops erfolgt in sieben Phasen:</h3>
+
+        <div class="phase-row">
+          <div class="phase-num">1</div>
+          <div class="phase-content">
+            <h4>1. Phase</h4>
+            <p><strong>Kontext definieren</strong> – Die Gruppe einigt sich auf ein Szenario, eine Persona und eine Mission. So wird ein gemeinsames Verständnis für das Kernproblem und den Menschen geschaffen.</p>
+          </div>
+        </div>
+        <div class="phase-row">
+          <div class="phase-num">2</div>
+          <div class="phase-content">
+            <h4>2. Phase</h4>
+            <p><strong>Lösung entwickeln</strong> – Das Team erforscht, welche Datenquellen und Interaktionen die KI nutzt.</p>
+          </div>
+        </div>
+        <div class="phase-row">
+          <div class="phase-num">3</div>
+          <div class="phase-content">
+            <h4>3. Phase</h4>
+            <p><strong>KI-Fähigkeit bestimmen</strong> – Die Gruppe diskutiert, welche „KI-Fähigkeit" sie hat.</p>
+          </div>
+        </div>
+        <div class="phase-row">
+          <div class="phase-num">4</div>
+          <div class="phase-content">
+            <h4>4. Phase</h4>
+            <p><strong>Interaktion gestalten</strong> – Die Gruppe definiert, wie die KI-Lösung digital und/oder physisch reagiert.</p>
+          </div>
+        </div>
+        <div class="phase-row">
+          <div class="phase-num">5</div>
+          <div class="phase-content">
+            <h4>5. Phase</h4>
+            <p><strong>Idee skizzieren</strong> – Das Team visualisiert die fertige Idee als Storyboard (Drehbuch).</p>
+          </div>
+        </div>
+        <div class="phase-row">
+          <div class="phase-num">6</div>
+          <div class="phase-content">
+            <h4>6. Phase</h4>
+            <p><strong>Idee reflektieren</strong> – Anhand von „Reflexions"-Karten wird die Idee kritisch geprüft und direkt verbessert.</p>
+          </div>
+        </div>
+        <div class="phase-row">
+          <div class="phase-num">7</div>
+          <div class="phase-content">
+            <h4>7. Phase</h4>
+            <p><strong>Idee pitchen</strong> – Das Team präsentiert das Konzept in einem kurzen „Elevator Pitch".</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-32">
+          <a href="anleitung.html" class="btn">zur Anleitung</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAS KI-TOOLKIT ONLINE NUTZEN -->
+    <section class="section-online">
+      <div class="container">
+        <h2 class="mb-16">Das KI-Toolkit online nutzen</h2>
+        <h3 class="mb-32">Die Methode ist neben dem physischen Kartenset auch als interaktive Online-Version verfügbar.</h3>
+        <a href="ki-toolkit-online.html" class="btn">zum Onlinetool</a>
+      </div>
+    </section>
+
+    <!-- ZIELGRUPPEN -->
+    <section>
+      <div class="container">
+        <h2 class="mb-32">Zielgruppen</h2>
+        <div class="zielgruppen-box">
+          <div class="zielgruppe-item">
+            <h3>Unternehmen &amp; NGOs</h3>
+            <p>Teams, die innovative und menschenzentrierte Ansätze für neue Produkte oder Dienste suchen.</p>
+          </div>
+          <div class="zielgruppe-item">
+            <h3>Bildung &amp; Forschung</h3>
+            <p>Lehrende und Forschende, die eine praktische Methode zur Vermittlung von KI-Ethik und Ko-Kreation benötigen.</p>
+          </div>
+          <div class="zielgruppe-item">
+            <h3>Bürgerschaft &amp; Laien</h3>
+            <p>Menschen, die KI verstehen und mitgestalten wollen, ohne technisches Vorwissen zu benötigen.</p>
+          </div>
+          <div class="zielgruppe-item">
+            <h3>Kommunen &amp; Verwaltung</h3>
+            <p>Entscheider*innen, die effektive und bürgernahe KI-Lösungen entwickeln möchten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANWENDUNGSBEISPIELE -->
+    <section>
+      <div class="container">
+        <h2 class="mb-32">Anwendungsbeispiele</h2>
+        <div class="examples-grid">
+          <div class="example-card">
+            <h3>Chatbot für Bürgerdienste</h3>
+            <p>Wie kann KI Bürger*innen helfen, schneller die richtige Information zu finden? Ein Workshop entwickelte einen proaktiven Assistenten, der beim Ausfüllen von Anträgen hilft.</p>
+          </div>
+          <div class="example-card">
+            <h3>KI-gestützte Fördermittelsuche</h3>
+            <p>Kleine Vereine und NGOs haben oft nicht die Ressourcen für komplexe Anträge. Ein Workshop entwickelte einen KI-Assistenten, der Projektideen analysiert und automatisch passende Fördertöpfe vorschlägt.</p>
+          </div>
+          <div class="example-card">
+            <h3>Personalisiertes Lernen in der Schule</h3>
+            <p>Wie kann KI verschiedene Lerngeschwindigkeiten unterstützen? Ein Team aus Lehrenden und Schüler*innen entwarf eine Lern-App, die den individuellen Wissensstand erkennt und passende Übungsaufgaben vorschlägt.</p>
+          </div>
+          <div class="example-card">
+            <h3>Transparenz im Quartier</h3>
+            <p>Eine Nachbarschaftsinitiative nutzte das Toolkit, um eine Anwendung zu entwerfen, die lokale Umweltdaten (Luftqualität, Lärm) für alle verständlich und nutzbar macht.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MITWIRKEN & WEITERENTWICKELN -->
+    <section class="section-mitwirken">
+      <div class="container">
+        <h2 class="mb-8">Mitwirken &amp; Weiterentwickeln.</h2>
+        <h3 class="mb-16">Das Toolkit lebt von Ideen aus der Community</h3>
+        <p class="mb-32">Das KI-Toolkit ist als ein offenes Projekt konzipiert und wird durch den Einsatz in der Praxis stetig besser. Feedback und Beiträge sind ausdrücklich erwünscht, um die Methode relevant und zugänglich zu halten.</p>
+        <div class="mitwirken-grid mb-32">
+          <div class="mitwirken-item">
+            <h4>Verbessern &amp; Korrigieren</h4>
+            <p>Sie haben einen Fehler entdeckt oder einen Vorschlag, wie eine Karte oder eine Anleitung verständlicher formuliert werden kann?</p>
+          </div>
+          <div class="mitwirken-item">
+            <h4>Ergänzen &amp; Anpassen</h4>
+            <p>Ihnen fehlt ein wichtiges Szenario, eine relevante Persona oder eine spezifische KI-Funktion für Ihre Branche?</p>
+          </div>
+          <div class="mitwirken-item">
+            <h4>Übersetzen</h4>
+            <p>Sie möchten helfen, das Toolkit in eine andere Sprache zu übersetzen, um es einem internationalen Publikum zugänglich zu machen?</p>
+          </div>
+        </div>
+        <div class="btn-row">
+          <a href="https://nozilla.de/kontakt/termin-anfragen/" target="_blank" rel="noopener" class="btn">Termin vereinbaren</a>
+          <a href="mailto:contact@nozilla.de" class="btn btn-outline">Feedback senden</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HÄUFIG GESTELLTE FRAGEN -->
+    <section>
+      <div class="container">
+        <h2 class="mb-32">Häufig gestellte Fragen</h2>
+        <div class="faq-box">
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Brauche ich technisches Wissen, um das KI-Toolkit zu nutzen?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Nein. Das Toolkit ist explizit für interdisziplinäre Teams konzipiert. Es fokussiert auf Strategie, Konzeption und Ethik, nicht auf die Programmierung. Es hilft Fachexpert:innen und Techniker:innen, eine gemeinsame Sprache zu finden. Es ist speziell auch für Laien konzipiert. Alle Fachbegriffe werden einfach erklärt. Der Fokus liegt auf der Idee, nicht auf der technischen Umsetzung.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Was ist das konkrete Ergebnis eines Workshops?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Das Ergebnis ist ein klar definiertes und ethisch reflektiertes KI-Konzept, visualisiert als Storyboard. Sie erhalten eine detaillierte Beschreibung einer Anwendungsidee (Pitch), die als direkte Grundlage für technische Briefings oder Projektanträge dienen kann.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Kann ich den Workshop selbst moderieren?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Ja, das Material steht zum Download bereit. Es empfiehlt sich jedoch, den ersten Workshop von einer erfahrenen Person moderieren zu lassen. Die Moderation lenkt die Diskussion, stellt die passenden Fragen und stellt sicher, dass die Gruppe in der vorgegebenen Zeit zu einem Ergebnis kommt.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Ist das Toolkit nur für Software-Ideen?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Nein. Die Methode eignet sich für alle Arten von KI-gestützten Lösungen. Das kann eine App sein, aber auch ein physisches Produkt (z.&nbsp;B. ein smarter Lautsprecher), ein Assistenzroboter oder ein verbesserter interner Prozess in Ihrer Organisation.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-toggle" aria-expanded="false">
+              Für wie viele Personen eignet sich ein Workshop?
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-content">
+              <p>Das Toolkit funktioniert am besten in kleinen, diversen Teams von 3 bis 5 Personen. Bei größeren Veranstaltungen können mehrere Teams parallel am selben oder an unterschiedlichen Szenarien arbeiten.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="faq.html" class="btn">weitere häufige Fragen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKSHOP BUCHEN -->
+    <section class="section-workshop">
+      <div class="container">
+        <div class="workshop-grid">
+          <div>
+            <h2 class="mb-8">Workshop buchen</h2>
+            <h3 class="mb-24">Das KI-Toolkit in der Praxis einsetzen</h3>
+            <a href="workshop.html" class="btn">zum Angebot</a>
+          </div>
+          <div>
+            <div class="workshop-service">
+              <h3>▶ Moderation</h3>
+              <p>Sie möchten die Methode direkt in Ihrem Team oder Ihrer Organisation anwenden? Buchen Sie einen moderierten Workshop!</p>
+            </div>
+            <div class="workshop-service">
+              <h3>▶ Prozessbegleitung</h3>
+              <p>Wir begleiten Sie und Ihre Gruppe strukturiert durch den gesamten Prozess – von der ersten vagen Idee bis zum fertigen, ethisch reflektierten KI-Konzept.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KI-TOOLKIT AUSPROBIEREN -->
+    <section>
+      <div class="container">
+        <h2 class="mb-32">KI-Toolkit ausprobieren</h2>
+        <div class="ausprobieren-grid">
+          <div class="ausprobieren-img">
+            <img src="../svg/Tisch.svg" alt="KI-Toolkit Tisch mit Karten">
+          </div>
+          <div>
+            <p>Entdecken Sie, wie Sie mit dem KI-Toolkit partizipativ und kreativ neue Ideen entwickeln können.</p>
+            <p>Sie können das Toolkit als Online-Version direkt im Browser nutzen oder alle Materialien für Ihren eigenen Workshop herunterladen.</p>
+            <div class="btn-row mt-24">
+              <a href="download.html" class="btn">herunterladen</a>
+              <a href="ki-toolkit-online.html" class="btn btn-outline">online testen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p>Ein Produkt von</p>
+          <a href="https://nozilla.de/" target="_blank" rel="noopener">
+            <img src="../svg/nozilla-logo.svg" alt="nozilla">
+          </a>
+        </div>
+        <nav class="footer-nav" aria-label="Footer Navigation 1">
+          <a href="kontakt.html">Kontakt</a>
+          <a href="ki-toolkit-online.html">Online-Tool</a>
+          <a href="../kartengenerator/">Kartengenerator</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Footer Navigation 2">
+          <a href="faq.html">FAQ</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+        <div class="footer-badge">
+          <a href="#">
+            <img src="../svg/ethical-design-badge-tiny.svg" alt="We practice Ethical Design" width="62" height="48">
+          </a>
+          <a href="#">We practice Ethical Design.</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-cc">
+          <img src="../pics/cc-by.png" alt="Creative Commons BY 4.0" width="88" height="31">
+          <p>Die Inhalte dieser Website stehen unter einer <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener noreferrer">Creative Commons Namensnennung 4.0 International Lizenz (CC BY 4.0)</a>. Namensnennung: <a href="https://paderta.com/" target="_blank" rel="noopener">Damian Paderta</a> | ki-toolkit.de</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- Card Fan Animation ---
+    (function () {
+      const wrap = document.getElementById('cards');
+      if (!wrap) return;
+
+      const COUNT   = 8;
+      const CARD_W  = 180;
+      const CARD_H  = 260;
+      const CARDS   = [
+        '../svg/Zeichenflaeche-15.svg',
+        '../svg/Zeichenflaeche-17.svg',
+        '../svg/Zeichenflaeche-12.svg',
+        '../svg/Zeichenflaeche-11.svg',
+        '../svg/Zeichenflaeche-13.svg',
+        '../svg/Zeichenflaeche-14.svg',
+        '../svg/Zeichenflaeche-18.svg',
+        '../svg/Zeichenflaeche-10.svg'
+      ];
+
+      function spreadX() {
+        return Math.min(640, window.innerWidth - CARD_W - 48);
+      }
+
+      const cards = [];
+      for (let i = 0; i < COUNT; i++) {
+        const el = document.createElement('div');
+        el.className = 'card';
+        el.style.backgroundImage = `url('${CARDS[i]}')`;
+        el.style.transform = `translateX(${i * 6}px) translateY(${-i}px) rotate(-6deg)`;
+        el.style.transitionDelay = `${i * 50}ms`;
+        wrap.appendChild(el);
+        cards.push(el);
+      }
+
+      function fan() {
+        const sx = spreadX();
+        wrap.style.width  = (sx + CARD_W) + 'px';
+        wrap.style.height = CARD_H + 'px';
+
+        cards.forEach((el, i) => {
+          const t   = i / (COUNT - 1);
+          const x   = t * sx;
+          const rot = (t - 0.5) * 36;
+          const arc = -18 * (1 - Math.abs(2 * t - 1));
+          el.style.transform = `translateX(${x}px) translateY(${arc}px) rotate(${rot}deg)`;
+          el.style.zIndex    = 100 + i;
+        });
+      }
+
+      requestAnimationFrame(() => setTimeout(fan, 120));
+      window.addEventListener('resize', fan, { passive: true });
+    })();
+
+    // --- Mobile Nav ---
+    (function () {
+      const toggle   = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (!toggle || !navLinks) return;
+
+      toggle.addEventListener('click', function () {
+        const open = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    })();
+
+    // --- FAQ Accordion ---
+    (function () {
+      document.querySelectorAll('.faq-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const isOpen  = this.getAttribute('aria-expanded') === 'true';
+          const content = this.nextElementSibling;
+
+          document.querySelectorAll('.faq-toggle').forEach(function (b) {
+            b.setAttribute('aria-expanded', 'false');
+            b.nextElementSibling.classList.remove('open');
+          });
+
+          if (!isOpen) {
+            this.setAttribute('aria-expanded', 'true');
+            content.classList.add('open');
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
