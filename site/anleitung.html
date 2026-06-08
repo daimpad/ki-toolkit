@@ -191,8 +191,8 @@
 
     /* === PAGE-SPECIFIC === */
 
-    .page-hero { padding: 60px 0 16px; background: var(--yellow); }
-    .page-hero h1 { margin-bottom: 8px; }
+    .page-hero { padding: 60px 0 48px; background: var(--cream); text-align: center; }
+    .page-hero h1 { margin-bottom: 0; }
 
     /* ALTERNATING SECTIONS */
     main > section:nth-child(even) { background: var(--white); }
@@ -337,6 +337,63 @@
       display: block;
     }
 
+    /* Vorbereitung two-col */
+    .vorbereitung-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .vorbereitung-box {
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+    }
+    .vorbereitung-box h3 { margin-bottom: 16px; font-size: 20px; }
+    .vorbereitung-box ul { list-style: none; padding: 0; }
+    .vorbereitung-box ul li { padding: 6px 0 6px 24px; position: relative; font-size: 15px; }
+    .vorbereitung-box ul li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: var(--black);
+      font-size: 10px;
+      top: 9px;
+    }
+    .vorbereitung-box .vb-illustration {
+      margin-top: 20px;
+      border-top: 2px solid var(--cream);
+      padding-top: 16px;
+      text-align: center;
+    }
+    .vorbereitung-box .vb-illustration img {
+      max-height: 140px;
+      margin: 0 auto;
+      opacity: 0.75;
+    }
+
+    /* Phase discussion row */
+    .phase-discussion {
+      border-top: 3px solid var(--black);
+      padding: 16px 28px;
+      background: var(--cream);
+      font-size: 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .phase-discussion strong {
+      white-space: nowrap;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
     /* Pitch template box */
     .pitch-template {
       background: var(--gray-warm);
@@ -401,6 +458,7 @@
       .nav-toggle { display: flex; }
 
       .ausprobieren-grid { grid-template-columns: 1fr; gap: 24px; }
+      .vorbereitung-grid { grid-template-columns: 1fr; }
 
       .phase-body { grid-template-columns: 1fr; }
       .phase-img { border-left: none; border-top: 3px solid var(--black); min-height: 200px; }
@@ -420,21 +478,8 @@
     /* List marker color */
     li::marker { color: var(--black); }
 
-    /* Dark-section text overrides (--gray-warm is now black) */
-    .phase-task { color: var(--white); }
-    .phase-task h1, .phase-task h2, .phase-task h3, .phase-task h4, .phase-task h5, .phase-task p, .phase-task li { color: var(--white); }
-    .pitch-template { color: var(--white); }
-    .pitch-template h1, .pitch-template h2, .pitch-template h3, .pitch-template h4, .pitch-template h5, .pitch-template p, .pitch-template li { color: var(--white); }
-  
-    /* Inline-style dark sections (sections using var(--gray-warm) = black) */
-    section[style*="gray-warm"] { color: var(--white); }
-    section[style*="gray-warm"] h1,
-    section[style*="gray-warm"] h2,
-    section[style*="gray-warm"] h3,
-    section[style*="gray-warm"] h4,
-    section[style*="gray-warm"] h5,
-    section[style*="gray-warm"] p,
-    section[style*="gray-warm"] li { color: var(--white); }
+    .pitch-template { color: var(--dark); background: var(--cream); border-color: var(--black); }
+    .pitch-template em { color: var(--black); }
   </style>
 </head>
 <body>
@@ -462,30 +507,47 @@
 
   <main>
 
-    <!-- PAGE HERO / INTRO -->
+    <!-- PAGE HERO -->
     <section class="page-hero">
       <div class="container">
-        <h1 class="mb-16">Anleitung</h1>
-        <h2 class="mb-16">Der 90-Minuten-Workshop</h2>
-        <p class="lead">In 90 Minuten von der Problemdefinition zur fertigen KI-Idee — strukturiert, kreativ und ethisch reflektiert.</p>
+        <h1>Anleitung</h1>
+      </div>
+    </section>
 
-        <div class="setup-box">
-          <h4>Vorbereitung</h4>
-          <ul>
-            <li>3–5 Personen pro Team</li>
-            <li>1 Kartendeck + A1-Poster als Arbeitsfläche</li>
-            <li>8 Kartensets, sortiert</li>
-            <li>Stifte und Post-its</li>
-            <li>Timer</li>
-          </ul>
+    <!-- SECTION 2: VORBEREITUNG -->
+    <section>
+      <div class="container">
+        <h2 class="mb-24">Vorbereitung</h2>
+        <div class="vorbereitung-grid">
+
+          <div class="vorbereitung-box">
+            <h3>Ziel</h3>
+            <p>In 90 Minuten eine konkrete, menschenzentrierte und ethisch reflektierte KI-Idee entwickeln — von der Problemdefinition bis zum fertigen Pitch.</p>
+            <p>Die Methode macht KI-Konzepte greifbar: Teilnehmende ohne technische Vorkenntnisse entwickeln Schritt für Schritt eine vollständige KI-Idee.</p>
+          </div>
+
+          <div class="vorbereitung-box">
+            <h3>Setup</h3>
+            <ul>
+              <li>3–5 Personen pro Team</li>
+              <li>1 Kartendeck + A1-Poster als Arbeitsfläche</li>
+              <li>8 Kartensets, sortiert</li>
+              <li>Stifte und Post-its</li>
+              <li>Timer</li>
+            </ul>
+            <div class="vb-illustration">
+              <img src="svg/Tisch.svg" alt="Workshop-Vorbereitung">
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: DIE 7 PHASEN -->
+    <!-- SECTION 3: ABLAUF -->
     <section class="section-phases">
       <div class="container">
-        <h2 class="mb-32">Die 7 Phasen</h2>
+        <h2 class="mb-32">Ablauf</h2>
 
         <!-- SCHRITT 1 -->
         <div class="phase-block">
@@ -505,14 +567,14 @@
                 <li><strong>Persona-Karte</strong> (1–2x) – Für wen wird gestaltet?</li>
                 <li><strong>Missions-Karte</strong> (1x) – Was ist das Hauptziel?</li>
               </ul>
-              <div class="phase-task">
-                <strong>Aufgabe</strong>
-                Was sind die größten Herausforderungen der Persona? Notiert 1–2 Kernprobleme auf Post-its.
-              </div>
             </div>
             <div class="phase-img">
               <img src="pics/Kontextkarten.png" alt="Kontext-Karten des KI-Toolkits">
             </div>
+          </div>
+          <div class="phase-discussion">
+            <strong>Diskutiert im Team:</strong>
+            Was sind die größten Herausforderungen der Persona? Notiert 1–2 Kernprobleme auf Post-its.
           </div>
         </div>
 
@@ -533,14 +595,14 @@
                 <li><strong>Datenquellen-Karte</strong> (1–2x) – Was ist das digitale Rohmaterial?</li>
                 <li><strong>Interaktion (Physisch – Input)</strong> (1x) – Wie wird das Rohmaterial erfasst?</li>
               </ul>
-              <div class="phase-task">
-                <strong>Aufgabe</strong>
-                Welche Daten entstehen hier? Ist die Nutzung für die Persona einfach?
-              </div>
             </div>
             <div class="phase-img">
               <img src="pics/karten_2.png" alt="Input-Karten des KI-Toolkits">
             </div>
+          </div>
+          <div class="phase-discussion">
+            <strong>Diskutiert im Team:</strong>
+            Welche Daten entstehen hier? Ist die Nutzung für die Persona einfach?
           </div>
         </div>
 
@@ -560,14 +622,14 @@
               <ul class="phase-card-list">
                 <li>Eine <strong>KI-Lernziel-Karte</strong>: Klassifikation, Generierung oder Prognose</li>
               </ul>
-              <div class="phase-task">
-                <strong>Aufgabe</strong>
-                Passt diese KI-Fähigkeit zum Problem? Was bedeutet diese Wahl für die Persona?
-              </div>
             </div>
             <div class="phase-img">
               <img src="svg/Zeichenflaeche-17.svg" alt="KI-Lernziel-Karten">
             </div>
+          </div>
+          <div class="phase-discussion">
+            <strong>Diskutiert im Team:</strong>
+            Passt diese KI-Fähigkeit zum Problem? Was bedeutet diese Wahl für die Persona?
           </div>
         </div>
 
@@ -588,14 +650,14 @@
                 <li><strong>Interaktion (Digital)</strong> (1–2x) – Wie sieht das digitale Ergebnis aus?</li>
                 <li><strong>Interaktion (Physisch – Output)</strong> (1–2x) – Wie reagiert die KI in der realen Welt?</li>
               </ul>
-              <div class="phase-task">
-                <strong>Aufgabe</strong>
-                Ist diese Art von Output hilfreich für die Persona? Versteht sie, was zu tun ist?
-              </div>
             </div>
             <div class="phase-img">
               <img src="pics/karten_3.png" alt="Output-Karten des KI-Toolkits">
             </div>
+          </div>
+          <div class="phase-discussion">
+            <strong>Diskutiert im Team:</strong>
+            Ist diese Art von Output hilfreich für die Persona? Versteht sie, was zu tun ist?
           </div>
         </div>
 
@@ -619,14 +681,14 @@
                 <li><strong>4. Output</strong> – KI liefert Ergebnis</li>
                 <li><strong>5. Reaktion</strong> – Persona reagiert</li>
               </ul>
-              <div class="phase-task">
-                <strong>Aufgabe</strong>
-                Ist unsere Geschichte logisch und verständlich?
-              </div>
             </div>
             <div class="phase-img">
               <img src="pics/storyboard.png" alt="Storyboard-Bereich des KI-Toolkits">
             </div>
+          </div>
+          <div class="phase-discussion">
+            <strong>Diskutiert im Team:</strong>
+            Ist unsere Geschichte logisch und verständlich? Kann die Persona (oder eine andere) reagieren auf den Output?
           </div>
         </div>
 
@@ -648,14 +710,14 @@
                 <li><strong>Erklärbarkeit</strong> – Versteht die Persona, WARUM die KI etwas tut?</li>
                 <li><strong>Datenschutz</strong> – Fühlt sich die Persona überwacht?</li>
               </ul>
-              <div class="phase-task">
-                <strong>Aufgabe</strong>
-                Passt eure Idee nach der Diskussion an!
-              </div>
             </div>
             <div class="phase-img">
               <img src="svg/Zeichenflaeche-15.svg" alt="Reflexions-Karten des KI-Toolkits">
             </div>
+          </div>
+          <div class="phase-discussion">
+            <strong>Diskutiert im Team:</strong>
+            Passt eure Idee nach der Diskussion an! Wie löst ihr das größte Risiko?
           </div>
         </div>
 
@@ -677,11 +739,15 @@
                 &#8222;Für <em>[Persona]</em> im Szenario <em>[Szenario]</em>, die <em>[Problem]</em> hat, schafft unsere Idee <em>[Mission]</em>, indem sie <em>[Datenquelle]</em> über <em>[Physischen Input]</em> erfasst. Die KI kann <em>[KI-Lernziel]</em> und gibt das Ergebnis als <em>[Digitaler/Physischer Output]</em> aus. Unser größtes ethisches Risiko <em>[Reflexion]</em> lösen wir durch <em>[Lösung]</em>.&#8220;
               </div>
             </div>
-            <div class="phase-img" style="background: var(--yellow);">
+            <div class="phase-img" style="background: var(--cream);">
               <div style="padding: 28px; text-align: center;">
                 <p style="font-family: 'Aleo', serif; font-size: 22px; font-weight: 700; color: var(--black); margin: 0; line-height: 1.4;">Elevator<br>Pitch</p>
               </div>
             </div>
+          </div>
+          <div class="phase-discussion">
+            <strong>Präsentiert der Gruppe:</strong>
+            Stellt eure Idee vor! Nutzt die Vorlage: „Für [Persona] … schafft unsere Idee [Mission] …"
           </div>
         </div>
 
