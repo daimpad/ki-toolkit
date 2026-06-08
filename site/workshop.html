@@ -17,7 +17,7 @@
       --yellow: #fec144;
       --black:  #020000;
       --dark:   #262626;
-      --gray:   #f0f0f0;
+      --gray:   #fef9ee;
       --cream:  #fef9ee;
       --white:  #ffffff;
       --max-w:  800px;
@@ -113,8 +113,15 @@
     .page-hero {
       padding: 64px 0 32px;
       text-align: center;
+      background: var(--yellow);
     }
     .page-hero h1 { margin-bottom: 0; }
+
+    /* ALTERNATING SECTIONS */
+    main > section:nth-child(even) { background: var(--white); }
+
+    /* AUSPROBIEREN */
+    .section-ausprobieren { background: var(--white) !important; }
 
     /* YELLOW SECTION */
     .section-yellow {
@@ -278,7 +285,7 @@
   <!-- THREE SERVICE CARDS (no outer box) -->
   <section>
     <div class="container">
-      <div class="three-col">
+      <div class="one-col" style="display:flex;flex-direction:column;gap:24px;max-width:720px;">
         <div class="card">
           <h3>Professionelle Moderation &amp; Durchführung</h3>
           <p>Unsere erfahrenen Moderator*innen leiten Ihre Teams durch den gesamten Ko-Kreations-Prozess. Wir stellen sicher, dass die Methodik korrekt angewendet wird, die Diskussionen fokussiert bleiben und die Gruppe innerhalb der vorgegebenen Zeit (typischerweise 3–4 Stunden) zu konkreten, reflektierten Ergebnissen kommt.</p>
@@ -312,7 +319,7 @@
   </section>
 
   <!-- KI-TOOLKIT AUSPROBIEREN -->
-  <section>
+  <section class="section-ausprobieren">
     <div class="container">
       <h2 class="mb-32 text-center">KI-Toolkit ausprobieren</h2>
       <div class="ausprobieren-grid">

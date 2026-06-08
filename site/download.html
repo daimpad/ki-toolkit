@@ -17,7 +17,7 @@
       --yellow: #fec144;
       --black:  #020000;
       --dark:   #262626;
-      --gray:   #f0f0f0;
+      --gray:   #fef9ee;
       --cream:  #fef9ee;
       --white:  #ffffff;
       --max-w:  800px;
@@ -116,6 +116,7 @@
     .page-hero {
       padding: 64px 0 32px;
       text-align: center;
+      background: var(--yellow);
     }
     .page-hero h1 { margin-bottom: 16px; }
     .page-hero p {
@@ -124,6 +125,12 @@
       margin: 0 auto;
       color: var(--dark);
     }
+
+    /* ALTERNATING SECTIONS */
+    main > section:nth-child(even) { background: var(--white); }
+
+    /* AUSPROBIEREN */
+    .section-ausprobieren { background: var(--white) !important; }
 
     /* YELLOW SECTION */
     .section-yellow {
@@ -459,7 +466,7 @@
     </section>
 
     <!-- KI-TOOLKIT ONLINE -->
-    <section>
+    <section class="section-ausprobieren">
       <div class="container">
         <div class="section-box text-center">
           <h2 class="mb-16">KI-Toolkit online ausprobieren</h2>

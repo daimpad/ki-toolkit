@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Über – KI-Toolkit</title>
-  <meta name="description" content="Über das KI-Toolkit – Hintergrund, Motivation und die Idee des partizipativen Designs in der KI-Entwicklung.">
+  <title>Kartengenerator – KI-Toolkit</title>
+  <meta name="description" content="Mit dem Kartengenerator eigene KI-Toolkit-Karten erstellen, gestalten und als PDF herunterladen.">
   <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,18 +134,6 @@
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
     .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
 
-    /* PORTRAIT */
-    .portrait-img {
-      border: 3px solid var(--black);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      aspect-ratio: 1;
-      background: #e8e8e8;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .portrait-img img { width: 100%; height: 100%; object-fit: cover; }
-
     /* CARD */
     .card {
       background: var(--white);
@@ -156,10 +144,6 @@
     }
     .card h3 { margin-bottom: 12px; }
     .card h4 { margin-bottom: 10px; }
-
-    /* AUSPROBIEREN */
-    .ausprobieren-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .ausprobieren-grid img { width: 100%; border-radius: 14px; border: 3px solid var(--black); box-shadow: var(--shadow); }
 
     /* CONTENT LIST */
     ul.content-list { margin: 16px 0 1em 24px; }
@@ -219,7 +203,7 @@
       .nav-links a { padding: 12px 8px; font-size: 16px; }
       .nav-wrap { position: relative; margin: 10px auto; padding: 0 16px; }
       .nav-toggle { display: flex; }
-      .two-col, .three-col, .ausprobieren-grid { grid-template-columns: 1fr; gap: 24px; }
+      .two-col, .three-col { grid-template-columns: 1fr; gap: 24px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .section-box { padding: 28px 24px; }
     }
@@ -245,7 +229,7 @@
         <li><a href="methode.html">Methode</a></li>
         <li><a href="anleitung.html">Anleitung</a></li>
         <li><a href="workshop.html">Workshop</a></li>
-        <li><a href="ueber.html" class="active">Über</a></li>
+        <li><a href="ueber.html">Über</a></li>
         <li><a href="download.html">Download</a></li>
       </ul>
     </nav>
@@ -257,97 +241,56 @@
   <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="container">
-      <h1>Über</h1>
+      <h1>Kartengenerator</h1>
     </div>
   </section>
 
-  <!-- BIO -->
+  <!-- WAS IST DER KARTENGENERATOR -->
   <section>
     <div class="container">
       <div class="section-box">
-        <div class="two-col">
-          <div>
-            <p>Damian Paderta hat das KI-Toolkit entwickelt. Als <a href="https://nozilla.de/" target="_blank" rel="noopener">Digitalberater und Webgeograph</a> beschäftigt er sich intensiv mit den Schnittstellen von Technologie, Gesellschaft und Organisation. Sein beruflicher Schwerpunkt liegt auf der Förderung von Kooperation, der strategischen Öffnung von Organisationen und dem Einsatz von <a href="https://openall.info/" target="_blank" rel="noopener">Offenen Bildungsressourcen</a> (OER).</p>
-            <p>Im Zentrum seiner Arbeit steht das Ziel einer gemeinwohlorientierten Digitalisierung. Dazu gehört nicht nur die Entwicklung partizipativer Methoden wie diesem Toolkit, sondern auch die kritische Auseinandersetzung mit der Frage, wann der Einsatz – oder der bewusste Nicht-Einsatz – von KI sinnvoll und ethisch vertretbar ist.</p>
-          </div>
-          <div>
-            <div class="portrait-img">
-              <img src="https://ki-toolkit.de/wp-content/uploads/Damian_Paderta-600x600-1.jpg" alt="Damian Paderta" loading="lazy">
-            </div>
-          </div>
+        <h2 class="mb-24">Eigene Karten erstellen</h2>
+        <p style="font-size:20px; font-weight:600; font-family:'Aleo',serif; margin-bottom:1.5em;">Mit dem Kartengenerator können Sie individuelle KI-Toolkit-Karten gestalten, anpassen und als druckfertiges PDF herunterladen.</p>
+        <p>Das KI-Toolkit lebt von seiner Flexibilität. Manchmal passen die Standardkarten nicht genau zu Ihrem Kontext – sei es eine spezifische Branche, eine bestimmte Zielgruppe oder ein besonderes Szenario. Der Kartengenerator gibt Ihnen die Werkzeuge, um das Toolkit genau auf Ihre Bedürfnisse zuzuschneiden.</p>
+        <p>Erstellen Sie neue Personas, definieren Sie spezifische Szenarien, ergänzen Sie branchenspezifische Datensätze oder formulieren Sie eigene Reflexionsfragen. Die selbst erstellten Karten fügen sich nahtlos in das bekannte Design des KI-Toolkits ein.</p>
+        <div class="btn-row mt-32">
+          <a href="../kartengenerator/" class="btn">Kartengenerator öffnen</a>
+          <a href="download.html" class="btn btn-outline">Basisset herunterladen</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MOTIVATION HEADING + BOX -->
+  <!-- WIE ES FUNKTIONIERT -->
   <section>
     <div class="container">
-      <h2 class="mb-24 text-center">Motivation</h2>
-      <div class="section-box">
-        <p>Künstliche Intelligenz bietet neue Möglichkeiten, datengestützte Lösungen zu entwickeln, die Prozesse effizienter, fairer oder hilfreicher machen als analoge Ansätze. Aber bisher gibt es nur wenige Tools und Methoden, die die Ideengenerierung von KI-Projekten unterstützen – vor allem für weniger technisch versierte Menschen.</p>
-        <p>Die KI-Toolkit-Methode zielt darauf ab, die Kombinationen aus Datenquellen, Modelltypen, Anwendungsfällen und Outputs zu erforschen und verantwortungsvolle Ansätze zu entwickeln. Zudem bietet die Methode kritische Perspektiven, durch die die Ergebnisse analysiert und beurteilt werden können – insbesondere hinsichtlich Fairness, Transparenz und Datenschutz. Im Zentrum der Methode stehen die Probleme und Bedürfnisse von Menschen.</p>
+      <h2 class="mb-32 text-center">So funktioniert es</h2>
+      <div class="three-col">
+        <div class="card">
+          <h4>1. Kartentyp wählen</h4>
+          <p>Wählen Sie den Typ der Karte, die Sie erstellen möchten: Kontext, Persona, Szenario, Datenquelle, KI-Fähigkeit, Interaktion oder Reflexion.</p>
+        </div>
+        <div class="card">
+          <h4>2. Inhalt eingeben</h4>
+          <p>Geben Sie Titel, Beschreibung und weitere Inhalte für Ihre Karte ein. Eine Vorschau zeigt sofort, wie die fertige Karte aussehen wird.</p>
+        </div>
+        <div class="card">
+          <h4>3. Als PDF exportieren</h4>
+          <p>Laden Sie Ihre fertig gestalteten Karten als druckfertiges PDF herunter. Das Format ist kompatibel mit den Standardkarten des KI-Toolkits.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PARTIZIPATIVES DESIGN -->
-  <section>
-    <div class="container">
-      <div class="section-box">
-        <h2 class="mb-24">Warum partizipatives Design in der KI-Entwicklung notwendig ist</h2>
-        <p>Das Konzept der „KI-Governance" oder „Responsible AI" wird in vielen verschiedenen Kontexten diskutiert. Viele KI-Strategien behaupten, dass die Beteiligung von Stakeholdern wichtig ist. Dennoch bleiben Bürger*innen, Beschäftigte und betroffene Gemeinschaften oft außen vor.</p>
-        <p>In diesem Zusammenhang möchte ich KI-Entwicklung als einen Prozess verstehen, bei dem Nutzer*innen, Stakeholder und betroffene Gruppen ihre zunehmend durch KI geprägte Umwelt bewusst mitgestalten – und auch anderen diese Mitgestaltung ermöglichen.</p>
-        <p>Dies kann traditionelle Schulungen und Trainings bedeuten. Doch traditionelle Bildungswege können mit den gegenwärtig schnelllebigen KI-Entwicklungen nur bedingt mithalten. Deshalb ist der kontinuierliche Aufbau von Fähigkeiten zur Verständigung und Zusammenarbeit in dynamischen Ökosystemen entscheidend.</p>
-        <p>Partizipatives Design umfasst Theorien, Praktiken und Studien, die sich auf Endnutzer*innen und Stakeholder beziehen. Diese nehmen als ebenbürtige Mitglieder an Prozessen teil, die zu besseren KI-Konzepten führen sollen. Die aktive Beteiligung der Nutzer*innen am Ideen-, Design- und Entwicklungsprozess durch partizipatives Design oder Co-Design-Techniken wird oft als nicht ausreichend berücksichtigt.</p>
-        <p>Um dies zu erreichen, braucht es die Beteiligung von Laien, die am Design und der Prototyp-Entwicklung von KI-Anwendungen mitwirken. Laien in der KI unterscheiden sich von Expert*innen dadurch, dass sie keine Kenntnisse in Machine Learning, neuronalen Netzen oder Data Engineering haben. Sie müssen nicht einmal mit KI-Konzepten vertraut sein.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DEMOKRATISCHES GESTALTEN -->
-  <section>
-    <div class="container">
-      <div class="section-box">
-        <h2 class="mb-24">Eine Übung im demokratischen Gestalten</h2>
-        <p>Der Kerngedanke liegt darin, dass viele alltägliche Prozesse in Verwaltung, Bildung und Zivilgesellschaft durch KI-Unterstützung verbessert werden können – aber nur dann, wenn die Gestaltung von Anfang an die Perspektive der Nutzer*innen berücksichtigt.</p>
-        <p>Das bedeutet, dass KI-Systeme:</p>
-        <ul class="content-list">
-          <li>Daten aus ihrer Umgebung sammeln und diese analysieren,</li>
-          <li>mit Menschen und anderen Systemen kommunizieren,</li>
-          <li>transparente und nachvollziehbare Entscheidungen treffen,</li>
-          <li>und Ökologien von unterstützenden Systemen aufbauen, die mit Organisationen und ihren Bürger*innen verflochten sind.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- DEMOKRATISIERUNG -->
-  <section>
-    <div class="container">
-      <div class="section-box">
-        <h2 class="mb-24">Wie kann man KI-Entwicklung demokratisieren?</h2>
-        <p>KI gewinnt als technisches Werkzeug und Lösung für unterschiedlichste gesellschaftliche Herausforderungen an Bedeutung. Dennoch gibt es wenige Versuche, Bürger*innen durch KI-Governance gestalterisch zu befähigen. Stattdessen werden sie oft nur zu trainierten Anwender*innen erzogen – oder von Entscheidungen ausgeschlossen.</p>
-        <p>Beim Bau von KI-Systemen ist es nicht der Algorithmus allein, der für ein erfolgreiches Projekt sorgt. Nutzer*innen suchen nach nutzbaren, vertrauenswürdigen Erfahrungen. KI-Systeme müssen sich dann in komplexe Szenarien integrieren lassen, und ein KI-Modell kann zwar eine Schlüsselrolle spielen, aber selten isoliert betrachtet werden. Angesichts dieser Herausforderung wurde die Methode KI-Toolkit als Hilfsmittel entwickelt, um Ideen und Lösungen im KI-Bereich zu generieren, ohne dabei in technischen Details steckenzubleiben oder Hypes blind zu folgen.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- KI-TOOLKIT AUSPROBIEREN -->
+  <!-- AUSPROBIEREN -->
   <section class="section-ausprobieren">
     <div class="container">
-      <h2 class="mb-32 text-center">KI-Toolkit ausprobieren</h2>
-      <div class="ausprobieren-grid">
-        <div>
-          <img src="svg/Tisch.svg" alt="KI-Toolkit Tisch mit Karten">
-        </div>
-        <div>
-          <p>Entdecken Sie, wie Sie mit dem KI-Toolkit partizipativ und kreativ neue Ideen entwickeln können.</p>
-          <p>Sie können das Toolkit als Online-Version direkt im Browser nutzen oder alle Materialien für Ihren eigenen Workshop herunterladen.</p>
-          <div class="btn-row mt-24">
-            <a href="download.html" class="btn">herunterladen</a>
-            <a href="ki-toolkit-online.html" class="btn btn-outline">online testen</a>
-          </div>
+      <div class="section-box text-center">
+        <h2 class="mb-16">Jetzt ausprobieren</h2>
+        <p style="max-width:560px; margin: 0 auto 32px;">Starten Sie direkt mit dem Kartengenerator oder laden Sie zunächst das kostenlose Basisset herunter, um das KI-Toolkit kennenzulernen.</p>
+        <div class="btn-row" style="justify-content:center;">
+          <a href="../kartengenerator/" class="btn">Kartengenerator öffnen</a>
+          <a href="download.html" class="btn btn-outline">Basisset herunterladen</a>
         </div>
       </div>
     </div>
@@ -389,6 +332,7 @@
     </div>
   </div>
 </footer>
+
 <script>
   (function () {
     const toggle = document.getElementById('navToggle');
