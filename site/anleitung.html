@@ -19,7 +19,7 @@
       --green:      #4bf990;
       --black:      #020000;
       --dark:       #262626;
-      --gray-light: #f0f0f0;
+      --gray-light: #fef9ee;
       --gray-warm:  #020000;
       --cream:      #fef9ee;
       --white:      #ffffff;
@@ -36,7 +36,7 @@
       font-size: 17px;
       line-height: 1.65;
       color: var(--dark);
-      background: var(--white);
+      background: var(--cream);
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -191,8 +191,14 @@
 
     /* === PAGE-SPECIFIC === */
 
-    .page-hero { padding: 60px 0 16px; }
+    .page-hero { padding: 60px 0 16px; background: var(--yellow); }
     .page-hero h1 { margin-bottom: 8px; }
+
+    /* ALTERNATING SECTIONS */
+    main > section:nth-child(even) { background: var(--white); }
+
+    /* AUSPROBIEREN SECTION */
+    .section-ausprobieren { background: var(--white) !important; }
 
     .lead {
       font-size: 20px;
@@ -206,7 +212,7 @@
       border: 3px solid var(--black);
       border-radius: 14px;
       padding: 28px 32px;
-      background: var(--cream);
+      background: var(--white);
       box-shadow: var(--shadow);
       margin-top: 32px;
       max-width: 560px;
@@ -224,7 +230,7 @@
     }
 
     /* 7 Phasen section */
-    .section-phases { background: var(--cream); }
+    .section-phases { }
 
     .phase-block {
       border: 3px solid var(--black);
@@ -683,7 +689,7 @@
     </section>
 
     <!-- SECTION 3: KI-TOOLKIT AUSPROBIEREN -->
-    <section>
+    <section class="section-ausprobieren">
       <div class="container">
         <h2 class="mb-32">KI-Toolkit ausprobieren</h2>
         <div class="ausprobieren-grid">
