@@ -48,11 +48,11 @@
       color: var(--black);
     }
 
-    h1 { font-size: 32px; }
-    h2 { font-size: 27px; }
-    h3 { font-size: 23px; }
-    h4 { font-size: 19px; }
-    h5 { font-size: 16px; }
+    h1 { font-size: 52px; font-weight: 700; }
+    h2 { font-size: 36px; font-weight: 700; }
+    h3 { font-size: 24px; font-weight: 600; }
+    h4 { font-size: 20px; font-weight: 600; }
+    h5 { font-size: 17px; font-weight: 600; }
 
     p { margin-bottom: 1em; }
     p:last-child { margin-bottom: 0; }
@@ -82,27 +82,34 @@
     /* === BUTTONS === */
     .btn {
       display: inline-block;
-      padding: 12px 26px;
-      background-color: var(--blue-dark);
-      color: var(--white) !important;
+      padding: 13px 28px;
+      background-color: var(--yellow);
+      color: var(--black) !important;
       font-family: 'Poppins', sans-serif;
       font-size: 16px;
-      font-weight: 500;
-      border: 2px solid transparent;
-      border-radius: var(--radius-btn);
+      font-weight: 600;
+      border: 2px solid var(--yellow);
+      border-radius: 50px;
       cursor: pointer;
-      transition: opacity .2s, border-radius .3s;
+      transition: background-color .2s, color .2s, border-color .2s;
       text-decoration: none;
       line-height: 1.4;
     }
-    .btn:hover { opacity: .88; border-radius: var(--radius-btn); }
+    .btn:hover {
+      background-color: var(--black);
+      border-color: var(--black);
+      color: var(--white) !important;
+    }
 
     .btn-outline {
       background-color: transparent;
-      color: var(--blue-dark) !important;
-      border: 2px solid var(--blue-dark);
+      color: var(--black) !important;
+      border: 2px solid var(--black);
     }
-    .btn-outline:hover { background-color: var(--blue-dark); color: var(--white) !important; }
+    .btn-outline:hover {
+      background-color: var(--black);
+      color: var(--white) !important;
+    }
 
     .btn-center { display: block; width: fit-content; margin: 0 auto; }
 
@@ -117,11 +124,11 @@
 
     .nav-wrap {
       max-width: 693px;
-      margin: 20px auto;
+      margin: 14px auto;
       background: var(--white);
       border: 3px solid var(--black);
       border-radius: 20px;
-      padding: 0 30px 0 34px;
+      padding: 0 24px 0 28px;
       box-shadow: var(--shadow-lg);
       display: flex;
       align-items: center;
@@ -144,8 +151,7 @@
       font-weight: 700;
       font-size: 15px;
       color: var(--black) !important;
-      text-transform: uppercase;
-      letter-spacing: .5px;
+      letter-spacing: .3px;
       transition: color .2s;
     }
     .nav-links a:hover { color: var(--yellow) !important; }
@@ -171,22 +177,40 @@
 
     /* === HERO / CARD FAN === */
     .hero {
-      padding: 20px 0 10px;
-      overflow: hidden;
+      padding: 20px 0 40px;
+      text-align: center;
     }
 
+    .hero-title { padding: 0 0 16px; text-align: center; }
+    .hero-title h1 { font-size: 74px; font-weight: 700; }
+
     .card-fan-wrap {
+      position: relative;
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       height: 300px;
-      overflow: hidden;
+    }
+
+    /* decorative blob behind cards */
+    .card-fan-wrap::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 88%;
+      background: #ebebeb;
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      z-index: 0;
     }
 
     .cards {
       position: relative;
       flex-shrink: 0;
+      z-index: 1;
     }
 
     .card {
@@ -203,9 +227,6 @@
       background-position: center;
       background-repeat: no-repeat;
     }
-
-    .hero-title { padding: 16px 0 0; text-align: center; }
-    .hero-title h1 { font-size: 74px; }
 
     /* === INTRO === */
     .section-intro {
@@ -279,31 +300,55 @@
     }
 
     /* === SO FUNKTIONIERT'S === */
-    .section-phases { background: var(--cream); }
+    .section-phases {
+      position: relative;
+      background: var(--cream);
+    }
+    /* decorative blob in background */
+    .section-phases::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      height: 80%;
+      background: #e2e2e2;
+      border-radius: 55% 45% 50% 50% / 40% 60% 40% 60%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .section-phases .container { position: relative; z-index: 1; }
 
     .phase-row {
       display: grid;
-      grid-template-columns: 88px 1fr;
-      gap: 16px;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
       align-items: start;
-      padding: 18px 20px;
-      background: var(--white);
-      border-radius: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
     .phase-row:last-of-type { margin-bottom: 0; }
 
-    .phase-num {
-      font-family: 'Aleo', serif;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--blue);
+    .phase-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .phase-icon {
+      font-size: 28px;
       line-height: 1;
-      padding-top: 4px;
-      text-align: center;
+      color: var(--black);
+    }
+    .phase-label {
+      font-family: 'Aleo', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+      white-space: nowrap;
     }
 
-    .phase-content h4 { margin-bottom: 6px; font-size: 17px; }
+    .phase-content { padding-top: 4px; }
 
     /* === ONLINE NUTZEN === */
     .section-online { background: var(--dark); }
@@ -483,11 +528,11 @@
 
     /* === RESPONSIVE === */
     @media (max-width: 980px) {
-      h1 { font-size: 26px; }
-      h2 { font-size: 22px; }
-      h3 { font-size: 18px; }
+      h1 { font-size: 36px; }
+      h2 { font-size: 26px; }
+      h3 { font-size: 20px; }
       .section-intro h2 { font-size: 32px; }
-      .hero-title h1 { font-size: 42px; }
+      .hero-title h1 { font-size: 48px; }
 
       .nav-links { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: var(--white); border: 3px solid var(--black); border-radius: 0 0 16px 16px; flex-direction: column; padding: 8px 16px 16px; z-index: 100; }
       .nav-links.open { display: flex; }
@@ -508,7 +553,9 @@
       section { padding: 32px 0; }
       .four-col { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
-      .hero-title h1 { font-size: 32px; }
+      .hero-title h1 { font-size: 36px; }
+      .phase-row { grid-template-columns: 70px 1fr; gap: 12px; }
+      .phase-icon { font-size: 22px; }
     }
   </style>
 </head>
@@ -539,11 +586,11 @@
 
     <!-- HERO: Animated Card Fan -->
     <section class="hero">
-      <div class="card-fan-wrap">
-        <div class="cards" id="cards" aria-hidden="true"></div>
-      </div>
       <div class="hero-title container">
         <h1>KI-Toolkit</h1>
+      </div>
+      <div class="card-fan-wrap">
+        <div class="cards" id="cards" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -645,53 +692,32 @@
         <h3 class="mb-32">Der Ablauf eines Workshops erfolgt in sieben Phasen:</h3>
 
         <div class="phase-row">
-          <div class="phase-num">1</div>
-          <div class="phase-content">
-            <h4>1. Phase</h4>
-            <p><strong>Kontext definieren</strong> – Die Gruppe einigt sich auf ein Szenario, eine Persona und eine Mission. So wird ein gemeinsames Verständnis für das Kernproblem und den Menschen geschaffen.</p>
-          </div>
+          <div class="phase-left"><span class="phase-icon">●</span><span class="phase-label">1. Phase</span></div>
+          <div class="phase-content"><p><strong>Kontext definieren</strong> – Die Gruppe einigt sich auf ein Szenario, eine Persona und eine Mission. So wird ein gemeinsames Verständnis für das Kernproblem und den Menschen geschaffen.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-num">2</div>
-          <div class="phase-content">
-            <h4>2. Phase</h4>
-            <p><strong>Lösung entwickeln</strong> – Das Team erforscht, welche Datenquellen und Interaktionen die KI nutzt.</p>
-          </div>
+          <div class="phase-left"><span class="phase-icon">⠿</span><span class="phase-label">2. Phase</span></div>
+          <div class="phase-content"><p><strong>Lösung entwickeln</strong> – Das Team erforscht, welche Datenquellen und Interaktionen die KI nutzt.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-num">3</div>
-          <div class="phase-content">
-            <h4>3. Phase</h4>
-            <p><strong>KI-Fähigkeit bestimmen</strong> – Die Gruppe diskutiert, welche „KI-Fähigkeit" sie hat.</p>
-          </div>
+          <div class="phase-left"><span class="phase-icon">⋯</span><span class="phase-label">3. Phase</span></div>
+          <div class="phase-content"><p><strong>KI-Fähigkeit bestimmen</strong> – Die Gruppe diskutiert, welche „KI-Fähigkeit" sie hat.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-num">4</div>
-          <div class="phase-content">
-            <h4>4. Phase</h4>
-            <p><strong>Interaktion gestalten</strong> – Die Gruppe definiert, wie die KI-Lösung digital und/oder physisch reagiert.</p>
-          </div>
+          <div class="phase-left"><span class="phase-icon">▭</span><span class="phase-label">4. Phase</span></div>
+          <div class="phase-content"><p><strong>Interaktion gestalten</strong> – Die Gruppe definiert, wie die KI-Lösung digital und/oder physisch reagiert.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-num">5</div>
-          <div class="phase-content">
-            <h4>5. Phase</h4>
-            <p><strong>Idee skizzieren</strong> – Das Team visualisiert die fertige Idee als Storyboard (Drehbuch).</p>
-          </div>
+          <div class="phase-left"><span class="phase-icon">⊞</span><span class="phase-label">5. Phase</span></div>
+          <div class="phase-content"><p><strong>Idee skizzieren</strong> – Das Team visualisiert die fertige Idee als Storyboard (Drehbuch).</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-num">6</div>
-          <div class="phase-content">
-            <h4>6. Phase</h4>
-            <p><strong>Idee reflektieren</strong> – Anhand von „Reflexions"-Karten wird die Idee kritisch geprüft und direkt verbessert.</p>
-          </div>
+          <div class="phase-left"><span class="phase-icon">⇌</span><span class="phase-label">6. Phase</span></div>
+          <div class="phase-content"><p><strong>Idee reflektieren</strong> – Anhand von „Reflexions"-Karten wird die Idee kritisch geprüft und direkt verbessert.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-num">7</div>
-          <div class="phase-content">
-            <h4>7. Phase</h4>
-            <p><strong>Idee pitchen</strong> – Das Team präsentiert das Konzept in einem kurzen „Elevator Pitch".</p>
-          </div>
+          <div class="phase-left"><span class="phase-icon">✳</span><span class="phase-label">7. Phase</span></div>
+          <div class="phase-content"><p><strong>Idee pitchen</strong> – Das Team präsentiert das Konzept in einem kurzen „Elevator Pitch".</p></div>
         </div>
 
         <div class="text-center mt-32">
