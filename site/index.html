@@ -8,7 +8,7 @@
   <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* === RESET & BASE === */
@@ -83,7 +83,6 @@
       padding: 13px 28px;
       background-color: var(--yellow);
       color: var(--black) !important;
-      font-family: 'Poppins', sans-serif;
       font-size: 16px;
       font-weight: 600;
       border: 2px solid var(--yellow);
@@ -146,14 +145,13 @@
     .nav-links a {
       display: block;
       padding: 16px 12px;
-      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 15px;
       color: var(--black) !important;
       letter-spacing: .3px;
       transition: color .2s;
     }
-    .nav-links a:hover { color: var(--yellow) !important; }
+    .nav-links a:hover, .nav-links a.active { color: var(--yellow) !important; }
 
     .nav-toggle {
       display: none;
@@ -201,7 +199,7 @@
       transform: translateX(-50%);
       width: 75%;
       height: 88%;
-      background: #ebebeb;
+      background: #ede7d9;
       border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
       z-index: 0;
     }
@@ -312,7 +310,7 @@
       transform: translate(-50%, -50%);
       width: 70%;
       height: 80%;
-      background: #e2e2e2;
+      background: #ede7d9;
       border-radius: 55% 45% 50% 50% / 40% 60% 40% 60%;
       z-index: 0;
       pointer-events: none;
@@ -442,7 +440,7 @@
     }
 
     /* === WORKSHOP BUCHEN === */
-    .section-workshop { background: var(--yellow); }
+    .section-workshop { background: var(--cream); }
     .section-workshop h2,
     .section-workshop h3 { color: var(--black); }
 

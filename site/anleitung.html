@@ -8,7 +8,7 @@
   <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* === RESET & BASE === */
@@ -79,7 +79,6 @@
       padding: 13px 28px;
       background-color: var(--yellow);
       color: var(--black) !important;
-      font-family: 'Poppins', sans-serif;
       font-size: 16px;
       font-weight: 600;
       border: 2px solid var(--yellow);
@@ -143,7 +142,6 @@
     .nav-links a {
       display: block;
       padding: 16px 12px;
-      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 15px;
       color: var(--black) !important;
@@ -189,7 +187,8 @@
     /* === PAGE-SPECIFIC === */
 
     .page-hero { padding: 64px 0 48px; background: var(--cream); text-align: center; }
-    .page-hero h1 { margin-bottom: 0; }
+    .page-hero h1 { margin-bottom: 12px; }
+    .page-hero p { font-size: 18px; color: var(--dark); margin: 0 auto; max-width: 560px; }
 
     /* ALTERNATING SECTIONS */
     main > section:nth-child(even) { background: var(--white); }
@@ -242,7 +241,6 @@
       display: inline-block;
       background: var(--yellow);
       color: var(--black);
-      font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 600;
       padding: 4px 14px;
@@ -329,7 +327,7 @@
     }
     .vorbereitung-box .vb-illustration {
       margin-top: 20px;
-      border-top: 2px solid var(--cream);
+      border-top: 2px solid rgba(2, 0, 0, 0.1);
       padding-top: 16px;
       text-align: center;
     }
@@ -351,7 +349,6 @@
     }
     .phase-discussion strong {
       white-space: nowrap;
-      font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: .3px;
@@ -474,6 +471,7 @@
     <section class="page-hero">
       <div class="container">
         <h1>Anleitung</h1>
+        <p>In 7 Schritten zur fertigen KI-Idee — 90 Minuten, kein technisches Vorwissen nötig</p>
       </div>
     </section>
 

@@ -8,7 +8,7 @@
   <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -78,7 +78,6 @@
       padding: 13px 28px;
       background-color: var(--yellow);
       color: var(--black) !important;
-      font-family: 'Poppins', sans-serif;
       font-size: 16px;
       font-weight: 600;
       border: 2px solid var(--yellow);
@@ -110,11 +109,12 @@
 
     /* HERO */
     .page-hero {
-      padding: 64px 0 32px;
+      padding: 64px 0 48px;
       text-align: center;
       background: var(--cream);
     }
-    .page-hero h1 { margin-bottom: 0; }
+    .page-hero h1 { margin-bottom: 12px; }
+    .page-hero p { font-size: 18px; color: var(--dark); margin: 0 auto; max-width: 560px; }
 
     /* ALTERNATING SECTIONS */
     main > section:nth-child(even) { background: var(--white); }
@@ -181,7 +181,7 @@
     .nav-links { display: flex; list-style: none; gap: 0; }
     .nav-links a {
       display: block; padding: 16px 12px;
-      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px;
+      font-weight: 700; font-size: 15px;
       color: var(--black) !important; letter-spacing: .3px; transition: color .2s;
       text-decoration: none;
     }
@@ -209,7 +209,7 @@
     .footer-cc a:hover { color: var(--white); }
 
     /* RESPONSIVE */
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       h1 { font-size: 48px; }
       h2 { font-size: 28px; }
       h3 { font-size: 20px; }
@@ -222,7 +222,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .section-box { padding: 28px 24px; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       h1 { font-size: 36px; }
       section { padding: 32px 0; }
       .footer-grid { grid-template-columns: 1fr; }
@@ -257,6 +257,7 @@
   <section class="page-hero">
     <div class="container">
       <h1>Über</h1>
+      <p>Entstehungsgeschichte, Motivation und partizipatives Design in der KI-Entwicklung</p>
     </div>
   </section>
 
