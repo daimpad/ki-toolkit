@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartengenerator – KI-Toolkit</title>
+  <meta name="description" content="Eigene KI-Toolkit-Karten gestalten und als druckfertiges PDF exportieren.">
+  <link rel="icon" href="../svg/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === BASE (screen only) === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #fec144;
+      --black:  #020000;
+      --dark:   #262626;
+      --cream:  #fef9ee;
+      --white:  #ffffff;
+      --shadow: 6px 6px 0 0 #262626;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Albert Sans', Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--dark);
+      background: var(--cream);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Aleo', Georgia, serif;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--black);
+    }
+    h1 { font-size: 56px; }
+    h2 { font-size: 28px; }
+    h3 { font-size: 20px; }
+
+    p { margin-bottom: 1em; }
+    p:last-child { margin-bottom: 0; }
+    a { color: var(--black); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 48px 0; }
+
+    /* === HEADER === */
+    .site-header {
+      background: var(--white);
+      border-bottom: 3px solid var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .nav-back {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .nav-back:hover { color: var(--black); text-decoration: underline; }
+
+    /* === HERO === */
+    .page-hero {
+      background: var(--cream);
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+    .page-hero h1 { margin-bottom: 12px; }
+    .page-hero p { font-size: 18px; color: var(--dark); max-width: 560px; margin: 0 auto; }
+
+    /* === BUTTONS === */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--yellow);
+      color: var(--black) !important;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid var(--yellow);
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 1.4;
+      transition: background .2s, border-color .2s, color .2s;
+      font-family: inherit;
+    }
+    .btn:hover { background: var(--black); border-color: var(--black); color: var(--white) !important; text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--black) !important; border-color: var(--black); }
+    .btn-outline:hover { background: var(--black); color: var(--white) !important; }
+    .btn-sm { padding: 9px 20px; font-size: 15px; }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* === SECTIONS === */
+    main > section:nth-child(even) { background: var(--white); }
+
+    /* === GENERATOR LAYOUT === */
+    .generator-layout {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* === FORM === */
+    .form-box {
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .form-box h2 { margin-bottom: 24px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--black);
+    }
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #bbb;
+      border-radius: 8px;
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 16px;
+      color: var(--dark);
+      background: var(--white);
+      transition: border-color .15s;
+      appearance: auto;
+    }
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus { outline: none; border-color: var(--black); }
+    .form-group input.error { border-color: #dc2626; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .char-hint { font-size: 12px; color: #999; text-align: right; margin-top: 4px; }
+    .char-hint.warn { color: #dc2626; }
+
+    .form-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; align-items: center; }
+
+    /* === PREVIEW === */
+    .preview-box { position: sticky; top: 88px; }
+    .preview-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .karte-screen {
+      width: 189px;
+      height: 265px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 4px 4px 0 0 #262626;
+      background: #fff;
+      font-family: Arial, sans-serif;
+      flex-shrink: 0;
+    }
+    .karte-screen .karten-header {
+      padding: 12px 11px 10px;
+      min-height: 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .karte-screen .karten-header h1 {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      color: white;
+      margin: 0;
+      line-height: 1.25;
+      word-break: break-word;
+    }
+    .karte-screen .karten-inhalt { padding: 9px 11px; }
+    .karte-screen .kategorie-text {
+      font-size: 7.5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      letter-spacing: .03em;
+    }
+    .karte-screen .beschreibung {
+      font-size: 8.5px;
+      color: #333;
+      line-height: 1.35;
+    }
+
+    /* === DRUCKLISTE === */
+    .queue-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .queue-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .queue-empty { color: #999; font-style: italic; }
+
+    .queue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+    .queue-item { position: relative; display: inline-block; }
+    .queue-item .remove-btn {
+      position: absolute;
+      top: -9px;
+      right: -9px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--black);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      line-height: 1;
+      font-family: inherit;
+    }
+    .queue-item .remove-btn:hover { background: #dc2626; }
+
+    /* === FOOTER === */
+    .site-footer {
+      background: var(--cream);
+      border-top: 3px solid var(--black);
+      padding: 40px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 32px;
+      padding-bottom: 32px;
+    }
+    .footer-brand p { font-size: 13px; color: var(--dark); margin-bottom: 8px; }
+    .footer-nav { display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a { font-size: 14px; color: var(--dark); }
+    .footer-nav a:hover { color: var(--black); text-decoration: underline; }
+    .footer-bottom { border-top: 1px solid rgba(2,0,0,0.15); padding: 20px 0; }
+    .footer-cc { display: flex; align-items: center; gap: 12px; }
+    .footer-cc p { font-size: 12px; color: var(--dark); margin: 0; }
+    .footer-cc a { color: var(--dark); text-decoration: underline; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 720px) {
+      h1 { font-size: 36px; }
+      .generator-layout { grid-template-columns: 1fr; }
+      .preview-box { position: static; display: flex; align-items: flex-start; gap: 16px; }
+      .preview-label { margin-bottom: 0; margin-top: 4px; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 30px; }
+      section { padding: 32px 0; }
+      .form-box { padding: 24px 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 380px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* === PRINT (screen elements hidden via style.css) === */
+    @media print {
+      .site-header, main, .site-footer { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-wrap" aria-label="Navigation">
+    <a href="../index.html" class="nav-logo" aria-label="KI-Toolkit Startseite">
+      <img src="../pics/KI-Toolkit-Logo-1.png" alt="KI-Toolkit" height="38">
+    </a>
+    <a href="../kartengenerator.html" class="nav-back">← Zurück zur Übersicht</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Kartengenerator</h1>
+      <p>Individuelle Karten gestalten und als PDF drucken</p>
+    </div>
+  </section>
+
+  <!-- GENERATOR -->
+  <section>
+    <div class="container">
+      <div class="generator-layout">
+
+        <div class="form-box">
+          <h2>Karte erstellen</h2>
+
+          <div class="form-group">
+            <label for="karten-typ">Kartentyp</label>
+            <select id="karten-typ"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="karten-titel">Titel <span style="font-weight:400;color:#999;">(max. 60 Zeichen)</span></label>
+            <input type="text" id="karten-titel" placeholder="Kurzer, prägnanter Titel" maxlength="60">
+            <div class="char-hint" id="titel-hint">0 / 60</div>
+          </div>
+
+          <div class="form-group">
+            <label for="karten-beschreibung">Beschreibung <span style="font-weight:400;color:#999;">(max. 200 Zeichen)</span></label>
+            <textarea id="karten-beschreibung" placeholder="Beschreibung der Karte" maxlength="200"></textarea>
+            <div class="char-hint" id="beschr-hint">0 / 200</div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn" id="add-btn">Zur Druckliste hinzufügen</button>
+            <button class="btn btn-outline btn-sm" id="reset-btn" type="button">Zurücksetzen</button>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-label">Vorschau</div>
+          <div class="karte-screen">
+            <div class="karten-header" id="prev-header">
+              <h1 id="prev-titel">Titel</h1>
+            </div>
+            <div class="karten-inhalt">
+              <div class="kategorie-text" id="prev-typ">Kartentyp</div>
+              <div class="beschreibung" id="prev-beschr">Beschreibung erscheint hier…</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DRUCKLISTE -->
+  <section>
+    <div class="container">
+      <div class="queue-head">
+        <h2>Druckliste (<span id="queue-count">0</span>)</h2>
+        <div class="queue-actions">
+          <button class="btn btn-sm" id="print-btn" disabled>Drucken / PDF</button>
+          <button class="btn btn-outline btn-sm" id="clear-btn" disabled>Liste leeren</button>
+        </div>
+      </div>
+      <p class="queue-empty" id="queue-empty">Noch keine Karten in der Druckliste.</p>
+      <div class="queue-grid" id="queue-grid" style="display:none;"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- PRINT LAYOUT — shown only when printing (via style.css @media print) -->
+<div id="print-layout"></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p>Ein Produkt von</p>
+        <a href="https://nozilla.de/" target="_blank" rel="noopener">
+          <img src="../svg/nozilla-logo.svg" alt="nozilla">
+        </a>
+      </div>
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="../methode.html">Methode</a>
+        <a href="../anleitung.html">Anleitung</a>
+        <a href="../workshop.html">Workshop</a>
+        <a href="../ueber.html">Über</a>
+        <a href="../download.html">Download</a>
+      </nav>
+      <nav class="footer-nav" aria-label="Footer Navigation 2">
+        <a href="../kontakt.html">Kontakt</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../impressum.html">Impressum</a>
+        <a href="../datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-cc">
+        <img src="../pics/cc-by.png" alt="Creative Commons BY 4.0" width="88" height="31">
+        <p>Die Inhalte dieser Website stehen unter einer <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener noreferrer">Creative Commons Namensnennung 4.0 International Lizenz (CC BY 4.0)</a>. Namensnennung: <a href="https://paderta.com/" target="_blank" rel="noopener">Damian Paderta</a> | ki-toolkit.de</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="karten-data.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  const SET_COLORS = {
+    'Szenario':               '#1A56A4',
+    'Persona':                '#6B21A8',
+    'Datenquelle':            '#15803D',
+    'KI-Lernziel':            '#0E7490',
+    'Interaktion (Digital)':  '#C2410C',
+    'Interaktion (Physisch)': '#B91C1C',
+    'Ethik-Reflexion':        '#374151',
+  };
+
+  function color(set) {
+    return SET_COLORS[set] || '#374151';
+  }
+
+  // Populate dropdown with unique sets in order
+  const sets = [...new Set(kartenData.map(k => k.set))];
+  const typSel = document.getElementById('karten-typ');
+  sets.forEach(s => {
+    const o = document.createElement('option');
+    o.value = o.textContent = s;
+    typSel.appendChild(o);
+  });
+
+  // Form inputs
+  const titelIn = document.getElementById('karten-titel');
+  const beschrIn = document.getElementById('karten-beschreibung');
+  const titelHint = document.getElementById('titel-hint');
+  const beschrHint = document.getElementById('beschr-hint');
+
+  // Preview elements
+  const prevHeader = document.getElementById('prev-header');
+  const prevTitel  = document.getElementById('prev-titel');
+  const prevTyp    = document.getElementById('prev-typ');
+  const prevBeschr = document.getElementById('prev-beschr');
+
+  function updatePreview() {
+    const set = typSel.value;
+    const c   = color(set);
+    prevHeader.style.backgroundColor = c;
+    prevTitel.textContent  = titelIn.value  || 'Titel';
+    prevTyp.textContent    = set;
+    prevTyp.style.color    = c;
+    prevBeschr.textContent = beschrIn.value || 'Beschreibung erscheint hier…';
+  }
+
+  function updateHints() {
+    const tl = titelIn.value.length;
+    const bl = beschrIn.value.length;
+    titelHint.textContent = `${tl} / 60`;
+    titelHint.classList.toggle('warn', tl > 50);
+    beschrHint.textContent = `${bl} / 200`;
+    beschrHint.classList.toggle('warn', bl > 170);
+  }
+
+  typSel.addEventListener('change', updatePreview);
+  titelIn.addEventListener('input', () => { updatePreview(); updateHints(); });
+  beschrIn.addEventListener('input', () => { updatePreview(); updateHints(); });
+  updatePreview();
+
+  // --- Print queue ---
+  const queue = [];
+
+  function esc(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function cardHTML(card, forPrint) {
+    const c   = color(card.set);
+    const cls = forPrint ? 'karte' : 'karte-screen';
+    return `<div class="${cls}">
+      <div class="karten-header" style="background-color:${c}"><h1>${esc(card.titel)}</h1></div>
+      <div class="karten-inhalt">
+        <div class="kategorie-text" style="color:${c}">${esc(card.set)}</div>
+        <div class="beschreibung">${esc(card.beschreibung)}</div>
+      </div>
+    </div>`;
+  }
+
+  function renderQueue() {
+    const n        = queue.length;
+    const countEl  = document.getElementById('queue-count');
+    const emptyEl  = document.getElementById('queue-empty');
+    const gridEl   = document.getElementById('queue-grid');
+    const printDiv = document.getElementById('print-layout');
+    const printBtn = document.getElementById('print-btn');
+    const clearBtn = document.getElementById('clear-btn');
+
+    countEl.textContent  = n;
+    printBtn.disabled    = n === 0;
+    clearBtn.disabled    = n === 0;
+    emptyEl.style.display = n === 0 ? '' : 'none';
+    gridEl.style.display  = n === 0 ? 'none' : 'grid';
+
+    gridEl.innerHTML = queue.map((card, i) => `
+      <div class="queue-item">
+        <button class="remove-btn" data-i="${i}" title="Entfernen">×</button>
+        ${cardHTML(card, false)}
+      </div>`).join('');
+
+    printDiv.innerHTML = queue.map(c => cardHTML(c, true)).join('');
+  }
+
+  // Remove buttons (event delegation)
+  document.getElementById('queue-grid').addEventListener('click', e => {
+    const btn = e.target.closest('.remove-btn');
+    if (!btn) return;
+    queue.splice(Number(btn.dataset.i), 1);
+    renderQueue();
+  });
+
+  document.getElementById('add-btn').addEventListener('click', () => {
+    const titel = titelIn.value.trim();
+    if (!titel) {
+      titelIn.classList.add('error');
+      titelIn.focus();
+      titelIn.addEventListener('input', () => titelIn.classList.remove('error'), { once: true });
+      return;
+    }
+    queue.push({ set: typSel.value, titel, beschreibung: beschrIn.value.trim() || '—' });
+    renderQueue();
+    document.querySelector('#queue-grid').closest('section')
+      .scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    titelIn.value = '';
+    beschrIn.value = '';
+    updatePreview();
+    updateHints();
+  });
+
+  document.getElementById('print-btn').addEventListener('click', () => {
+    if (queue.length) window.print();
+  });
+
+  document.getElementById('clear-btn').addEventListener('click', () => {
+    if (!queue.length) return;
+    if (confirm(`Alle ${queue.length} Karte(n) aus der Druckliste entfernen?`)) {
+      queue.length = 0;
+      renderQueue();
+    }
+  });
+
+  renderQueue();
+})();
+</script>
+
+</body>
+</html>
