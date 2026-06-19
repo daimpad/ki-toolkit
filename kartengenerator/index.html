@@ -287,9 +287,11 @@
       .footer-grid { grid-template-columns: 1fr; }
     }
 
-    /* === PRINT (screen elements hidden via style.css) === */
+    /* === PRINT === */
+    #print-layout { display: none; }
     @media print {
       .site-header, main, .site-footer { display: none !important; }
+      #print-layout { display: grid !important; }
     }
   </style>
 </head>
@@ -397,7 +399,7 @@
         <a href="../ueber.html">Über</a>
         <a href="../download.html">Download</a>
       </nav>
-      <nav class="footer-nav" aria-label="Footer Navigation 2">
+      <nav class="footer-nav" aria-label="Footer Navigation Rechtliches">
         <a href="../kontakt.html">Kontakt</a>
         <a href="../faq.html">FAQ</a>
         <a href="../impressum.html">Impressum</a>
@@ -432,6 +434,11 @@
 
   function color(set) {
     return SET_COLORS[set] || '#374151';
+  }
+
+  if (typeof kartenData === 'undefined' || !kartenData.length) {
+    document.querySelector('.page-hero p').textContent = 'Fehler beim Laden der Kartendaten. Bitte Seite neu laden.';
+    return;
   }
 
   // Populate dropdown with unique sets in order
