@@ -209,6 +209,42 @@
       line-height: 1.35;
     }
 
+    /* === BROWSE SECTION === */
+    .browse-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .browse-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .browse-thumb {
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+      border-radius: 8px;
+    }
+    .browse-thumb:hover {
+      transform: scale(1.04);
+      box-shadow: 6px 6px 0 0 #fec144;
+    }
+    .browse-thumb .karte-screen {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 189 / 265;
+      box-shadow: none;
+    }
+    .template-hint {
+      display: none;
+      font-size: 14px;
+      color: #15803D;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
     /* === DRUCKLISTE === */
     .queue-head {
       display: flex;
@@ -360,6 +396,17 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- BESTEHENDE KARTEN DURCHSUCHEN -->
+  <section id="browse-section">
+    <div class="container">
+      <h2>Bestehende Karten als Vorlage nutzen</h2>
+      <p style="margin-bottom:20px;">Klicken Sie auf eine Karte, um sie als Vorlage in den Generator zu laden.</p>
+      <div class="browse-filter" id="browse-filter"></div>
+      <div class="browse-grid" id="browse-grid"></div>
+      <div class="template-hint" id="template-hint">Als Vorlage geladen – jetzt anpassen</div>
     </div>
   </section>
 
@@ -571,6 +618,63 @@
   });
 
   renderQueue();
+
+  // --- Browse existing cards ---
+  let currentFilter = 'Alle';
+  const filterEl = document.getElementById('browse-filter');
+  const browseGrid = document.getElementById('browse-grid');
+  const templateHint = document.getElementById('template-hint');
+  const filterLabels = ['Alle', ...Object.keys(SET_COLORS)];
+
+  function renderFilterButtons() {
+    filterEl.innerHTML = filterLabels.map(label => {
+      const active = label === currentFilter;
+      return `<button class="btn btn-sm${active ? '' : ' btn-outline'}" data-filter="${label}">${label}</button>`;
+    }).join('');
+  }
+
+  function renderBrowse() {
+    const filtered = currentFilter === 'Alle'
+      ? kartenData
+      : kartenData.filter(k => k.set === currentFilter);
+
+    browseGrid.innerHTML = filtered.map((card, i) => {
+      const c = color(card.set);
+      return `<div class="browse-thumb" data-set="${esc(card.set)}" data-titel="${esc(card.titel)}" data-beschr="${esc(card.beschreibung)}" title="${esc(card.titel)}">
+        <div class="karte-screen">
+          <div class="karten-header" style="background-color:${c}"><h1>${esc(card.titel)}</h1></div>
+          <div class="karten-inhalt">
+            <div class="kategorie-text" style="color:${c}">${esc(card.set)}</div>
+            <div class="beschreibung">${esc(card.beschreibung)}</div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  filterEl.addEventListener('click', e => {
+    const btn = e.target.closest('button[data-filter]');
+    if (!btn) return;
+    currentFilter = btn.dataset.filter;
+    renderFilterButtons();
+    renderBrowse();
+  });
+
+  browseGrid.addEventListener('click', e => {
+    const thumb = e.target.closest('.browse-thumb');
+    if (!thumb) return;
+    typSel.value = thumb.dataset.set;
+    titelIn.value = thumb.dataset.titel;
+    beschrIn.value = thumb.dataset.beschr;
+    updatePreview();
+    updateHints();
+    templateHint.style.display = 'block';
+    setTimeout(() => { templateHint.style.display = 'none'; }, 3000);
+    document.querySelector('.form-box').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  renderFilterButtons();
+  renderBrowse();
 })();
 </script>
 
