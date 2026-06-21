@@ -216,6 +216,13 @@
 
     .hero-title { padding: 0 0 16px; text-align: center; }
     .hero-title h1 { font-size: 74px; font-weight: 700; }
+    .hero-sub {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
 
     .card-fan-wrap {
       position: relative;
@@ -267,14 +274,36 @@
       padding: 56px 0 80px;
     }
     .section-intro h2 {
-      font-size: 48px;
+      font-size: 40px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .section-intro h3 {
-      font-size: 23px;
+      font-size: 20px;
       font-weight: 400;
       margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .intro-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .chip {
+      display: inline-block;
+      padding: 6px 18px;
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: .2px;
     }
 
     /* === TWO COLUMN === */
@@ -355,9 +384,9 @@
 
     .phase-row {
       display: grid;
-      grid-template-columns: 100px 1fr;
+      grid-template-columns: 80px 1fr;
       gap: 24px;
-      align-items: start;
+      align-items: center;
       margin-bottom: 20px;
     }
     .phase-row:last-of-type { margin-bottom: 0; }
@@ -368,17 +397,29 @@
       align-items: center;
       gap: 6px;
     }
-    .phase-icon {
-      font-size: 28px;
-      line-height: 1;
-      color: var(--black);
-    }
-    .phase-label {
+    .phase-num {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--yellow);
+      border: 3px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: 'Aleo', serif;
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--black);
+      flex-shrink: 0;
+      box-shadow: 3px 3px 0 0 var(--dark);
+    }
+    .phase-label {
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
       white-space: nowrap;
+      letter-spacing: .3px;
     }
 
     .phase-content { padding-top: 4px; }
@@ -586,8 +627,8 @@
       .four-col { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .hero-title h1 { font-size: 36px; }
-      .phase-row { grid-template-columns: 70px 1fr; gap: 12px; }
-      .phase-icon { font-size: 22px; }
+      .phase-row { grid-template-columns: 60px 1fr; gap: 12px; }
+      .phase-num { width: 36px; height: 36px; font-size: 16px; }
     }
 
     /* List marker color */
@@ -637,6 +678,7 @@
     <section class="hero">
       <div class="hero-title container">
         <h1>KI-Toolkit</h1>
+        <p class="hero-sub">KI-Ideen entwickeln – partizipativ, kreativ und ohne technisches Vorwissen.</p>
       </div>
       <div class="card-fan-wrap">
         <div class="cards" id="cards" aria-hidden="true"></div>
@@ -646,9 +688,19 @@
     <!-- INTRO -->
     <section class="section-intro">
       <div class="container">
-        <h2>Künstliche Intelligenz</h2>
-        <h3>Besser verstehen. Gemeinsam entwickeln. Sinnvoller einsetzen.</h3>
-        <a href="download.html" class="btn">zum Download</a>
+        <div class="intro-chips">
+          <span class="chip">7 Phasen</span>
+          <span class="chip">150+ Karten</span>
+          <span class="chip">ab 90 Minuten</span>
+          <span class="chip">kein technisches Vorwissen nötig</span>
+          <span class="chip">Open Source (CC BY 4.0)</span>
+        </div>
+        <h2>Besser verstehen. Gemeinsam entwickeln. Sinnvoller einsetzen.</h2>
+        <h3>Eine praxisnahe Methode, die Menschen ohne Programmierkenntnisse befähigt, KI-Anwendungen zu konzipieren, kritisch zu reflektieren und zu gestalten.</h3>
+        <div class="btn-row" style="justify-content:center;">
+          <a href="download.html" class="btn">herunterladen</a>
+          <a href="ki-toolkit-online.html" class="btn btn-outline">online testen</a>
+        </div>
       </div>
     </section>
 
@@ -741,31 +793,31 @@
         <h3 class="mb-32">Der Ablauf eines Workshops erfolgt in sieben Phasen:</h3>
 
         <div class="phase-row">
-          <div class="phase-left"><span class="phase-icon">●</span><span class="phase-label">1. Phase</span></div>
+          <div class="phase-left"><span class="phase-num">1</span><span class="phase-label">Phase</span></div>
           <div class="phase-content"><p><strong>Kontext definieren</strong> – Die Gruppe einigt sich auf ein Szenario, eine Persona und eine Mission. So wird ein gemeinsames Verständnis für das Kernproblem und den Menschen geschaffen.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-left"><span class="phase-icon">⠿</span><span class="phase-label">2. Phase</span></div>
+          <div class="phase-left"><span class="phase-num">2</span><span class="phase-label">Phase</span></div>
           <div class="phase-content"><p><strong>Lösung entwickeln</strong> – Das Team erforscht, welche Datenquellen und Interaktionen die KI nutzt.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-left"><span class="phase-icon">⋯</span><span class="phase-label">3. Phase</span></div>
-          <div class="phase-content"><p><strong>KI-Fähigkeit bestimmen</strong> – Die Gruppe diskutiert, welche „KI-Fähigkeit" sie hat.</p></div>
+          <div class="phase-left"><span class="phase-num">3</span><span class="phase-label">Phase</span></div>
+          <div class="phase-content"><p><strong>KI-Fähigkeit bestimmen</strong> – Die Gruppe diskutiert, welche „KI-Fähigkeit" die Lösung haben soll.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-left"><span class="phase-icon">▭</span><span class="phase-label">4. Phase</span></div>
+          <div class="phase-left"><span class="phase-num">4</span><span class="phase-label">Phase</span></div>
           <div class="phase-content"><p><strong>Interaktion gestalten</strong> – Die Gruppe definiert, wie die KI-Lösung digital und/oder physisch reagiert.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-left"><span class="phase-icon">⊞</span><span class="phase-label">5. Phase</span></div>
+          <div class="phase-left"><span class="phase-num">5</span><span class="phase-label">Phase</span></div>
           <div class="phase-content"><p><strong>Idee skizzieren</strong> – Das Team visualisiert die fertige Idee als Storyboard (Drehbuch).</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-left"><span class="phase-icon">⇌</span><span class="phase-label">6. Phase</span></div>
+          <div class="phase-left"><span class="phase-num">6</span><span class="phase-label">Phase</span></div>
           <div class="phase-content"><p><strong>Idee reflektieren</strong> – Anhand von „Reflexions"-Karten wird die Idee kritisch geprüft und direkt verbessert.</p></div>
         </div>
         <div class="phase-row">
-          <div class="phase-left"><span class="phase-icon">✳</span><span class="phase-label">7. Phase</span></div>
+          <div class="phase-left"><span class="phase-num">7</span><span class="phase-label">Phase</span></div>
           <div class="phase-content"><p><strong>Idee pitchen</strong> – Das Team präsentiert das Konzept in einem kurzen „Elevator Pitch".</p></div>
         </div>
 
