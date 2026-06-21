@@ -19,6 +19,113 @@
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="shared.css">
+  <style>
+    section { padding: 80px 0; }
+
+    /* FACTS STRIP */
+    .facts-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .fact-box {
+      text-align: center;
+      padding: 28px 20px;
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
+    .fact-num {
+      font-family: 'Aleo', Georgia, serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .fact-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: .3px;
+    }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left: 5px solid var(--yellow);
+      padding: 18px 24px;
+      background: var(--cream);
+      border-radius: 0 12px 12px 0;
+      margin: 28px 0;
+      font-size: 19px;
+      font-weight: 600;
+      font-style: italic;
+      font-family: 'Aleo', Georgia, serif;
+      color: var(--dark);
+      line-height: 1.5;
+    }
+
+    /* ASPEKTE CARDS */
+    .aspekte-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .aspekt-card {
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .aspekt-bar { height: 6px; }
+    .aspekt-body { padding: 20px 20px 22px; }
+    .aspekt-num {
+      font-family: 'Aleo', Georgia, serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .aspekt-title {
+      font-family: 'Aleo', Georgia, serif;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+    .aspekt-card p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--dark);
+      margin: 0;
+    }
+
+    /* AUSPROBIEREN */
+    .section-ausprobieren { background: var(--yellow) !important; }
+    .section-ausprobieren h2 { color: var(--black); }
+    .ausprobieren-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .ausprobieren-grid img { width: 100%; }
+
+    .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 980px) {
+      .facts-strip { grid-template-columns: 1fr 1fr; }
+      .aspekte-grid { grid-template-columns: 1fr; }
+      .ausprobieren-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 640px) {
+      .facts-strip { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -71,6 +178,26 @@
     </div>
   </section>
 
+  <!-- FACTS STRIP -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="facts-strip">
+        <div class="fact-box">
+          <div class="fact-num">150+</div>
+          <div class="fact-label">Karten in 8 Kategorien</div>
+        </div>
+        <div class="fact-box">
+          <div class="fact-num">7</div>
+          <div class="fact-label">Phasen im Workshop</div>
+        </div>
+        <div class="fact-box">
+          <div class="fact-num">CC</div>
+          <div class="fact-label">Open Source · CC BY 4.0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- MOTIVATION HEADING + BOX -->
   <section>
     <div class="container">
@@ -89,9 +216,38 @@
         <h2 class="mb-24">Warum partizipatives Design in der KI-Entwicklung notwendig ist</h2>
         <p>Das Konzept der „KI-Governance" oder „Responsible AI" wird in vielen verschiedenen Kontexten diskutiert. Viele KI-Strategien behaupten, dass die Beteiligung von Stakeholdern wichtig ist. Dennoch bleiben Bürger*innen, Beschäftigte und betroffene Gemeinschaften oft außen vor.</p>
         <p>In diesem Zusammenhang möchte ich KI-Entwicklung als einen Prozess verstehen, bei dem Nutzer*innen, Stakeholder und betroffene Gruppen ihre zunehmend durch KI geprägte Umwelt bewusst mitgestalten – und auch anderen diese Mitgestaltung ermöglichen.</p>
+
+        <blockquote class="pull-quote">„Partizipatives Design bedeutet: Nutzer*innen nicht als Testpersonen, sondern als ebenbürtige Mitglieder im Gestaltungsprozess."</blockquote>
+
         <p>Dies kann traditionelle Schulungen und Trainings bedeuten. Doch traditionelle Bildungswege können mit den gegenwärtig schnelllebigen KI-Entwicklungen nur bedingt mithalten. Deshalb ist der kontinuierliche Aufbau von Fähigkeiten zur Verständigung und Zusammenarbeit in dynamischen Ökosystemen entscheidend.</p>
-        <p>Partizipatives Design umfasst Theorien, Praktiken und Studien, die sich auf Endnutzer*innen und Stakeholder beziehen. Diese nehmen als ebenbürtige Mitglieder an Prozessen teil, die zu besseren KI-Konzepten führen sollen. Die aktive Beteiligung der Nutzer*innen am Ideen-, Design- und Entwicklungsprozess durch partizipatives Design oder Co-Design-Techniken wird oft als nicht ausreichend berücksichtigt.</p>
         <p>Um dies zu erreichen, braucht es die Beteiligung von Laien, die am Design und der Prototyp-Entwicklung von KI-Anwendungen mitwirken. Laien in der KI unterscheiden sich von Expert*innen dadurch, dass sie keine Kenntnisse in Machine Learning, neuronalen Netzen oder Data Engineering haben. Sie müssen nicht einmal mit KI-Konzepten vertraut sein.</p>
+
+        <div class="aspekte-grid">
+          <div class="aspekt-card">
+            <div class="aspekt-bar" style="background:#1A56A4;"></div>
+            <div class="aspekt-body">
+              <div class="aspekt-num">01</div>
+              <div class="aspekt-title">Laien einbeziehen</div>
+              <p>Menschen ohne Machine-Learning-Kenntnisse bringen wertvolle Perspektiven ein, die technische Expert*innen allein nicht liefern können.</p>
+            </div>
+          </div>
+          <div class="aspekt-card">
+            <div class="aspekt-bar" style="background:#15803D;"></div>
+            <div class="aspekt-body">
+              <div class="aspekt-num">02</div>
+              <div class="aspekt-title">Ko-Design auf Augenhöhe</div>
+              <p>Alle Beteiligten gestalten gemeinsam – nicht Experten für Nutzer*innen, sondern mit ihnen. Das führt zu relevanteren Ergebnissen.</p>
+            </div>
+          </div>
+          <div class="aspekt-card">
+            <div class="aspekt-bar" style="background:#374151;"></div>
+            <div class="aspekt-body">
+              <div class="aspekt-num">03</div>
+              <div class="aspekt-title">Verantwortungsvolle KI</div>
+              <p>Ethik-Reflexion ist integraler Teil des Prozesses – nicht ein nachgelagerter Schritt, sondern von Anfang an eingebaut.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -127,7 +283,7 @@
   <!-- KI-TOOLKIT AUSPROBIEREN -->
   <section class="section-ausprobieren">
     <div class="container">
-      <h2 class="mb-32 text-center">KI-Toolkit ausprobieren</h2>
+      <h2 class="mb-32">KI-Toolkit ausprobieren</h2>
       <div class="ausprobieren-grid">
         <div>
           <img src="svg/Tisch.svg" alt="KI-Toolkit Tisch mit Karten" loading="lazy">
