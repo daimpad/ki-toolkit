@@ -209,6 +209,19 @@
       line-height: 1.35;
     }
 
+    /* === KEYBOARD HINT === */
+    .kbd-hint {
+      font-size: 12px;
+      color: #999;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-family: monospace;
+      white-space: nowrap;
+      align-self: center;
+    }
+
     /* === BROWSE SECTION === */
     .browse-filter {
       display: flex;
@@ -223,6 +236,7 @@
       margin-bottom: 8px;
     }
     .browse-thumb {
+      position: relative;
       cursor: pointer;
       transition: transform .15s, box-shadow .15s;
       border-radius: 8px;
@@ -231,6 +245,37 @@
       transform: scale(1.04);
       box-shadow: 6px 6px 0 0 #fec144;
     }
+
+    /* Hover tooltip */
+    .browse-tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      padding: 10px 13px;
+      border-radius: 8px;
+      font-size: 12px;
+      width: 200px;
+      z-index: 100;
+      text-align: left;
+      pointer-events: none;
+      line-height: 1.4;
+    }
+    .browse-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--black);
+    }
+    .browse-tooltip strong { display: block; margin-bottom: 4px; font-size: 13px; }
+    .browse-thumb:hover .browse-tooltip { display: block; }
+
     .browse-thumb .karte-screen {
       width: 100%;
       height: auto;
@@ -379,6 +424,7 @@
           <div class="form-actions">
             <button class="btn" id="add-btn">Zur Druckliste hinzufügen</button>
             <button class="btn btn-outline btn-sm" id="reset-btn" type="button">Zurücksetzen</button>
+            <span class="kbd-hint" title="Tastaturkürzel">Strg+Enter</span>
           </div>
         </div>
 
@@ -638,9 +684,10 @@
       ? kartenData
       : kartenData.filter(k => k.set === currentFilter);
 
-    browseGrid.innerHTML = filtered.map((card, i) => {
+    browseGrid.innerHTML = filtered.map((card) => {
       const c = color(card.set);
-      return `<div class="browse-thumb" data-set="${esc(card.set)}" data-titel="${esc(card.titel)}" data-beschr="${esc(card.beschreibung)}" title="${esc(card.titel)}">
+      return `<div class="browse-thumb" data-set="${esc(card.set)}" data-titel="${esc(card.titel)}" data-beschr="${esc(card.beschreibung)}">
+        <div class="browse-tooltip"><strong>${esc(card.titel)}</strong>${esc(card.beschreibung)}</div>
         <div class="karte-screen">
           <div class="karten-header" style="background-color:${c}"><h1>${esc(card.titel)}</h1></div>
           <div class="karten-inhalt">
@@ -675,6 +722,18 @@
 
   renderFilterButtons();
   renderBrowse();
+
+  // --- Keyboard shortcuts ---
+  // Ctrl+Enter / Cmd+Enter → Zur Druckliste; Escape inside form → Zurücksetzen
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('add-btn').click();
+    } else if (e.key === 'Escape' && e.target.closest('.form-box')) {
+      document.getElementById('reset-btn').click();
+      e.target.blur();
+    }
+  });
 })();
 </script>
 
