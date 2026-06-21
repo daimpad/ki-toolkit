@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workshop – KI-Toolkit</title>
-  <meta name="description" content="Professionell moderierte KI-Toolkit Workshops – maßgeschneidert auf die Fragestellungen und Ziele Ihrer Organisation.">
+  <meta name="description" content="Professionell moderierte KI-Toolkit Workshops – maßgeschneidert auf die Fragestellungen und Ziele Ihrer Organisation. Formate von 3 bis 6 Stunden.">
   <meta property="og:title" content="Workshop – KI-Toolkit">
   <meta property="og:description" content="Professionell moderierte KI-Toolkit Workshops – maßgeschneidert auf die Fragestellungen und Ziele Ihrer Organisation.">
   <meta property="og:type" content="website">
@@ -19,6 +19,144 @@
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="shared.css">
+  <style>
+    /* PAGE-SPECIFIC */
+
+    /* WHY SECTION */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .why-img { border-radius: 14px; border: 3px solid var(--black); box-shadow: var(--shadow); overflow: hidden; }
+    .why-img img { width: 100%; display: block; }
+
+    /* FORMAT CARDS */
+    .format-card {
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .format-accent { height: 7px; flex-shrink: 0; }
+    .format-body { padding: 24px 24px 28px; flex: 1; display: flex; flex-direction: column; }
+    .format-duration {
+      display: inline-block;
+      font-size: 13px; font-weight: 700; letter-spacing: .04em;
+      padding: 4px 14px; border-radius: 50px;
+      border: 2px solid var(--black); background: var(--yellow);
+      margin-bottom: 14px; width: fit-content;
+    }
+    .format-body h3 { font-size: 21px; margin-bottom: 6px; }
+    .format-group { font-size: 14px; color: #999; margin-bottom: 16px; }
+    .format-list { list-style: none; padding: 0; margin: 0 0 20px; flex: 1; }
+    .format-list li { padding: 6px 0 6px 22px; position: relative; font-size: 15px; }
+    .format-list li::before { content: '✓'; position: absolute; left: 0; color: #15803D; font-weight: 700; }
+    .format-ideal {
+      font-size: 13px; color: #888; font-style: italic;
+      border-top: 1px solid rgba(2,0,0,.08); padding-top: 12px; margin-top: auto;
+    }
+
+    /* PROCESS STEPS */
+    .process-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 48px;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+    }
+    .process-step + .process-step::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: 0;
+      width: calc(50% - 28px);
+      height: 2px;
+      background: var(--black);
+    }
+    .process-step::after {
+      content: '';
+      position: absolute;
+      top: 27px;
+      right: 0;
+      width: calc(50% - 28px);
+      height: 2px;
+      background: var(--black);
+    }
+    .process-step:last-child::after { display: none; }
+    .ps-num {
+      width: 56px; height: 56px;
+      background: var(--yellow);
+      border: 3px solid var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Aleo', serif; font-size: 22px; font-weight: 700;
+      color: var(--black);
+      position: relative; z-index: 1;
+      margin-bottom: 18px;
+      box-shadow: 3px 3px 0 var(--black);
+      flex-shrink: 0;
+    }
+    .ps-title { font-family: 'Aleo', serif; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .ps-desc { font-size: 14px; color: var(--dark); line-height: 1.55; }
+
+    /* OUTCOME CARDS */
+    .outcome-card {
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .outcome-bar { height: 6px; }
+    .outcome-body { padding: 22px 22px 26px; }
+    .outcome-body h3 { font-size: 19px; margin-bottom: 8px; }
+    .outcome-body p { font-size: 15px; color: var(--dark); margin: 0; line-height: 1.6; }
+
+    /* QUOTE */
+    .ws-quote {
+      border-left: 6px solid var(--yellow);
+      padding: 24px 32px;
+      background: var(--white);
+      border-radius: 0 14px 14px 0;
+      box-shadow: var(--shadow);
+    }
+    .ws-quote blockquote {
+      font-size: 20px; font-family: 'Aleo', serif; font-weight: 400;
+      font-style: italic; line-height: 1.55; color: var(--black);
+      margin: 0 0 12px; padding: 0;
+    }
+    .ws-quote cite { font-size: 14px; color: #888; font-style: normal; }
+    .ws-quote-link { font-size: 15px; color: var(--dark); margin-top: 12px; }
+    .ws-quote-link a { font-weight: 600; }
+
+    /* CTA SECTION */
+    .section-cta-ws { background: var(--yellow); }
+    .section-cta-ws h2 { margin-bottom: 16px; }
+    .section-cta-ws p { font-size: 18px; max-width: 600px; margin-bottom: 32px; }
+
+    /* AUSPROBIEREN */
+    .ausprobieren-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .ausprobieren-grid img { width: 100%; border-radius: 14px; border: 3px solid var(--black); box-shadow: var(--shadow); }
+
+    @media (max-width: 980px) {
+      .why-grid { grid-template-columns: 1fr; gap: 24px; }
+      .process-row { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process-step + .process-step::before,
+      .process-step::after { display: none; }
+      .ausprobieren-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 640px) {
+      .process-row { grid-template-columns: 1fr; gap: 20px; }
+      .ws-quote { padding: 18px 20px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -34,7 +172,7 @@
       <ul class="nav-links" id="navLinks" role="list">
         <li><a href="methode.html">Methode</a></li>
         <li><a href="anleitung.html">Anleitung</a></li>
-        <li><a href="workshop.html" class="active">Workshop</a></li>
+        <li><a href="workshop.html">Workshop</a></li>
         <li><a href="ueber.html">Über</a></li>
         <li><a href="download.html">Download</a></li>
       </ul>
@@ -44,85 +182,203 @@
 
 <main>
 
-  <!-- PAGE HERO -->
+  <!-- HERO -->
   <section class="page-hero">
     <div class="container">
       <h1>Workshop</h1>
-      <p>Professionelle Begleitung für Ihr Team — maßgeschneidert auf Ihre Fragestellungen</p>
+      <p>Professionell moderiert, inhaltlich angepasst — damit Ihr Team sich voll auf die Ideen konzentrieren kann</p>
     </div>
   </section>
 
-  <!-- INTRO -->
+  <!-- WARUM MODERATION -->
   <section>
     <div class="container">
-      <div class="section-box">
-        <h2 class="mb-16">Workshops mit dem KI-Toolkit</h2>
-        <h3 class="mb-24" style="font-weight:400;">Strukturierte Ideenfindung für Ihre spezifischen Herausforderungen.</h3>
-        <p>Das KI-Toolkit ist am effektivsten, wenn es fokussiert und mit klarer Zielsetzung eingesetzt wird. Ein extern moderierter Workshop entlastet Ihre Teams von der Prozessverantwortung und stellt sicher, dass sie sich voll auf die Inhalte konzentrieren können. Wir bieten professionelle Moderation und Durchführung von KI-Toolkit Workshops an, die genau auf die Fragestellungen und Ziele Ihrer Organisation zugeschnitten sind.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- MASSGESCHNEIDERT HEADING -->
-  <section>
-    <div class="container">
-      <div class="section-box">
-        <h2 class="mb-16">Maßgeschneiderte Workshops</h2>
-        <h3 style="font-weight:400;">Wir konzipieren und moderieren Workshops für Teams von 5 bis 50 Personen, wahlweise bei Ihnen vor Ort oder als interaktives Remote-Format.</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- THREE SERVICE CARDS (no outer box) -->
-  <section>
-    <div class="container">
-      <div class="one-col" style="display:flex;flex-direction:column;gap:24px;max-width:720px;">
-        <div class="card">
-          <h3>Professionelle Moderation &amp; Durchführung</h3>
-          <p>Unsere erfahrenen Moderator*innen leiten Ihre Teams durch den gesamten Ko-Kreations-Prozess. Wir stellen sicher, dass die Methodik korrekt angewendet wird, die Diskussionen fokussiert bleiben und die Gruppe innerhalb der vorgegebenen Zeit (typischerweise 3–4 Stunden) zu konkreten, reflektierten Ergebnissen kommt.</p>
+      <div class="why-grid">
+        <div class="why-img">
+          <img src="pics/KI-Toolkit_Gruppe.png" alt="Workshop-Gruppe mit KI-Toolkit-Karten" loading="lazy">
         </div>
-        <div class="card">
-          <h3>Inhaltliche Anpassung</h3>
-          <p>Um den maximalen Nutzen für Ihre Organisation zu erzielen, passen wir das KI-Toolkit an Ihren spezifischen Kontext an: (a) Wir definieren im Vorfeld Szenarien, die exakt zu Ihrer Branche passen. (b) Statt mit abstrakten Personas arbeiten wir mit Profilen, die Ihre realen Kund*innen, Nutzer*innen oder Mitarbeiter*innen widerspiegeln. (c) Wir integrieren Ihre strategischen Ziele oder spezifische technologische Vorgaben direkt in die „Missions-" oder „Reflexions-Karten".</p>
-        </div>
-        <div class="card">
-          <h3>Dokumentation &amp; nächste Schritte</h3>
-          <p>Im Anschluss an den Workshop erhalten Sie eine strukturierte Dokumentation der Ergebnisse (z. B. fotografierte Storyboards, ausgearbeitete Pitches), die als direkte Grundlage für die technische Konzeption oder strategische Projektplanung dienen können.</p>
+        <div>
+          <h2 class="mb-16">Warum ein moderierter Workshop?</h2>
+          <p>Das KI-Toolkit entfaltet seine volle Wirkung, wenn Teams sich ganz auf Inhalte konzentrieren können — ohne gleichzeitig Moderation, Methodik und Zeitmanagement im Blick behalten zu müssen.</p>
+          <p>Unsere Moderator:innen übernehmen die Prozessverantwortung: Sie stellen sicher, dass alle Stimmen gehört werden, Diskussionen fokussiert bleiben und das Team innerhalb der Zeit zu konkreten, reflektierten Ergebnissen kommt.</p>
+          <ul class="content-list mt-16">
+            <li>5 bis 50 Teilnehmende, ein oder mehrere Teams</li>
+            <li>Vor Ort oder als interaktives Remote-Format</li>
+            <li>Inhaltlich angepasst an Ihren Kontext und Ihre Branche</li>
+            <li>Strukturierte Ergebnisdokumentation inklusive</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WORKSHOP BUCHEN - YELLOW SECTION -->
-  <section class="section-yellow">
+  <!-- FORMATE -->
+  <section>
+    <div class="container">
+      <h2 class="mb-8 text-center">Workshop-Formate</h2>
+      <p class="text-center mb-40" style="font-size:17px; color:var(--dark); max-width:560px; margin-left:auto; margin-right:auto;">Drei Formate — von der kompakten Einführung bis zum ganztägigen Intensivworkshop.</p>
+      <div class="three-col">
+
+        <div class="format-card">
+          <div class="format-accent" style="background:#0E7490;"></div>
+          <div class="format-body">
+            <span class="format-duration">3 Stunden</span>
+            <h3>Kompakt</h3>
+            <p class="format-group">5–15 Teilnehmende &middot; 1 Team</p>
+            <ul class="format-list">
+              <li>Einstieg in die KI-Toolkit-Methode</li>
+              <li>Fokus auf Szenario, Persona &amp; KI-Lernziel</li>
+              <li>1 ausgearbeitetes KI-Konzept</li>
+              <li>Kurzer Pitch zum Abschluss</li>
+            </ul>
+            <p class="format-ideal">Ideal für: Erstberührung mit der Methode, Strategie-Kick-off, Führungsteams</p>
+          </div>
+        </div>
+
+        <div class="format-card">
+          <div class="format-accent" style="background:#fec144;"></div>
+          <div class="format-body">
+            <span class="format-duration">4 Stunden</span>
+            <h3>Standard</h3>
+            <p class="format-group">10–30 Teilnehmende &middot; 2–4 Teams</p>
+            <ul class="format-list">
+              <li>Alle 7 Phasen des KI-Toolkits</li>
+              <li>Parallelarbeit in mehreren Teams</li>
+              <li>2–4 ausgearbeitete Konzepte</li>
+              <li>Präsentationsrunde &amp; Gruppenreflexion</li>
+            </ul>
+            <p class="format-ideal">Ideal für: Projektteams, Abteilungen, gemischte Gruppen mit verschiedenen Perspektiven</p>
+          </div>
+        </div>
+
+        <div class="format-card">
+          <div class="format-accent" style="background:#1A56A4;"></div>
+          <div class="format-body">
+            <span class="format-duration">6 Stunden</span>
+            <h3>Intensiv</h3>
+            <p class="format-group">bis 50 Teilnehmende &middot; 4–8 Teams</p>
+            <ul class="format-list">
+              <li>Alle 7 Phasen + vertiefte Storyboard-Arbeit</li>
+              <li>Angepasste Szenarien &amp; Personas</li>
+              <li>Plenumspräsentation mit Feedback-Runde</li>
+              <li>Schriftliche Dokumentation aller Konzepte</li>
+            </ul>
+            <p class="format-ideal">Ideal für: Konferenzen, Innovationstage, bereichsübergreifende Projekte</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
+  <section>
+    <div class="container">
+      <h2 class="text-center">Ablauf der Zusammenarbeit</h2>
+      <div class="process-row">
+
+        <div class="process-step">
+          <div class="ps-num">1</div>
+          <div class="ps-title">Erstgespräch</div>
+          <p class="ps-desc">Kostenlos &amp; unverbindlich. Wir besprechen Ihre Ziele, Zielgruppe und den gewünschten Fokus.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="ps-num">2</div>
+          <div class="ps-title">Konzeption</div>
+          <p class="ps-desc">Wir passen Szenarien, Personas und Karten an Ihre Organisation und Fragestellung an.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="ps-num">3</div>
+          <div class="ps-title">Durchführung</div>
+          <p class="ps-desc">Professionelle Moderation — vor Ort oder remote. Ihr Team fokussiert sich auf die Inhalte.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="ps-num">4</div>
+          <div class="ps-title">Dokumentation</div>
+          <p class="ps-desc">Sie erhalten eine strukturierte Ergebnisdokumentation als direkte Basis für nächste Schritte.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ERGEBNISSE -->
+  <section>
+    <div class="container">
+      <h2 class="mb-8 text-center">Was nehmen Sie mit?</h2>
+      <p class="text-center mb-32" style="font-size:17px; color:var(--dark); max-width:520px; margin-left:auto; margin-right:auto;">Konkrete, weiterverwendbare Ergebnisse — kein Brainstorming ohne Ausgang.</p>
+      <div class="three-col">
+
+        <div class="outcome-card">
+          <div class="outcome-bar" style="background:#1A56A4;"></div>
+          <div class="outcome-body">
+            <h3>Ausgearbeitete KI-Konzepte</h3>
+            <p>Jedes Team entwickelt ein vollständiges Konzept: von der Problemdefinition über die KI-Logik bis zur Nutzerinteraktion und ethischen Reflexion.</p>
+          </div>
+        </div>
+
+        <div class="outcome-card">
+          <div class="outcome-bar" style="background:#6B21A8;"></div>
+          <div class="outcome-body">
+            <h3>Storyboards &amp; Pitches</h3>
+            <p>Visualisierte Nutzererfahrungen und kompakte 3-Minuten-Pitches — direkt nutzbar für interne Entscheidungen oder externe Kommunikation.</p>
+          </div>
+        </div>
+
+        <div class="outcome-card">
+          <div class="outcome-bar" style="background:#374151;"></div>
+          <div class="outcome-body">
+            <h3>Schriftliche Dokumentation</h3>
+            <p>Alle Ergebnisse strukturiert zusammengefasst — als Grundlage für technische Konzeption, Förderanträge oder strategische Projektplanung.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section>
+    <div class="container">
+      <div class="ws-quote">
+        <blockquote>„Erst als wir die Datenschutzbeauftragte mit der Persona-Karte ‚Rentnerin, kein Smartphone' konfrontiert haben, wurde uns klar: Ein Chatbot, der nur per App erreichbar ist, löst unser Problem nicht."</blockquote>
+        <cite>— Teilnehmerin aus dem Bürgeramt, Workshop Kreisstadt Nordtal</cite>
+      </div>
+      <p class="ws-quote-link"><a href="praxisbeispiele-verwaltung.html">Zur vollständigen Fallstudie →</a></p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta-ws section-yellow">
     <div class="container">
       <div class="section-box">
-        <h2 class="mb-16">Workshop buchen</h2>
-        <h3 class="mb-16" style="font-weight:400;">Haben Sie Interesse an einem maßgeschneiderten KI-Toolkit Workshop?</h3>
-        <p class="mb-16">Lassen Sie uns besprechen, wie das KI-Toolkit in Ihrer Organisation den größten Nutzen stiften kann.</p>
-        <p class="mb-32">Wir beraten Sie unverbindlich zu den Möglichkeiten und erstellen ein individuelles Angebot.</p>
+        <h2 class="mb-16">Workshop anfragen</h2>
+        <p class="mb-32">Wir beraten Sie unverbindlich zu den Formaten und erstellen ein individuelles Angebot für Ihre Organisation.</p>
         <div class="btn-row">
           <a href="https://nozilla.de/kontakt/termin-anfragen/" target="_blank" rel="noopener" class="btn btn-black">Kostenloses Vorgespräch buchen ↗</a>
-          <a href="mailto:contact@nozilla.de" class="btn btn-black btn-outline" style="background:transparent;color:var(--black)!important;border-color:var(--black);">Anfrage per E-Mail senden ✉</a>
+          <a href="mailto:contact@nozilla.de" class="btn btn-outline">Anfrage per E-Mail</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KI-TOOLKIT AUSPROBIEREN -->
+  <!-- AUSPROBIEREN -->
   <section class="section-ausprobieren">
     <div class="container">
-      <h2 class="mb-32 text-center">KI-Toolkit ausprobieren</h2>
+      <h2 class="mb-32 text-center">Lieber erst selbst ausprobieren?</h2>
       <div class="ausprobieren-grid">
         <div>
           <img src="svg/Tisch.svg" alt="KI-Toolkit Tisch mit Karten" loading="lazy">
         </div>
         <div>
-          <p>Entdecken Sie, wie Sie mit dem KI-Toolkit partizipativ und kreativ neue Ideen entwickeln können.</p>
-          <p>Sie können das Toolkit als Online-Version direkt im Browser nutzen oder alle Materialien für Ihren eigenen Workshop herunterladen.</p>
+          <p>Das KI-Toolkit steht kostenlos zum Download bereit — für alle, die einen eigenen Workshop moderieren möchten. Die Anleitung führt Schritt für Schritt durch alle 7 Phasen.</p>
+          <p>Für einen ersten digitalen Eindruck gibt es auch die Online-Version direkt im Browser.</p>
           <div class="btn-row mt-24">
-            <a href="download.html" class="btn">herunterladen</a>
-            <a href="ki-toolkit-online.html" class="btn btn-outline">online testen</a>
+            <a href="download.html" class="btn">Materialien herunterladen</a>
+            <a href="ki-toolkit-online.html" class="btn btn-outline">Online testen</a>
           </div>
         </div>
       </div>
@@ -144,7 +400,7 @@
         <a href="kontakt.html">Kontakt</a>
         <a href="ki-toolkit-online.html">Online-Tool</a>
         <a href="../kartengenerator/">Kartengenerator</a>
-          <a href="praxisbeispiele.html">Praxisbeispiele</a>
+        <a href="praxisbeispiele.html">Praxisbeispiele</a>
       </nav>
       <nav class="footer-nav" aria-label="Footer Navigation 2">
         <a href="faq.html">FAQ</a>
@@ -152,7 +408,9 @@
         <a href="datenschutz.html">Datenschutz</a>
       </nav>
       <div class="footer-badge">
-        <a href="#"><img src="svg/ethical-design-badge-tiny.svg" alt="We practice Ethical Design" width="62" height="48" loading="lazy"></a>
+        <a href="#">
+          <img src="svg/ethical-design-badge-tiny.svg" alt="We practice Ethical Design" width="62" height="48" loading="lazy">
+        </a>
         <a href="#">We practice Ethical Design.</a>
       </div>
     </div>
@@ -166,6 +424,7 @@
     </div>
   </div>
 </footer>
+
 <script>
   (function () {
     const toggle = document.getElementById('navToggle');
@@ -177,14 +436,14 @@
     });
   })();
 
-    // --- Auto-active nav ---
-    (function () {
-      var page = window.location.pathname.split('/').pop() || 'index.html';
-      document.querySelectorAll('.nav-links a').forEach(function (a) {
-        if (a.getAttribute('href') === page) a.classList.add('active');
-      });
-    })();
-  </script>
+  // --- Auto-active nav ---
+  (function () {
+    var page = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      if (a.getAttribute('href') === page) a.classList.add('active');
+    });
+  })();
+</script>
 
 </body>
 </html>
