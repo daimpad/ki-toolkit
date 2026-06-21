@@ -298,6 +298,8 @@
             <button class="konfig-tab" role="tab" data-ctx="zivilgesellschaft" aria-selected="false">Zivilgesellschaft</button>
             <button class="konfig-tab" role="tab" data-ctx="aeltere" aria-selected="false">Ältere Menschen</button>
             <button class="konfig-tab" role="tab" data-ctx="erwachsenenbildung" aria-selected="false">Erwachsenenbildung</button>
+            <button class="konfig-tab" role="tab" data-ctx="gesundheit" aria-selected="false">Gesundheitswesen</button>
+            <button class="konfig-tab" role="tab" data-ctx="soziale-arbeit" aria-selected="false">Soziale Arbeit</button>
           </div>
 
           <div class="konfig-result" id="konfig-result" role="tabpanel" aria-live="polite">
@@ -451,6 +453,18 @@
           cards: ['ki-lernziel', 'szenario', 'persona', 'ethik'],
           desc: 'In der Erwachsenenbildung geht es um praxisnahe Lernszenarien, Selbstbestimmung und den Ausgleich unterschiedlicher Vorkenntnisse. Szenario- und KI-Lernziel-Karten sind besonders wertvoll.',
           tip: 'Kombinieren Sie KI-Lernziel- mit Persona-Karten – so entsteht ein differenziertes Bild, welche Kompetenzen für unterschiedliche Teilnehmergruppen relevant sind.'
+        },
+        gesundheit: {
+          label: 'Gesundheitswesen',
+          cards: ['persona', 'datenquelle', 'ethik', 'interaktion-digital'],
+          desc: 'Im Gesundheitswesen sind Datenschutz, Patientensicherheit und klinische Verantwortung zentral. Persona-Karten helfen, Patient:innen und medizinisches Personal als gleichwertige Nutzende zu berücksichtigen – mit sehr unterschiedlichen Anforderungen.',
+          tip: 'Klären Sie frühzeitig: Wer trifft am Ende die Entscheidung – Mensch oder KI? Im Gesundheitswesen ist menschliche Letztverantwortung in den meisten Szenarien nicht verhandelbar – und das muss im Konzept sichtbar sein.'
+        },
+        'soziale-arbeit': {
+          label: 'Soziale Arbeit',
+          cards: ['persona', 'szenario', 'ethik', 'interaktion-physisch'],
+          desc: 'In der Sozialen Arbeit sind vulnerable Zielgruppen, Vertrauen und die Vermeidung algorithmischer Diskriminierung zentral. Persona- und Ethik-Karten helfen, reale Lebensrealitäten und systemische Risiken sichtbar zu machen.',
+          tip: 'Achten Sie bei Persona-Karten explizit auf Mehrsprachigkeit, prekäre Lebenssituationen oder fehlenden Internetzugang – das schärft den Blick für reale Zugangsbarrieren, die bei abstrakten Zielgruppen leicht übersehen werden.'
         }
       };
 
