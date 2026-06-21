@@ -190,6 +190,20 @@
     .nav-links a:hover { color: var(--yellow) !important; }
     .nav-links a.active { color: var(--yellow) !important; }
 
+    /* SKIP LINK */
+    .skip-link {
+      position: absolute; top: -100%; left: 16px; z-index: 9999;
+      background: var(--yellow); color: var(--black) !important;
+      font-weight: 700; padding: 10px 20px;
+      border-radius: 0 0 10px 10px; border: 2px solid var(--black);
+      text-decoration: none !important; transition: top .15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* FOCUS */
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; border-radius: 4px; }
+    .btn:focus-visible, button:focus-visible { outline: 3px solid var(--black); outline-offset: 3px; }
+
     .nav-toggle {
       display: none;
       flex-direction: column;
@@ -651,6 +665,7 @@
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
   <!-- NAVIGATION -->
   <header class="site-header">
@@ -673,7 +688,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
 
     <!-- HERO: Animated Card Fan -->
     <section class="hero">
