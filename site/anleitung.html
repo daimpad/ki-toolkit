@@ -205,6 +205,51 @@
     .pitch-template { color: var(--dark); background: var(--cream); }
     .pitch-template em { color: var(--black); }
 
+    /* PHASE OVERVIEW NAV */
+    .phase-nav { background: var(--white); border-bottom: 2px solid rgba(2,0,0,.08); padding: 14px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .phase-nav-inner { display: flex; align-items: center; gap: 2px; min-width: max-content; }
+    .pn-step {
+      display: flex; align-items: center; gap: 8px;
+      padding: 7px 14px; border-radius: 50px;
+      text-decoration: none; color: var(--black);
+      font-size: 14px; font-weight: 600;
+      transition: background .15s; white-space: nowrap;
+    }
+    .pn-step:hover { background: var(--cream); text-decoration: none; }
+    .pn-step.pn-active { background: var(--black); color: var(--white) !important; }
+    .pn-num {
+      font-family: 'Aleo', serif; font-size: 16px; font-weight: 700;
+      color: var(--yellow); -webkit-text-stroke: 1px var(--black); line-height: 1; flex-shrink: 0;
+    }
+    .pn-step.pn-active .pn-num { -webkit-text-stroke: 1px rgba(255,255,255,.5); }
+    .pn-arrow { color: #ddd; font-size: 13px; flex-shrink: 0; padding: 0 2px; }
+    .pn-time { font-size: 11px; font-weight: 400; color: #aaa; }
+    .pn-step.pn-active .pn-time { color: rgba(255,255,255,.6); }
+
+    /* PRINT STYLES */
+    @media print {
+      .site-header, .phase-nav, .section-ausprobieren, .site-footer { display: none !important; }
+      .page-hero { padding: 12px 0 8px !important; background: white !important; }
+      .page-hero h1 { font-size: 28px !important; margin-bottom: 4px !important; }
+      .page-hero p { font-size: 14px !important; }
+      section { padding: 6px 0 !important; }
+      .vorbereitung-grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+      .vorbereitung-box { box-shadow: none !important; padding: 14px 18px !important; }
+      .phase-block { box-shadow: none !important; border: 2px solid #bbb !important; margin-bottom: 10px !important; break-inside: avoid; }
+      .phase-header { padding: 8px 16px !important; }
+      .phase-number { font-size: 28px !important; min-width: 40px !important; }
+      .phase-header-text h3 { font-size: 16px !important; }
+      .phase-body { grid-template-columns: 1fr !important; }
+      .phase-img { display: none !important; }
+      .phase-content { padding: 10px 16px !important; }
+      .phase-content p { font-size: 13px !important; margin-bottom: 6px !important; }
+      .phase-card-list li { font-size: 13px !important; }
+      .phase-discussion { padding: 6px 16px !important; font-size: 13px !important; }
+      .duration-badge { font-size: 10px !important; padding: 2px 8px !important; }
+      .pitch-template { margin-top: 6px !important; font-size: 12px !important; padding: 10px 14px !important; line-height: 1.5 !important; }
+      h2.mb-32, h2.mb-24 { margin-bottom: 8px !important; }
+    }
+
     @media (max-width: 980px) {
       .ausprobieren-grid { grid-template-columns: 1fr; gap: 24px; }
       .vorbereitung-grid { grid-template-columns: 1fr; }
@@ -253,6 +298,27 @@
       </div>
     </section>
 
+    <!-- PHASE NAV -->
+    <nav class="phase-nav" aria-label="Phasen-Navigation">
+      <div class="container">
+        <div class="phase-nav-inner">
+          <a href="#phase-1" class="pn-step"><span class="pn-num">1</span> Kontext <span class="pn-time">15 min</span></a>
+          <span class="pn-arrow" aria-hidden="true">›</span>
+          <a href="#phase-2" class="pn-step"><span class="pn-num">2</span> Input <span class="pn-time">10 min</span></a>
+          <span class="pn-arrow" aria-hidden="true">›</span>
+          <a href="#phase-3" class="pn-step"><span class="pn-num">3</span> KI-Fähigkeit <span class="pn-time">10 min</span></a>
+          <span class="pn-arrow" aria-hidden="true">›</span>
+          <a href="#phase-4" class="pn-step"><span class="pn-num">4</span> Interaktion <span class="pn-time">10 min</span></a>
+          <span class="pn-arrow" aria-hidden="true">›</span>
+          <a href="#phase-5" class="pn-step"><span class="pn-num">5</span> Idee skizzieren <span class="pn-time">15 min</span></a>
+          <span class="pn-arrow" aria-hidden="true">›</span>
+          <a href="#phase-6" class="pn-step"><span class="pn-num">6</span> Reflexion <span class="pn-time">20 min</span></a>
+          <span class="pn-arrow" aria-hidden="true">›</span>
+          <a href="#phase-7" class="pn-step"><span class="pn-num">7</span> Pitch <span class="pn-time">10 min</span></a>
+        </div>
+      </div>
+    </nav>
+
     <!-- SECTION 2: VORBEREITUNG -->
     <section>
       <div class="container">
@@ -289,7 +355,7 @@
         <h2 class="mb-32">Ablauf</h2>
 
         <!-- SCHRITT 1 -->
-        <div class="phase-block">
+        <div class="phase-block" id="phase-1">
           <div class="phase-header">
             <div class="phase-number">1</div>
             <div class="phase-header-text">
@@ -318,7 +384,7 @@
         </div>
 
         <!-- SCHRITT 2 -->
-        <div class="phase-block">
+        <div class="phase-block" id="phase-2">
           <div class="phase-header">
             <div class="phase-number">2</div>
             <div class="phase-header-text">
@@ -346,7 +412,7 @@
         </div>
 
         <!-- SCHRITT 3 -->
-        <div class="phase-block">
+        <div class="phase-block" id="phase-3">
           <div class="phase-header">
             <div class="phase-number">3</div>
             <div class="phase-header-text">
@@ -373,7 +439,7 @@
         </div>
 
         <!-- SCHRITT 4 -->
-        <div class="phase-block">
+        <div class="phase-block" id="phase-4">
           <div class="phase-header">
             <div class="phase-number">4</div>
             <div class="phase-header-text">
@@ -401,7 +467,7 @@
         </div>
 
         <!-- SCHRITT 5 -->
-        <div class="phase-block">
+        <div class="phase-block" id="phase-5">
           <div class="phase-header">
             <div class="phase-number">5</div>
             <div class="phase-header-text">
@@ -432,7 +498,7 @@
         </div>
 
         <!-- SCHRITT 6 -->
-        <div class="phase-block">
+        <div class="phase-block" id="phase-6">
           <div class="phase-header">
             <div class="phase-number">6</div>
             <div class="phase-header-text">
@@ -461,7 +527,7 @@
         </div>
 
         <!-- SCHRITT 7 -->
-        <div class="phase-block">
+        <div class="phase-block" id="phase-7">
           <div class="phase-header">
             <div class="phase-number">7</div>
             <div class="phase-header-text">
@@ -565,6 +631,33 @@
         const open = navLinks.classList.toggle('open');
         toggle.setAttribute('aria-expanded', open);
       });
+    })();
+  
+    // --- Auto-active nav ---
+    (function () {
+      var page = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(function (a) {
+        if (a.getAttribute('href') === page) a.classList.add('active');
+      });
+    })();
+
+    // --- Phase scroll-spy ---
+    (function () {
+      var steps = Array.from(document.querySelectorAll('.pn-step'));
+      var phases = steps.map(function (s) {
+        var id = s.getAttribute('href').slice(1);
+        return document.getElementById(id);
+      });
+      function update() {
+        var mid = window.scrollY + window.innerHeight * 0.4;
+        var active = null;
+        phases.forEach(function (ph, i) {
+          if (ph && ph.getBoundingClientRect().top + window.scrollY <= mid) active = i;
+        });
+        steps.forEach(function (s, i) { s.classList.toggle('pn-active', i === active); });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     })();
   </script>
 

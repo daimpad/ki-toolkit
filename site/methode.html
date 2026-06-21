@@ -23,6 +23,14 @@
     /* PAGE-SPECIFIC */
     .ausprobieren-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .ausprobieren-grid img { width: 100%; border-radius: 14px; border: 3px solid var(--black); box-shadow: var(--shadow); }
+
+    /* PRINZIPIEN CARDS */
+    .prinzip-card { background: var(--white); border: 3px solid var(--black); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+    .prinzip-bar { height: 7px; flex-shrink: 0; }
+    .prinzip-body { padding: 22px 24px 26px; flex: 1; }
+    .prinzip-body h3 { font-size: 20px; margin-bottom: 10px; }
+    .prinzip-body p { font-size: 15px; color: var(--dark); margin: 0; line-height: 1.6; }
+    .prinzip-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; color: var(--white); margin-bottom: 10px; }
   </style>
 </head>
 <body>
@@ -54,6 +62,42 @@
     <div class="container">
       <h1>Methode</h1>
       <p>Hintergrund, Konzept und wissenschaftliche Grundlagen des KI-Toolkits</p>
+    </div>
+  </section>
+
+  <!-- GRUNDPRINZIPIEN -->
+  <section>
+    <div class="container">
+      <div class="three-col">
+
+        <div class="prinzip-card">
+          <div class="prinzip-bar" style="background:#1A56A4;"></div>
+          <div class="prinzip-body">
+            <span class="prinzip-tag" style="background:#1A56A4;">Ko-Design</span>
+            <h3>Gemeinsam gestalten</h3>
+            <p>Physische Karten als soziale Objekte schaffen eine gemeinsame Sprache zwischen Laien und Expert:innen. Hands-on-Aktivitäten senken die Einstiegshürde und ermöglichen echte Ko-Kreation.</p>
+          </div>
+        </div>
+
+        <div class="prinzip-card">
+          <div class="prinzip-bar" style="background:#15803D;"></div>
+          <div class="prinzip-body">
+            <span class="prinzip-tag" style="background:#15803D;">Entmystifizierung</span>
+            <h3>KI begreifbar machen</h3>
+            <p>Die „Blackbox KI" wird in verständliche Bausteine zerlegt. Teilnehmer:innen diskutieren konkrete Funktionen und Auswirkungen – nicht abstrakte Algorithmen oder Fachbegriffe.</p>
+          </div>
+        </div>
+
+        <div class="prinzip-card">
+          <div class="prinzip-bar" style="background:#374151;"></div>
+          <div class="prinzip-body">
+            <span class="prinzip-tag" style="background:#374151;">Value-Sensitive Design</span>
+            <h3>Werte von Anfang an</h3>
+            <p>Ethische Reflexion ist kein nachgelagerter Schritt, sondern gleichwertiger Designparameter. Fairness, Transparenz und Datenschutz entstehen im Konzept – nicht erst in der Umsetzung.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -272,7 +316,15 @@
       toggle.setAttribute('aria-expanded', open);
     });
   })();
-</script>
+
+    // --- Auto-active nav ---
+    (function () {
+      var page = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(function (a) {
+        if (a.getAttribute('href') === page) a.classList.add('active');
+      });
+    })();
+  </script>
 
 </body>
 </html>
