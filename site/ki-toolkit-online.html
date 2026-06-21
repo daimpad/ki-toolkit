@@ -68,7 +68,129 @@
     /* BTN-LG */
     .btn-lg { font-size: 20px; padding: 18px 44px; }
 
-    /* RESPONSIVE */
+    /* === WORKSHOP-PROTOKOLL === */
+    .section-protokoll { background: var(--cream); }
+    .section-protokoll > .container > .section-intro {
+      max-width: 640px; font-size: 17px; color: var(--dark); margin-bottom: 32px;
+    }
+
+    .proto-panel {
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .proto-team {
+      display: grid;
+      grid-template-columns: 1fr 160px 1fr;
+      border-bottom: 2px solid rgba(2,0,0,.1);
+    }
+    .proto-team-field {
+      padding: 14px 20px;
+      border-right: 2px solid rgba(2,0,0,.1);
+    }
+    .proto-team-field:last-child { border-right: none; }
+    .proto-field-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 5px;
+    }
+
+    .proto-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2px solid rgba(2,0,0,.1);
+    }
+    .proto-2col:last-of-type { border-bottom: none; }
+
+    .proto-phase {
+      padding: 20px 24px;
+      border-right: 2px solid rgba(2,0,0,.1);
+    }
+    .proto-phase:last-child { border-right: none; }
+    .proto-phase-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .proto-phase-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .proto-storyboard {
+      border-bottom: 2px solid rgba(2,0,0,.1);
+      padding: 20px 24px;
+    }
+    .proto-storyboard .proto-phase-label { margin-bottom: 14px; }
+    .sb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .sb-step { border: 2px solid rgba(2,0,0,.12); border-radius: 8px; overflow: hidden; }
+    .sb-step-num {
+      background: var(--black); color: var(--white);
+      font-size: 11px; font-weight: 700; letter-spacing: .05em;
+      padding: 4px 10px;
+    }
+
+    .proto-input {
+      width: 100%; box-sizing: border-box;
+      border: none; outline: none;
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 15px; color: var(--black);
+      background: transparent; resize: none;
+    }
+    input.proto-input { height: 26px; }
+    textarea.proto-input { min-height: 80px; line-height: 1.55; }
+    .sb-input {
+      width: 100%; box-sizing: border-box;
+      border: none; outline: none;
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 13px; color: var(--black);
+      background: transparent; resize: none;
+      padding: 8px 10px; min-height: 70px; line-height: 1.55;
+    }
+    .proto-input::placeholder, .sb-input::placeholder { color: #bbb; }
+
+    .proto-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+    /* Print */
+    .proto-print-title { display: none; }
+    @media print {
+      .site-header, .section-hero, .section-hinweis,
+      .section-kurzanleitung, .section-download, .site-footer,
+      .proto-actions, .section-intro { display: none !important; }
+      .section-protokoll { padding: 0 !important; background: white !important; }
+      .section-protokoll h2 { display: none !important; }
+      .proto-panel { box-shadow: none !important; border-color: #ccc !important; border-radius: 8px !important; }
+      .proto-print-title {
+        display: block; text-align: center;
+        font-family: 'Aleo', serif; font-size: 13px; font-weight: 700;
+        letter-spacing: .1em; text-transform: uppercase;
+        padding: 14px 0 10px; border-bottom: 2px solid #000;
+        margin-bottom: 0;
+      }
+      textarea.proto-input, input.proto-input, textarea.sb-input {
+        background: transparent !important; resize: none !important;
+      }
+      .sb-step, .proto-phase { break-inside: avoid; }
+    }
+
+    /* === RESPONSIVE === */
     @media (max-width: 980px) {
       .section-hero h1 { font-size: 44px; }
       .section-hero h2 { font-size: 22px; }
@@ -78,6 +200,13 @@
       .section-hero h1 { font-size: 36px; }
       .phase-row { grid-template-columns: 1fr; gap: 8px; }
       .hinweis-box { padding: 20px 20px; }
+      .proto-team { grid-template-columns: 1fr; }
+      .proto-team-field { border-right: none; border-bottom: 2px solid rgba(2,0,0,.1); }
+      .proto-team-field:last-child { border-bottom: none; }
+      .proto-2col { grid-template-columns: 1fr; }
+      .proto-phase { border-right: none; border-bottom: 2px solid rgba(2,0,0,.1); }
+      .proto-phase:last-child { border-bottom: none; }
+      .sb-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -210,7 +339,127 @@
       </div>
     </section>
 
-    <!-- SECTION 4: DOWNLOAD ALTERNATIVE -->
+    <!-- SECTION 4: WORKSHOP-PROTOKOLL -->
+    <section class="section-protokoll">
+      <div class="container">
+        <h2 class="mb-16">Workshop-Protokoll</h2>
+        <p class="section-intro">Halten Sie die Ergebnisse Ihres Workshops fest – alle Eingaben werden automatisch gespeichert. Am Ende exportieren Sie das Protokoll als druckfähiges PDF.</p>
+
+        <div class="proto-panel">
+          <div class="proto-print-title">KI-Toolkit – Workshop-Protokoll</div>
+
+          <!-- Team-Info -->
+          <div class="proto-team">
+            <div class="proto-team-field">
+              <label class="proto-field-label" for="p-team">Team / Projekt</label>
+              <input id="p-team" class="proto-input" type="text" placeholder="Team-Name eingeben …" data-proto="team">
+            </div>
+            <div class="proto-team-field">
+              <label class="proto-field-label" for="p-date">Datum</label>
+              <input id="p-date" class="proto-input" type="date" data-proto="date">
+            </div>
+            <div class="proto-team-field">
+              <label class="proto-field-label" for="p-mod">Moderation</label>
+              <input id="p-mod" class="proto-input" type="text" placeholder="Name Moderation …" data-proto="mod">
+            </div>
+          </div>
+
+          <!-- Szenario & Persona / Daten & KI-Lernziel -->
+          <div class="proto-2col">
+            <div class="proto-phase">
+              <div class="proto-phase-label">
+                <span class="proto-phase-dot" style="background:#1A56A4;"></span>
+                Szenario &amp; Persona
+              </div>
+              <label class="proto-field-label" for="p-szenario">Gewähltes Szenario</label>
+              <input id="p-szenario" class="proto-input" type="text" placeholder="z.B. Bürgeranfragen automatisch beantworten …" data-proto="szenario">
+              <label class="proto-field-label mt-16" for="p-persona" style="margin-top:14px;">Persona &amp; Problem</label>
+              <textarea id="p-persona" class="proto-input" placeholder="Wer ist die Zielgruppe? Welches Problem oder welcher ungedeckte Bedarf wurde identifiziert?" data-proto="persona"></textarea>
+            </div>
+            <div class="proto-phase">
+              <div class="proto-phase-label">
+                <span class="proto-phase-dot" style="background:#0E7490;"></span>
+                Daten &amp; KI-Lernziel
+              </div>
+              <label class="proto-field-label" for="p-daten">Datenquellen</label>
+              <input id="p-daten" class="proto-input" type="text" placeholder="z.B. CRM-Datenbank, Kamera-Feed, Formulardaten …" data-proto="daten">
+              <label class="proto-field-label" for="p-lernziel" style="margin-top:14px;">KI-Lernziel</label>
+              <textarea id="p-lernziel" class="proto-input" placeholder="Was soll die KI leisten? Klassifikation, Prognose oder Generierung? Konkret formulieren." data-proto="lernziel"></textarea>
+            </div>
+          </div>
+
+          <!-- Interaktion / Ethik-Reflexion -->
+          <div class="proto-2col">
+            <div class="proto-phase">
+              <div class="proto-phase-label">
+                <span class="proto-phase-dot" style="background:#C2410C;"></span>
+                Interaktion
+              </div>
+              <textarea id="p-interaktion" class="proto-input" placeholder="Wie interagiert die Persona mit dem System? Digital (Dashboard, Chatbot, App) oder physisch (Kamera, Sensor, LED-Signal)?" data-proto="interaktion"></textarea>
+            </div>
+            <div class="proto-phase">
+              <div class="proto-phase-label">
+                <span class="proto-phase-dot" style="background:#374151;"></span>
+                Ethik-Reflexion
+              </div>
+              <textarea id="p-ethik" class="proto-input" placeholder="Wo könnte die Idee Schaden anrichten? Wessen Daten werden genutzt – und ist das fair? Ist die Entscheidung der KI nachvollziehbar?" data-proto="ethik"></textarea>
+            </div>
+          </div>
+
+          <!-- Storyboard -->
+          <div class="proto-storyboard">
+            <div class="proto-phase-label">
+              <span class="proto-phase-dot" style="background:#fec144;"></span>
+              Storyboard – Nutzungserfahrung in Schritten
+            </div>
+            <div class="sb-grid">
+              <div class="sb-step">
+                <div class="sb-step-num">Schritt 1</div>
+                <textarea class="sb-input" placeholder="Was passiert zuerst?" data-proto="sb1"></textarea>
+              </div>
+              <div class="sb-step">
+                <div class="sb-step-num">Schritt 2</div>
+                <textarea class="sb-input" placeholder="Wie reagiert das System?" data-proto="sb2"></textarea>
+              </div>
+              <div class="sb-step">
+                <div class="sb-step-num">Schritt 3</div>
+                <textarea class="sb-input" placeholder="Was sieht/hört die Persona?" data-proto="sb3"></textarea>
+              </div>
+              <div class="sb-step">
+                <div class="sb-step-num">Schritt 4</div>
+                <textarea class="sb-input" placeholder="Welche Entscheidung trifft die KI?" data-proto="sb4"></textarea>
+              </div>
+              <div class="sb-step">
+                <div class="sb-step-num">Schritt 5</div>
+                <textarea class="sb-input" placeholder="Wie reagiert die Persona darauf?" data-proto="sb5"></textarea>
+              </div>
+              <div class="sb-step">
+                <div class="sb-step-num">Schritt 6</div>
+                <textarea class="sb-input" placeholder="Was ist das Ergebnis?" data-proto="sb6"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pitch -->
+          <div class="proto-2col" style="border-bottom:none;">
+            <div class="proto-phase" style="border-right:none; grid-column:1/-1;">
+              <div class="proto-phase-label">
+                <span class="proto-phase-dot" style="background:#6B21A8;"></span>
+                Pitch – Die KI-Idee in 3 Sätzen
+              </div>
+              <textarea id="p-pitch" class="proto-input" style="min-height:64px;" placeholder="Problem: … / KI-Kern: … / Wichtigste ethische Erkenntnis: …" data-proto="pitch"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="proto-actions">
+          <button class="btn" id="proto-export-btn">Protokoll als PDF exportieren</button>
+          <button class="btn btn-outline" id="proto-reset-btn">Zurücksetzen</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: DOWNLOAD ALTERNATIVE -->
     <section class="section-download">
       <div class="container">
         <h2 class="mb-16">Lieber offline arbeiten?</h2>
@@ -266,10 +515,43 @@
       const toggle   = document.getElementById('navToggle');
       const navLinks = document.getElementById('navLinks');
       if (!toggle || !navLinks) return;
-
       toggle.addEventListener('click', function () {
         const open = navLinks.classList.toggle('open');
         toggle.setAttribute('aria-expanded', open);
+      });
+    })();
+
+    // --- Workshop-Protokoll ---
+    (function () {
+      var STORE_KEY = 'ki-protokoll-v1';
+      var fields = document.querySelectorAll('[data-proto]');
+
+      function save() {
+        var data = {};
+        fields.forEach(function (el) { data[el.dataset.proto] = el.value; });
+        try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch (e) {}
+      }
+
+      function load() {
+        try {
+          var data = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+          fields.forEach(function (el) {
+            if (data[el.dataset.proto] !== undefined) el.value = data[el.dataset.proto];
+          });
+        } catch (e) {}
+      }
+
+      fields.forEach(function (el) { el.addEventListener('input', save); });
+      load();
+
+      var exportBtn = document.getElementById('proto-export-btn');
+      if (exportBtn) exportBtn.addEventListener('click', function () { window.print(); });
+
+      var resetBtn = document.getElementById('proto-reset-btn');
+      if (resetBtn) resetBtn.addEventListener('click', function () {
+        if (!confirm('Protokoll wirklich zurücksetzen? Alle Eingaben werden gelöscht.')) return;
+        try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+        fields.forEach(function (el) { el.value = ''; });
       });
     })();
   </script>
