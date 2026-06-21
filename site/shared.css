@@ -80,6 +80,7 @@ section { padding: 48px 0; }
 
 .btn-black { background-color: var(--black); color: var(--white) !important; border-color: var(--black); }
 .btn-black:hover { background-color: var(--dark); border-color: var(--dark); }
+.btn-sm { padding: 8px 18px; font-size: 14px; }
 
 .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
 .btn-center { display: block; width: fit-content; margin: 0 auto; }
@@ -195,6 +196,34 @@ main > section:nth-child(even) { background: var(--white); }
   section { padding: 32px 0; }
   .footer-grid { grid-template-columns: 1fr; }
 }
+/* SKIP LINK */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  background: var(--yellow);
+  color: var(--black) !important;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 0 0 10px 10px;
+  border: 2px solid var(--black);
+  text-decoration: none !important;
+  transition: top .15s;
+}
+.skip-link:focus { top: 0; }
+
+/* FOCUS */
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.btn:focus-visible, button:focus-visible {
+  outline: 3px solid var(--black);
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
