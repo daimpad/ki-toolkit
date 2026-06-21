@@ -87,19 +87,77 @@
       text-align: center;
     }
 
-    .dl-tile-wip .dl-tile-img img {
-      filter: grayscale(100%) opacity(0.5);
+    /* KONFIGURATOR */
+    .konfig-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
     }
-    .dl-tile-wip .btn {
-      background: #cccccc !important;
-      border-color: #cccccc !important;
-      color: #666666 !important;
-      pointer-events: none;
-      cursor: not-allowed;
+    .konfig-tab {
+      padding: 9px 18px;
+      border-radius: 50px;
+      border: 2px solid var(--black);
+      background: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Albert Sans', sans-serif;
+      transition: background .15s, color .15s;
     }
-    .dl-tile-wip h3 {
-      color: #888;
+    .konfig-tab:hover { background: var(--cream); }
+    .konfig-tab.active {
+      background: var(--black);
+      color: var(--white);
     }
+
+    .konfig-result {
+      display: none;
+      background: var(--cream);
+      border: 2px solid rgba(2,0,0,.12);
+      border-radius: 14px;
+      padding: 28px 32px;
+      animation: fadeUp .2s ease;
+    }
+    .konfig-result.visible { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .konfig-result h4 { font-size: 20px; margin-bottom: 16px; }
+
+    .konfig-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .konfig-card-pill {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .konfig-desc { font-size: 15px; color: var(--dark); margin-bottom: 16px; line-height: 1.6; }
+
+    .konfig-tip {
+      background: var(--white);
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--dark);
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+    .konfig-tip strong { font-weight: 700; }
+
+    .konfig-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
     .section-divider {
       border: none;
@@ -230,57 +288,27 @@
 
           <hr class="section-divider">
 
-          <h3 class="mb-24">Spezifische Kartensets <span style="font-weight:400; color:#888;">(in Arbeit)</span></h3>
-          <div class="three-col">
+          <h3 class="mb-8">Kartenset-Konfigurator</h3>
+          <p class="mb-24" style="font-size:15px; color:var(--dark);">Wählen Sie Ihren Kontext – wir empfehlen die passenden Kartentypen für Ihren Workshop.</p>
 
-            <div class="dl-tile dl-tile-wip">
-              <h3>Öffentliche Verwaltung</h3>
-              <div class="dl-tile-img">
-                <img src="pics/karten-vorne.png" alt="Kartenset Öffentliche Verwaltung" loading="lazy">
-              </div>
-              <span class="btn" aria-disabled="true">In Bearbeitung</span>
+          <div class="konfig-tabs" role="tablist" aria-label="Kontext auswählen">
+            <button class="konfig-tab" role="tab" data-ctx="verwaltung" aria-selected="false">Öffentliche Verwaltung</button>
+            <button class="konfig-tab" role="tab" data-ctx="schule" aria-selected="false">Schule</button>
+            <button class="konfig-tab" role="tab" data-ctx="unternehmen" aria-selected="false">Unternehmen</button>
+            <button class="konfig-tab" role="tab" data-ctx="zivilgesellschaft" aria-selected="false">Zivilgesellschaft</button>
+            <button class="konfig-tab" role="tab" data-ctx="aeltere" aria-selected="false">Ältere Menschen</button>
+            <button class="konfig-tab" role="tab" data-ctx="erwachsenenbildung" aria-selected="false">Erwachsenenbildung</button>
+          </div>
+
+          <div class="konfig-result" id="konfig-result" role="tabpanel" aria-live="polite">
+            <h4 id="konfig-title"></h4>
+            <div class="konfig-cards" id="konfig-cards"></div>
+            <p class="konfig-desc" id="konfig-desc"></p>
+            <div class="konfig-tip"><strong>Tipp:</strong> <span id="konfig-tip"></span></div>
+            <div class="konfig-actions">
+              <a href="pdf/KI-Toolkit.de_Karten-Inhalte.pdf" class="btn" download>Alle Karten herunterladen</a>
+              <a href="../kartengenerator/" class="btn btn-outline">Eigene Karten gestalten</a>
             </div>
-
-            <div class="dl-tile dl-tile-wip">
-              <h3>Zivilgesellschaft</h3>
-              <div class="dl-tile-img">
-                <img src="pics/karten-vorne.png" alt="Kartenset Zivilgesellschaft" loading="lazy">
-              </div>
-              <span class="btn" aria-disabled="true">In Bearbeitung</span>
-            </div>
-
-            <div class="dl-tile dl-tile-wip">
-              <h3>Unternehmen</h3>
-              <div class="dl-tile-img">
-                <img src="pics/karten-vorne.png" alt="Kartenset Unternehmen" loading="lazy">
-              </div>
-              <span class="btn" aria-disabled="true">In Bearbeitung</span>
-            </div>
-
-            <div class="dl-tile dl-tile-wip">
-              <h3>Ältere Menschen</h3>
-              <div class="dl-tile-img">
-                <img src="pics/karten-vorne.png" alt="Kartenset Ältere Menschen" loading="lazy">
-              </div>
-              <span class="btn" aria-disabled="true">In Bearbeitung</span>
-            </div>
-
-            <div class="dl-tile dl-tile-wip">
-              <h3>Schule</h3>
-              <div class="dl-tile-img">
-                <img src="pics/karten-vorne.png" alt="Kartenset Schule" loading="lazy">
-              </div>
-              <span class="btn" aria-disabled="true">In Bearbeitung</span>
-            </div>
-
-            <div class="dl-tile dl-tile-wip">
-              <h3>Erwachsenenbildung</h3>
-              <div class="dl-tile-img">
-                <img src="pics/karten-vorne.png" alt="Kartenset Erwachsenenbildung" loading="lazy">
-              </div>
-              <span class="btn" aria-disabled="true">In Bearbeitung</span>
-            </div>
-
           </div>
         </div>
       </div>
@@ -340,6 +368,7 @@
           <a href="kontakt.html">Kontakt</a>
           <a href="ki-toolkit-online.html">Online-Tool</a>
           <a href="../kartengenerator/">Kartengenerator</a>
+          <a href="praxisbeispiele.html">Praxisbeispiele</a>
         </nav>
         <nav class="footer-nav" aria-label="Footer Navigation 2">
           <a href="faq.html">FAQ</a>
@@ -372,6 +401,91 @@
       toggle.addEventListener('click', function () {
         const open = navLinks.classList.toggle('open');
         toggle.setAttribute('aria-expanded', open);
+      });
+    })();
+
+    (function () {
+      var CARD_TYPES = {
+        szenario:              { label: 'Szenario',            color: '#1A56A4' },
+        persona:               { label: 'Persona',             color: '#6B21A8' },
+        datenquelle:           { label: 'Datenquelle',         color: '#15803D' },
+        'ki-lernziel':         { label: 'KI-Lernziel',        color: '#0E7490' },
+        'interaktion-digital': { label: 'Interaktion Digital', color: '#C2410C' },
+        'interaktion-physisch':{ label: 'Interaktion Physisch',color: '#B91C1C' },
+        ethik:                 { label: 'Ethik-Reflexion',     color: '#374151' }
+      };
+
+      var CONTEXTS = {
+        verwaltung: {
+          label: 'Öffentliche Verwaltung',
+          cards: ['szenario', 'persona', 'datenquelle', 'ethik'],
+          desc: 'Für Behörden und Ämter helfen diese Karten, Bürger:innen-Perspektiven einzubeziehen, Datenschutzfragen früh zu klären und realistische Einsatzszenarien – von internen Workflows bis zu digitalen Bürgerservices – zu entwickeln.',
+          tip: 'Beginnen Sie mit 2–3 Szenario-Karten, um verschiedene Einsatzmöglichkeiten zu erkunden. Laden Sie die Datenschutzbeauftragte früh ein – mit Persona-Karten lassen sich konkrete Zielgruppen und ihre Bedürfnisse schnell sichtbar machen.'
+        },
+        schule: {
+          label: 'Schule',
+          cards: ['ki-lernziel', 'persona', 'ethik', 'interaktion-digital'],
+          desc: 'Im Schulkontext stehen Lernziele und ethische Reflexion im Mittelpunkt. Persona-Karten helfen, verschiedene Lernende und Lehrende einzubeziehen, während KI-Lernziel-Karten klären, welche Kompetenzen die KI fördern soll.',
+          tip: 'Starten Sie mit KI-Lernziel-Karten: Was soll die KI leisten – und was ausdrücklich nicht? Das verhindert Missverständnisse und schärft das Konzept von Anfang an.'
+        },
+        unternehmen: {
+          label: 'Unternehmen',
+          cards: ['szenario', 'datenquelle', 'interaktion-physisch', 'ethik'],
+          desc: 'Unternehmen profitieren besonders von Datenquellen- und Interaktionskarten – für die Integration von KI in reale Produktions- und Serviceprozesse. Ethik-Reflexion hilft, Risiken und Akzeptanz im Team früh zu adressieren.',
+          tip: 'Datenquellen-Karten sind oft der Schlüssel: Klären Sie früh, welche Daten bereits vorhanden sind – und welche erst noch erhoben oder aufbereitet werden müssten.'
+        },
+        zivilgesellschaft: {
+          label: 'Zivilgesellschaft',
+          cards: ['szenario', 'persona', 'ethik', 'ki-lernziel'],
+          desc: 'Für NGOs und zivilgesellschaftliche Organisationen sind Inklusion, Transparenz und gesellschaftliche Wirkung zentral. Ethik-Reflexion und Persona-Karten helfen, alle Betroffenengruppen im Blick zu behalten.',
+          tip: 'Nutzen Sie mehrere Persona-Karten, um marginalisierte Zielgruppen explizit einzubeziehen – sie sind oft die wichtigsten Nutzer:innen und gleichzeitig am schwersten zu erreichen.'
+        },
+        aeltere: {
+          label: 'Ältere Menschen',
+          cards: ['persona', 'interaktion-physisch', 'interaktion-digital', 'ethik'],
+          desc: 'Bei KI-Projekten für ältere Menschen sind Barrierefreiheit, Vertrauen und Würde entscheidend. Interaktionskarten und Persona-Karten helfen, realistische und respektvolle Lösungen zu entwickeln.',
+          tip: 'Definieren Sie in Persona-Karten explizit technische Vorerfahrungen und körperliche Einschränkungen – das verhindert unrealistische Designannahmen und macht blinde Flecken sichtbar.'
+        },
+        erwachsenenbildung: {
+          label: 'Erwachsenenbildung',
+          cards: ['ki-lernziel', 'szenario', 'persona', 'ethik'],
+          desc: 'In der Erwachsenenbildung geht es um praxisnahe Lernszenarien, Selbstbestimmung und den Ausgleich unterschiedlicher Vorkenntnisse. Szenario- und KI-Lernziel-Karten sind besonders wertvoll.',
+          tip: 'Kombinieren Sie KI-Lernziel- mit Persona-Karten – so entsteht ein differenziertes Bild, welche Kompetenzen für unterschiedliche Teilnehmergruppen relevant sind.'
+        }
+      };
+
+      var tabs    = document.querySelectorAll('.konfig-tab');
+      var result  = document.getElementById('konfig-result');
+      var title   = document.getElementById('konfig-title');
+      var cards   = document.getElementById('konfig-cards');
+      var desc    = document.getElementById('konfig-desc');
+      var tip     = document.getElementById('konfig-tip');
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var ctx = CONTEXTS[tab.dataset.ctx];
+          if (!ctx) return;
+
+          tabs.forEach(function (t) {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          title.textContent = ctx.label;
+
+          cards.innerHTML = ctx.cards.map(function (key) {
+            var ct = CARD_TYPES[key];
+            return '<span class="konfig-card-pill" style="background:' + ct.color + '">' + ct.label + '</span>';
+          }).join('');
+
+          desc.textContent  = ctx.desc;
+          tip.textContent   = ctx.tip;
+
+          result.classList.add('visible');
+          result.setAttribute('aria-label', ctx.label + ' – Kartenempfehlung');
+        });
       });
     })();
   </script>
