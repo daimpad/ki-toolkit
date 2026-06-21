@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praxisbeispiele – KI-Toolkit</title>
+  <meta name="description" content="Wie Organisationen aus Verwaltung, Bildung und Wirtschaft das KI-Toolkit in der Praxis einsetzen – drei Beispiel-Szenarien.">
+  <meta property="og:title" content="Praxisbeispiele – KI-Toolkit">
+  <meta property="og:description" content="Wie Organisationen aus Verwaltung, Bildung und Wirtschaft das KI-Toolkit in der Praxis einsetzen – drei Beispiel-Szenarien.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ki-toolkit.de/praxisbeispiele.html">
+  <meta property="og:image" content="https://ki-toolkit.de/pics/og-image.png">
+  <meta property="og:site_name" content="KI-Toolkit">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ki-toolkit.de/praxisbeispiele.html">
+  <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* PAGE-SPECIFIC */
+
+    /* Case cards */
+    .case-card {
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-card-img {
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .case-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .case-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 5px 12px;
+      border-radius: 50px;
+      border: 2px solid currentColor;
+      background: var(--white);
+    }
+
+    .case-card-body {
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .case-card-body h3 { font-size: 21px; margin-bottom: 12px; }
+    .case-card-body p { font-size: 15px; color: var(--dark); flex: 1; margin-bottom: 20px; }
+
+    .case-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .case-meta-item {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .case-meta-item span {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    /* Sector colors */
+    .badge-verwaltung { color: #1A56A4; }
+    .badge-bildung    { color: #0E7490; }
+    .badge-unternehmen { color: #15803D; }
+
+    /* Note box */
+    .note-box {
+      background: #fffbeb;
+      border: 2px solid var(--yellow);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: var(--dark);
+      margin-bottom: 40px;
+    }
+
+    /* CTA */
+    .section-cta {
+      text-align: center;
+    }
+    .section-cta h2 { margin-bottom: 16px; }
+    .section-cta p { max-width: 560px; margin: 0 auto 32px; font-size: 18px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-wrap" aria-label="Hauptnavigation">
+        <a href="index.html" class="nav-logo" aria-label="KI-Toolkit Startseite">
+          <img src="pics/KI-Toolkit-Logo-1.png" alt="KI-Toolkit" height="38">
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="methode.html">Methode</a></li>
+          <li><a href="anleitung.html">Anleitung</a></li>
+          <li><a href="workshop.html">Workshop</a></li>
+          <li><a href="ueber.html">Über</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <h1>Praxisbeispiele</h1>
+        <p>Wie das KI-Toolkit in der Praxis wirkt – drei Szenarien aus Verwaltung, Bildung und Unternehmen.</p>
+      </div>
+    </section>
+
+    <!-- CASES -->
+    <section>
+      <div class="container">
+
+        <div class="note-box">
+          <strong>Hinweis:</strong> Die folgenden Szenarien sind repräsentative Beispiele typischer KI-Toolkit-Einsätze. Namen und Details sind fiktiv. Sie haben das Toolkit eingesetzt? <a href="kontakt.html">Schreiben Sie uns</a> – wir verlinken Ihren Fall gerne hier.
+        </div>
+
+        <div class="three-col">
+
+          <!-- Case 1: Verwaltung -->
+          <article class="case-card">
+            <div class="case-card-img">
+              <img src="pics/KI-Toolkit_Gruppe.png" alt="Workshop-Gruppe mit KI-Toolkit-Karten" loading="lazy">
+              <span class="case-badge badge-verwaltung">Öffentliche Verwaltung</span>
+            </div>
+            <div class="case-card-body">
+              <h3>Bürger-Chatbot für die Kreisstadt Nordtal</h3>
+              <p>Sechs Abteilungen, vier Stunden, drei KI-Konzepte – wie eine Stadtverwaltung den Einstieg in KI-gestützte Bürgerservices strukturiert angegangen ist.</p>
+              <div class="case-meta">
+                <div class="case-meta-item">6 <span>Teilnehmende</span></div>
+                <div class="case-meta-item">4 Std. <span>Workshop</span></div>
+                <div class="case-meta-item">3 <span>KI-Konzepte</span></div>
+              </div>
+              <a href="praxisbeispiele-verwaltung.html" class="btn btn-sm">Fallstudie lesen →</a>
+            </div>
+          </article>
+
+          <!-- Case 2: Bildung -->
+          <article class="case-card">
+            <div class="case-card-img">
+              <img src="pics/Gruppe_bunte_Karten.png" alt="Gruppe arbeitet mit bunten Karten" loading="lazy">
+              <span class="case-badge badge-bildung">Hochschule &amp; Bildung</span>
+            </div>
+            <div class="case-card-body">
+              <h3>KI-Lernassistent an der FH Rheinhöhe</h3>
+              <p>Lehrende und Studierende entwickelten gemeinsam ein Konzept für einen adaptiven Lernbegleiter – mit klaren Grenzen und ethischen Leitplanken.</p>
+              <div class="case-meta">
+                <div class="case-meta-item">8 <span>Teilnehmende</span></div>
+                <div class="case-meta-item">3,5 Std. <span>Workshop</span></div>
+                <div class="case-meta-item">1 <span>Pilotprojekt</span></div>
+              </div>
+              <a href="praxisbeispiele-hochschule.html" class="btn btn-sm">Fallstudie lesen →</a>
+            </div>
+          </article>
+
+          <!-- Case 3: Unternehmen -->
+          <article class="case-card">
+            <div class="case-card-img">
+              <img src="pics/karten.jpg" alt="KI-Toolkit Karten auf dem Tisch" loading="lazy">
+              <span class="case-badge badge-unternehmen">Unternehmen</span>
+            </div>
+            <div class="case-card-body">
+              <h3>Qualitätskontrolle per KI bei Metalltechnik GmbH</h3>
+              <p>Ein mittelständischer Fertigungsbetrieb nutzte den Workshop, um erstmals strukturiert KI-Anforderungen zu formulieren – und einen Anbieter gezielt zu briefen.</p>
+              <div class="case-meta">
+                <div class="case-meta-item">5 <span>Teilnehmende</span></div>
+                <div class="case-meta-item">3 Std. <span>Workshop</span></div>
+                <div class="case-meta-item">1 <span>Lastenheft-Entwurf</span></div>
+              </div>
+              <a href="praxisbeispiele-unternehmen.html" class="btn btn-sm">Fallstudie lesen →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-yellow section-cta">
+      <div class="container">
+        <h2>Eigenes KI-Projekt strukturieren?</h2>
+        <p>Das KI-Toolkit steht kostenlos zum Download bereit – oder buchen Sie einen moderierten Workshop für Ihre Organisation.</p>
+        <div class="btn-row" style="justify-content:center;">
+          <a href="download.html" class="btn">Materialien herunterladen</a>
+          <a href="workshop.html" class="btn btn-outline">Workshop anfragen</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p>Ein Produkt von</p>
+          <a href="https://nozilla.de/" target="_blank" rel="noopener">
+            <img src="svg/nozilla-logo.svg" alt="nozilla" loading="lazy">
+          </a>
+        </div>
+        <nav class="footer-nav" aria-label="Footer Navigation 1">
+          <a href="kontakt.html">Kontakt</a>
+          <a href="ki-toolkit-online.html">Online-Tool</a>
+          <a href="../kartengenerator/">Kartengenerator</a>
+          <a href="praxisbeispiele.html">Praxisbeispiele</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Footer Navigation 2">
+          <a href="faq.html">FAQ</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+        <div class="footer-badge">
+          <a href="#">
+            <img src="svg/ethical-design-badge-tiny.svg" alt="We practice Ethical Design" width="62" height="48" loading="lazy">
+          </a>
+          <a href="#">We practice Ethical Design.</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-cc">
+          <img src="pics/cc-by.png" alt="Creative Commons BY 4.0" width="88" height="31" loading="lazy">
+          <p>Die Inhalte dieser Website stehen unter einer <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener noreferrer">Creative Commons Namensnennung 4.0 International Lizenz (CC BY 4.0)</a>. Namensnennung: <a href="https://paderta.com/" target="_blank" rel="noopener">Damian Paderta</a> | ki-toolkit.de</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle   = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (!toggle || !navLinks) return;
+      toggle.addEventListener('click', function () {
+        const open = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    })();
+  </script>
+
+</body>
+</html>
