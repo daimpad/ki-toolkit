@@ -169,6 +169,32 @@
     .proto-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
     .proto-print-hint { font-size: 13px; color: #888; margin-top: 10px; }
 
+    /* SAVE INDICATOR */
+    .proto-saved {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #15803D;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity .3s;
+      margin-left: 4px;
+    }
+    .proto-saved.visible { opacity: 1; }
+
+    /* SCROLL CTA in hero */
+    .hero-scroll-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .hero-scroll-link:hover { color: var(--black); }
+
     /* Print */
     .proto-print-title { display: none; }
     @media print {
@@ -243,6 +269,9 @@
         <h2>Das digitale Werkzeug für partizipative KI-Ideenfindung</h2>
         <h3>Das KI-Toolkit kann hier direkt im Browser getestet werden – optimiert für größere Bildschirme (&gt;800px Breite).</h3>
         <a href="https://ki-toolkit.de/ki-toolkit-online/" target="_blank" rel="noopener" class="btn btn-lg btn-center">Online-Tool starten</a>
+        <div style="margin-top:16px;">
+          <a href="#protokoll" class="hero-scroll-link">Direkt zum Workshop-Protokoll ↓</a>
+        </div>
       </div>
     </section>
 
@@ -341,7 +370,7 @@
     </section>
 
     <!-- SECTION 4: WORKSHOP-PROTOKOLL -->
-    <section class="section-protokoll">
+    <section class="section-protokoll" id="protokoll">
       <div class="container">
         <h2 class="mb-16">Workshop-Protokoll</h2>
         <p class="section-intro">Halten Sie die Ergebnisse Ihres Workshops fest – alle Eingaben werden automatisch gespeichert. Am Ende exportieren Sie das Protokoll als druckfähiges PDF.</p>
@@ -456,6 +485,7 @@
         <div class="proto-actions">
           <button class="btn" id="proto-export-btn">Protokoll als PDF exportieren</button>
           <button class="btn btn-outline" id="proto-reset-btn">Zurücksetzen</button>
+          <span class="proto-saved" id="proto-saved" aria-live="polite">✓ Automatisch gespeichert</span>
         </div>
         <p class="proto-print-hint">Im Browser-Druckdialog „<strong>Als PDF speichern</strong>" (oder Drucker „PDF") auswählen, um eine PDF-Datei zu erzeugen.</p>
       </div>
@@ -525,13 +555,22 @@
 
     // --- Workshop-Protokoll ---
     (function () {
-      var STORE_KEY = 'ki-protokoll-v1';
-      var fields = document.querySelectorAll('[data-proto]');
+      var STORE_KEY  = 'ki-protokoll-v1';
+      var fields     = document.querySelectorAll('[data-proto]');
+      var savedEl    = document.getElementById('proto-saved');
+      var saveTimer;
+
+      function showSaved() {
+        if (!savedEl) return;
+        savedEl.classList.add('visible');
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(function () { savedEl.classList.remove('visible'); }, 2500);
+      }
 
       function save() {
         var data = {};
         fields.forEach(function (el) { data[el.dataset.proto] = el.value; });
-        try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch (e) {}
+        try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); showSaved(); } catch (e) {}
       }
 
       function load() {
