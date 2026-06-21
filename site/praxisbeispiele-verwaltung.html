@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fallstudie: Bürger-Chatbot Kreisstadt Nordtal – KI-Toolkit</title>
+  <meta name="description" content="Wie die Kreisstadt Nordtal mit dem KI-Toolkit drei Konzepte für einen KI-gestützten Bürgerservice entwickelt hat – in einem 4-stündigen Workshop.">
+  <meta property="og:title" content="Fallstudie: Bürger-Chatbot Kreisstadt Nordtal – KI-Toolkit">
+  <meta property="og:description" content="Wie die Kreisstadt Nordtal mit dem KI-Toolkit drei Konzepte für einen KI-gestützten Bürgerservice entwickelt hat.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ki-toolkit.de/praxisbeispiele-verwaltung.html">
+  <meta property="og:image" content="https://ki-toolkit.de/pics/og-image.png">
+  <meta property="og:site_name" content="KI-Toolkit">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ki-toolkit.de/praxisbeispiele-verwaltung.html">
+  <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* PAGE-SPECIFIC */
+    .case-hero {
+      padding: 64px 0 48px;
+      background: var(--cream);
+    }
+    .case-breadcrumb {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+    .case-breadcrumb a { color: #888; text-decoration: underline; }
+    .case-breadcrumb a:hover { color: var(--black); }
+
+    .case-sector-badge {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 6px 16px;
+      border-radius: 50px;
+      border: 2px solid #1A56A4;
+      color: #1A56A4;
+      margin-bottom: 20px;
+    }
+    .case-hero h1 { margin-bottom: 20px; }
+    .case-hero-lead {
+      font-size: 20px;
+      font-family: 'Aleo', serif;
+      font-weight: 400;
+      line-height: 1.55;
+      max-width: 640px;
+      color: var(--dark);
+    }
+
+    .case-meta-bar {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 2px solid rgba(2,0,0,.1);
+    }
+    .case-meta-item { text-align: left; }
+    .case-meta-item .val {
+      font-size: 28px;
+      font-family: 'Aleo', serif;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .case-meta-item .label {
+      font-size: 13px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .case-img {
+      width: 100%;
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .case-img img { width: 100%; display: block; }
+
+    .quote-box {
+      border-left: 5px solid #1A56A4;
+      padding: 20px 28px;
+      margin: 32px 0;
+      background: var(--white);
+      border-radius: 0 12px 12px 0;
+    }
+    .quote-box p {
+      font-size: 19px;
+      font-family: 'Aleo', serif;
+      font-style: italic;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .quote-box cite { font-size: 13px; color: #888; font-style: normal; }
+
+    .cards-used {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .card-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .takeaway-list { list-style: none; padding: 0; margin: 16px 0; }
+    .takeaway-list li {
+      padding: 10px 0 10px 28px;
+      position: relative;
+      border-bottom: 1px solid rgba(2,0,0,.08);
+      font-size: 16px;
+    }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #1A56A4;
+      font-weight: 700;
+    }
+
+    .case-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .case-meta-bar { gap: 24px; }
+      .case-meta-item .val { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-wrap" aria-label="Hauptnavigation">
+        <a href="index.html" class="nav-logo" aria-label="KI-Toolkit Startseite">
+          <img src="pics/KI-Toolkit-Logo-1.png" alt="KI-Toolkit" height="38">
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="methode.html">Methode</a></li>
+          <li><a href="anleitung.html">Anleitung</a></li>
+          <li><a href="workshop.html">Workshop</a></li>
+          <li><a href="ueber.html">Über</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="case-hero">
+      <div class="container">
+        <div class="case-breadcrumb">
+          <a href="praxisbeispiele.html">← Alle Praxisbeispiele</a>
+        </div>
+        <span class="case-sector-badge">Öffentliche Verwaltung</span>
+        <h1>Bürger-Chatbot für die Kreisstadt Nordtal</h1>
+        <p class="case-hero-lead">Sechs Abteilungen, vier Stunden, drei ausgearbeitete KI-Konzepte – wie eine Stadtverwaltung mit dem KI-Toolkit den Grundstein für ihren ersten KI-Einsatz gelegt hat.</p>
+        <div class="case-meta-bar">
+          <div class="case-meta-item"><span class="val">6</span><span class="label">Teilnehmende</span></div>
+          <div class="case-meta-item"><span class="val">4 Std.</span><span class="label">Workshop-Dauer</span></div>
+          <div class="case-meta-item"><span class="val">3</span><span class="label">KI-Konzepte</span></div>
+          <div class="case-meta-item"><span class="val">1</span><span class="label">Pilotprojekt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <div class="case-img">
+          <img src="pics/KI-Toolkit_Gruppe.png" alt="Workshop-Gruppe mit KI-Toolkit-Karten" loading="lazy">
+        </div>
+
+        <!-- AUSGANGSSITUATION -->
+        <div class="section-box mb-32">
+          <h2 class="mb-16">Ausgangssituation</h2>
+          <p>Die Kreisstadt Nordtal (fiktiv, ca. 45.000 Einwohnende) stand vor einer typischen Herausforderung: Das Bürgeramt verzeichnete täglich über 200 Telefonanfragen zu Standardthemen – Öffnungszeiten, Antragsvoraussetzungen, Wartezeiten. Das IT-Referat hatte bereits erste KI-Tools evaluiert, ohne dass die Fachabteilungen eingebunden waren.</p>
+          <p>Ziel des Workshops war es nicht, sofort eine technische Lösung zu wählen, sondern <strong>Klarheit darüber zu schaffen, was eine KI überhaupt leisten soll – und was nicht</strong>. Dazu wurden Vertreter:innen aus sechs Bereichen eingeladen: Bürgeramt, IT, Datenschutz, Kommunikation, Personalrat und Stadtplanung.</p>
+        </div>
+
+        <!-- VORGEHEN -->
+        <div class="section-box mb-32">
+          <h2 class="mb-16">Vorgehen</h2>
+          <p>Der Workshop folgte der KI-Toolkit-Anleitung in sieben Phasen. Besonders intensiv wurden die Phasen <em>Persona</em> und <em>Ethik-Reflexion</em> bearbeitet – da sich hier schnell zeigte, dass die Vorstellungen über Bürger:innen als Nutzende weit auseinandergingen.</p>
+
+          <h3 class="mb-16 mt-24">Eingesetzte Kartentypen</h3>
+          <div class="cards-used">
+            <span class="card-tag" style="background:#1A56A4;">Szenario</span>
+            <span class="card-tag" style="background:#6B21A8;">Persona</span>
+            <span class="card-tag" style="background:#15803D;">Datenquelle</span>
+            <span class="card-tag" style="background:#374151;">Ethik-Reflexion</span>
+          </div>
+
+          <p class="mt-16">Die Gruppe erarbeitete zunächst drei Szenarien: (1) einen reaktiven FAQ-Chatbot, (2) einen proaktiven Terminassistenten und (3) eine interne Wissenssuche für Sachbearbeiter:innen. Jedes Szenario wurde mit je zwei Persona-Karten (ältere Bürger:in ohne Smartphone-Erfahrung; technikaffine junge Person) gespiegelt.</p>
+
+          <div class="quote-box">
+            <p>„Erst als wir die Datenschutzbeauftragte mit der Persona-Karte ‚Rentnerin, kein Smartphone' konfrontiert haben, wurde uns klar: Ein Chatbot, der nur per App erreichbar ist, löst unser Problem nicht."</p>
+            <cite>— Teilnehmerin aus dem Bürgeramt</cite>
+          </div>
+
+          <p>In der Ethik-Reflexionsphase identifizierte die Gruppe drei kritische Punkte: Datensparsamkeit, Transparenz gegenüber Bürger:innen (KI erkennbar machen) und die Frage, bei welchen Anliegen menschliche Intervention zwingend sein muss.</p>
+        </div>
+
+        <!-- ERGEBNIS -->
+        <div class="section-box mb-32">
+          <h2 class="mb-16">Ergebnis</h2>
+          <p>Am Ende des Workshops standen drei ausformulierte KI-Konzepte als Storyboards, bewertet nach Machbarkeit, Datenschutzkonformität und erwartetem Nutzen. Das Team entschied sich einstimmig für Szenario 3 – die <strong>interne Wissenssuche für Sachbearbeiter:innen</strong> – als Pilotprojekt, da es:</p>
+          <ul class="takeaway-list">
+            <li>keine personenbezogenen Bürger:innendaten erfordert</li>
+            <li>unmittelbar zur Entlastung des Bürgeramts beiträgt</li>
+            <li>ohne externe IT-Vergabe zunächst intern erprobt werden kann</li>
+            <li>klare Erfolgskriterien (Bearbeitungszeit pro Anfrage) hat</li>
+          </ul>
+          <p>Das ausgearbeitete Storyboard diente direkt als Grundlage für eine interne Projektskizze und einen Förderantrag beim kommunalen Digitalisierungsfonds.</p>
+        </div>
+
+        <!-- LEARNINGS -->
+        <div class="section-box mb-32">
+          <h2 class="mb-16">Was andere daraus lernen können</h2>
+          <ul class="takeaway-list">
+            <li>Datenschutz früh einbinden – nicht als Bremse, sondern als Designparameter</li>
+            <li>Mit internen Anwendungsfällen starten, bevor KI nach außen kommuniziert wird</li>
+            <li>Persona-Karten helfen, abstrakte Zielgruppen konkret zu machen</li>
+            <li>Ein Workshop-Ergebnis ist kein Beschluss – aber eine fundierte Entscheidungsgrundlage</li>
+          </ul>
+        </div>
+
+        <!-- NAV -->
+        <div class="case-nav">
+          <a href="praxisbeispiele.html" class="btn btn-outline">← Alle Beispiele</a>
+          <a href="praxisbeispiele-hochschule.html" class="btn">Nächste Fallstudie →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-ausprobieren">
+      <div class="container">
+        <div class="section-box text-center">
+          <h2 class="mb-16">Für Ihre Organisation</h2>
+          <p style="max-width:560px; margin:0 auto 32px;">Das KI-Toolkit steht kostenlos zum Download bereit – oder buchen Sie einen professionell moderierten Workshop für Ihr Team.</p>
+          <div class="btn-row" style="justify-content:center;">
+            <a href="download.html" class="btn">Materialien herunterladen</a>
+            <a href="workshop.html" class="btn btn-outline">Workshop anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p>Ein Produkt von</p>
+          <a href="https://nozilla.de/" target="_blank" rel="noopener">
+            <img src="svg/nozilla-logo.svg" alt="nozilla" loading="lazy">
+          </a>
+        </div>
+        <nav class="footer-nav" aria-label="Footer Navigation 1">
+          <a href="kontakt.html">Kontakt</a>
+          <a href="ki-toolkit-online.html">Online-Tool</a>
+          <a href="../kartengenerator/">Kartengenerator</a>
+          <a href="praxisbeispiele.html">Praxisbeispiele</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Footer Navigation 2">
+          <a href="faq.html">FAQ</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+        <div class="footer-badge">
+          <a href="#">
+            <img src="svg/ethical-design-badge-tiny.svg" alt="We practice Ethical Design" width="62" height="48" loading="lazy">
+          </a>
+          <a href="#">We practice Ethical Design.</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-cc">
+          <img src="pics/cc-by.png" alt="Creative Commons BY 4.0" width="88" height="31" loading="lazy">
+          <p>Die Inhalte dieser Website stehen unter einer <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener noreferrer">Creative Commons Namensnennung 4.0 International Lizenz (CC BY 4.0)</a>. Namensnennung: <a href="https://paderta.com/" target="_blank" rel="noopener">Damian Paderta</a> | ki-toolkit.de</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle   = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (!toggle || !navLinks) return;
+      toggle.addEventListener('click', function () {
+        const open = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    })();
+  </script>
+
+</body>
+</html>

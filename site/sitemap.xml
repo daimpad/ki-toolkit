@@ -6,6 +6,10 @@
   <url><loc>https://ki-toolkit.de/workshop.html</loc><priority>0.8</priority></url>
   <url><loc>https://ki-toolkit.de/ueber.html</loc><priority>0.7</priority></url>
   <url><loc>https://ki-toolkit.de/download.html</loc><priority>0.9</priority></url>
+  <url><loc>https://ki-toolkit.de/praxisbeispiele.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ki-toolkit.de/praxisbeispiele-verwaltung.html</loc><priority>0.7</priority></url>
+  <url><loc>https://ki-toolkit.de/praxisbeispiele-hochschule.html</loc><priority>0.7</priority></url>
+  <url><loc>https://ki-toolkit.de/praxisbeispiele-unternehmen.html</loc><priority>0.7</priority></url>
   <url><loc>https://ki-toolkit.de/kartengenerator.html</loc><priority>0.8</priority></url>
   <url><loc>https://ki-toolkit.de/kartengenerator/</loc><priority>0.7</priority></url>
   <url><loc>https://ki-toolkit.de/faq.html</loc><priority>0.6</priority></url>

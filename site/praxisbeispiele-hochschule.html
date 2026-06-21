@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fallstudie: KI-Lernassistent FH Rheinhöhe – KI-Toolkit</title>
+  <meta name="description" content="Wie die FH Rheinhöhe mit dem KI-Toolkit ein Konzept für einen adaptiven Lernassistenten entwickelte – unter Einbindung von Studierenden, Lehrenden und IT.">
+  <meta property="og:title" content="Fallstudie: KI-Lernassistent FH Rheinhöhe – KI-Toolkit">
+  <meta property="og:description" content="Wie die FH Rheinhöhe mit dem KI-Toolkit ein Konzept für einen adaptiven Lernassistenten entwickelte.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ki-toolkit.de/praxisbeispiele-hochschule.html">
+  <meta property="og:image" content="https://ki-toolkit.de/pics/og-image.png">
+  <meta property="og:site_name" content="KI-Toolkit">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ki-toolkit.de/praxisbeispiele-hochschule.html">
+  <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Aleo:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* PAGE-SPECIFIC */
+    .case-hero { padding: 64px 0 48px; background: var(--cream); }
+    .case-breadcrumb { font-size: 14px; color: #888; margin-bottom: 20px; }
+    .case-breadcrumb a { color: #888; text-decoration: underline; }
+    .case-breadcrumb a:hover { color: var(--black); }
+
+    .case-sector-badge {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 6px 16px;
+      border-radius: 50px;
+      border: 2px solid #0E7490;
+      color: #0E7490;
+      margin-bottom: 20px;
+    }
+    .case-hero h1 { margin-bottom: 20px; }
+    .case-hero-lead {
+      font-size: 20px;
+      font-family: 'Aleo', serif;
+      font-weight: 400;
+      line-height: 1.55;
+      max-width: 640px;
+      color: var(--dark);
+    }
+
+    .case-meta-bar {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 2px solid rgba(2,0,0,.1);
+    }
+    .case-meta-item .val {
+      font-size: 28px;
+      font-family: 'Aleo', serif;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .case-meta-item .label { font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: .05em; }
+
+    .case-img {
+      width: 100%;
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .case-img img { width: 100%; display: block; }
+
+    .quote-box {
+      border-left: 5px solid #0E7490;
+      padding: 20px 28px;
+      margin: 32px 0;
+      background: var(--white);
+      border-radius: 0 12px 12px 0;
+    }
+    .quote-box p {
+      font-size: 19px;
+      font-family: 'Aleo', serif;
+      font-style: italic;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .quote-box cite { font-size: 13px; color: #888; font-style: normal; }
+
+    .cards-used { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+    .card-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .takeaway-list { list-style: none; padding: 0; margin: 16px 0; }
+    .takeaway-list li {
+      padding: 10px 0 10px 28px;
+      position: relative;
+      border-bottom: 1px solid rgba(2,0,0,.08);
+      font-size: 16px;
+    }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before { content: '✓'; position: absolute; left: 0; color: #0E7490; font-weight: 700; }
+
+    .case-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .case-meta-bar { gap: 24px; }
+      .case-meta-item .val { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-wrap" aria-label="Hauptnavigation">
+        <a href="index.html" class="nav-logo" aria-label="KI-Toolkit Startseite">
+          <img src="pics/KI-Toolkit-Logo-1.png" alt="KI-Toolkit" height="38">
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="methode.html">Methode</a></li>
+          <li><a href="anleitung.html">Anleitung</a></li>
+          <li><a href="workshop.html">Workshop</a></li>
+          <li><a href="ueber.html">Über</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="case-hero">
+      <div class="container">
+        <div class="case-breadcrumb">
+          <a href="praxisbeispiele.html">← Alle Praxisbeispiele</a>
+        </div>
+        <span class="case-sector-badge">Hochschule &amp; Bildung</span>
+        <h1>KI-Lernassistent an der FH Rheinhöhe</h1>
+        <p class="case-hero-lead">Lehrende, Studierende und IT entwickelten gemeinsam ein Konzept für einen adaptiven Lernbegleiter – und lernten dabei, wie wichtig die Frage nach dem „Darf die KI das?" ist, bevor man „Wie funktioniert die KI?" fragt.</p>
+        <div class="case-meta-bar">
+          <div class="case-meta-item"><span class="val">8</span><span class="label">Teilnehmende</span></div>
+          <div class="case-meta-item"><span class="val">3,5 Std.</span><span class="label">Workshop-Dauer</span></div>
+          <div class="case-meta-item"><span class="val">4</span><span class="label">KI-Szenarien</span></div>
+          <div class="case-meta-item"><span class="val">1</span><span class="label">Pilotprojekt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <div class="case-img">
+          <img src="pics/Gruppe_bunte_Karten.png" alt="Gruppe arbeitet mit bunten KI-Toolkit-Karten" loading="lazy">
+        </div>
+
+        <!-- AUSGANGSSITUATION -->
+        <div class="section-box mb-32">
+          <h2 class="mb-16">Ausgangssituation</h2>
+          <p>Die Fachhochschule Rheinhöhe (fiktiv) beobachtete seit der Verbreitung generativer KI-Tools eine wachsende Unsicherheit bei Lehrenden: Wie gehen Studierende mit ChatGPT & Co. in Prüfungsleistungen um? Und wie können Hochschulen KI konstruktiv in die Lehre integrieren, statt sie zu verbieten?</p>
+          <p>Statt Top-down eine Policy zu verabschieden, entschied das Rektorat, einen <strong>partizipativen Entwicklungsprozess</strong> zu starten. Das KI-Toolkit wurde eingesetzt, um verschiedene Perspektiven – Lehrende, Studierende, Studienberatung und IT – strukturiert zusammenzuführen.</p>
+          <p>Leitfrage des Workshops: <em>Was müsste ein KI-Lernassistent können – und wo muss er aufhören?</em></p>
+        </div>
+
+        <!-- VORGEHEN -->
+        <div class="section-box mb-32">
+          <h2 class="mb-16">Vorgehen</h2>
+          <p>Die Gruppe startete mit der Erarbeitung von Szenarien: Welche konkreten Lernsituationen soll die KI unterstützen? Vier Szenarien entstanden schnell: adaptives Quizzing, Lernziel-Reflexion, Feedback auf Entwürfe, und Studienberatung bei Orientierungslosigkeit.</p>
+
+          <h3 class="mb-16 mt-24">Eingesetzte Kartentypen</h3>
+          <div class="cards-used">
+            <span class="card-tag" style="background:#6B21A8;">Persona</span>
+            <span class="card-tag" style="background:#0E7490;">KI-Lernziel</span>
+            <span class="card-tag" style="background:#C2410C;">Interaktion (Digital)</span>
+            <span class="card-tag" style="background:#374151;">Ethik-Reflexion</span>
+          </div>
+
+          <p class="mt-16">Die Persona-Phase brachte den entscheidenden Perspektivwechsel: Die Gruppe arbeitete mit vier Personas – erstgeneration-Studierende, international Studierende ohne Deutschkenntnisse auf C1-Niveau, Studierende mit Prüfungsangst, und Lehrende mit 20 Jahren Erfahrung. Erst dadurch wurde deutlich, dass ein „universeller" Lernassistent kaum möglich ist.</p>
+
+          <div class="quote-box">
+            <p>„Der Moment, wo eine Studentin sagte: ‚Ich will, dass die KI mich nicht bewertet – ich will, dass sie mir erklärt, ohne zu urteilen' – das hat unser ganzes Konzept verändert."</p>
+            <cite>— Lehrender aus dem Fachbereich Informatik</cite>
+          </div>
+
+          <p>Die <em>KI-Lernziel</em>-Karten sorgten dafür, dass die Gruppe präzise formulieren musste: Was soll die KI konkret bewirken? Woran erkennen wir, ob sie es tut? Diese Karten wirkten als Operationalisierungshilfe – und verhinderten, dass vage Hoffnungen als Anforderungen galten.</p>
+
+          <p>Die Ethik-Reflexion wurde intensiv genutzt: Fragen zu akademischer Integrität, Abhängigkeit vom KI-Feedback und die Gefahr, dass bestimmte Lernende bevorzugt werden (Algorithmus-Bias), wurden dokumentiert und als nicht-verhandelbare Rahmenbedingungen festgehalten.</p>
+        </div>
+
+        <!-- ERGEBNIS -->
+        <div class="section-box mb-32">
+          <h2 class="mb-16">Ergebnis</h2>
+          <p>Das Storyboard zum Ende des Workshops beschrieb einen <strong>Lernreflexions-Assistenten</strong>: ein Tool, das Studierenden hilft, ihre eigenen Lernfortschritte zu reflektieren und Lücken zu benennen – aber <em>keine</em> Bewertungen vornimmt und <em>keine</em> Prüfungsleistungen generiert.</p>
+          <ul class="takeaway-list">
+            <li>Klar formulierte Nicht-Funktionen: Die KI bewertet nicht, sie fragt</li>
+            <li>Alle Antworten der KI werden als Vorschläge markiert, nicht als Wahrheiten</li>
+            <li>Opt-in: Nutzung ist freiwillig, keine Tracking-Daten ohne Einwilligung</li>
+            <li>Pilotstart: Zwei Studiengänge, ein Semester, mit externer Evaluation</li>
+          </ul>
+          <p>Das Konzept wurde als Förderantrag beim Digitalpakt Hochschule eingereicht und erhielt die Unterstützung des Datenschutzbeauftragten – weil Datenschutz bereits im Design enthalten war.</p>
+        </div>
+
+        <!-- LEARNINGS -->
+        <div class="section-box mb-32">
+          <h2 class="mb-16">Was andere daraus lernen können</h2>
+          <ul class="takeaway-list">
+            <li>Studierende als aktive Mitgestalter einbinden – nicht nur als Nutzende befragen</li>
+            <li>Nicht-Funktionen explizit definieren ist genauso wichtig wie Funktionen</li>
+            <li>KI-Lernziel-Karten helfen, „Wir wollen KI nutzen" in messbare Ziele zu übersetzen</li>
+            <li>Ethik-Reflexion am Ende des Workshops ist zu spät – sie gehört in jede Phase</li>
+          </ul>
+        </div>
+
+        <!-- NAV -->
+        <div class="case-nav">
+          <a href="praxisbeispiele-verwaltung.html" class="btn btn-outline">← Vorherige Fallstudie</a>
+          <a href="praxisbeispiele-unternehmen.html" class="btn">Nächste Fallstudie →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-ausprobieren">
+      <div class="container">
+        <div class="section-box text-center">
+          <h2 class="mb-16">Für Ihre Einrichtung</h2>
+          <p style="max-width:560px; margin:0 auto 32px;">Alle Materialien stehen kostenlos zur Verfügung – oder buchen Sie einen Workshop für Ihr Team.</p>
+          <div class="btn-row" style="justify-content:center;">
+            <a href="download.html" class="btn">Materialien herunterladen</a>
+            <a href="workshop.html" class="btn btn-outline">Workshop anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p>Ein Produkt von</p>
+          <a href="https://nozilla.de/" target="_blank" rel="noopener">
+            <img src="svg/nozilla-logo.svg" alt="nozilla" loading="lazy">
+          </a>
+        </div>
+        <nav class="footer-nav" aria-label="Footer Navigation 1">
+          <a href="kontakt.html">Kontakt</a>
+          <a href="ki-toolkit-online.html">Online-Tool</a>
+          <a href="../kartengenerator/">Kartengenerator</a>
+          <a href="praxisbeispiele.html">Praxisbeispiele</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Footer Navigation 2">
+          <a href="faq.html">FAQ</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+        <div class="footer-badge">
+          <a href="#">
+            <img src="svg/ethical-design-badge-tiny.svg" alt="We practice Ethical Design" width="62" height="48" loading="lazy">
+          </a>
+          <a href="#">We practice Ethical Design.</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-cc">
+          <img src="pics/cc-by.png" alt="Creative Commons BY 4.0" width="88" height="31" loading="lazy">
+          <p>Die Inhalte dieser Website stehen unter einer <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener noreferrer">Creative Commons Namensnennung 4.0 International Lizenz (CC BY 4.0)</a>. Namensnennung: <a href="https://paderta.com/" target="_blank" rel="noopener">Damian Paderta</a> | ki-toolkit.de</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle   = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (!toggle || !navLinks) return;
+      toggle.addEventListener('click', function () {
+        const open = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    })();
+  </script>
+
+</body>
+</html>
