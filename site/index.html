@@ -46,7 +46,7 @@
   <link rel="stylesheet" href="shared.css">
   <style>
     /* Page overrides */
-    :root { --green: #4bf990; --gray-warm: #020000; }
+    :root { --gray-warm: #020000; }
     body { background: var(--white); }
     h5 { font-size: 17px; font-weight: 600; }
     .two-col { gap: 48px; align-items: center; }
@@ -95,11 +95,11 @@
     }
 
     /* === KERNPRINZIPIEN === */
-    .section-kernprinzipien { background: var(--gray-warm); color: var(--white); }
+    .section-kernprinzipien { background: var(--gray-warm) !important; color: var(--white); }
     .section-kernprinzipien h1, .section-kernprinzipien h2, .section-kernprinzipien h3,
     .section-kernprinzipien h4, .section-kernprinzipien h5,
     .section-kernprinzipien p, .section-kernprinzipien li { color: var(--white); }
-    .prinzip-icon { font-size: 24px; color: var(--black); margin-bottom: 10px; }
+    .prinzip-icon { font-size: 24px; color: var(--white); margin-bottom: 10px; }
     .prinzip-title { font-size: 20px; margin-bottom: 10px; }
 
     /* === KARTEN === */
@@ -140,7 +140,7 @@
     .phase-content { padding-top: 4px; }
 
     /* === ONLINE NUTZEN === */
-    .section-online { background: var(--dark); }
+    .section-online { background: var(--dark) !important; }
     .section-online h2, .section-online h3 { color: var(--white); }
 
     /* === ZIELGRUPPEN === */
@@ -196,18 +196,11 @@
       .mitwirken-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .four-col { grid-template-columns: 1fr 1fr; }
       .hero-title h1 { font-size: 36px; }
       .phase-row { grid-template-columns: 60px 1fr; gap: 12px; }
       .phase-num { width: 36px; height: 36px; font-size: 16px; }
     }
 
-    /* Inline-style dark sections */
-    section[style*="gray-warm"] { color: var(--white); }
-    section[style*="gray-warm"] h1, section[style*="gray-warm"] h2,
-    section[style*="gray-warm"] h3, section[style*="gray-warm"] h4,
-    section[style*="gray-warm"] h5, section[style*="gray-warm"] p,
-    section[style*="gray-warm"] li { color: var(--white); }
   </style>
 </head>
 <body>
