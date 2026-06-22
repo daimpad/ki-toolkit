@@ -44,6 +44,7 @@
   </script>
   <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="shared.css">
+  <link rel="preload" href="fonts/Albert-Sans-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* Page overrides */
     :root { --gray-warm: #020000; }
@@ -68,15 +69,13 @@
       background: #ede7d9; border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; z-index: 0;
     }
     .cards { position: relative; flex-shrink: 0; z-index: 1; }
-    .card {
+    .fan-card {
       position: absolute; top: 0; left: 0;
       width: 180px; height: 260px;
       box-shadow: 5px 5px 0 0 var(--dark);
       transition: transform 900ms cubic-bezier(.2,.8,.2,1);
       border-radius: 20px; overflow: hidden;
       background-size: cover; background-position: center; background-repeat: no-repeat;
-      /* Reset shared.css .card styles */
-      background-color: transparent; border: none; padding: 0;
     }
 
     /* === INTRO === */
@@ -636,7 +635,7 @@
       const cards = [];
       for (let i = 0; i < COUNT; i++) {
         const el = document.createElement('div');
-        el.className = 'card';
+        el.className = 'fan-card';
         el.style.backgroundImage = `url('${CARDS[i]}')`;
         el.style.transform = `translateX(${i * 6}px) translateY(${-i}px) rotate(-6deg)`;
         el.style.transitionDelay = `${i * 50}ms`;
